@@ -1,0 +1,79 @@
+/* Estilos para el Header */
+.header {
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+  }
+  
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    height: 80px;
+    margin-left: auto;
+  }
+  
+  .user-profile {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+  
+  .user-icon {
+    height: 60px;
+    margin-right: 10px;
+  }
+  
+  .user-text {
+    text-align: left;
+  }
+  
+  .login-text {
+    font-size: 15px;
+  }
+  
+  .account-text {
+    font-size: 20px;
+  }
+  
+  .cart-icon {
+    height: 60px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  
+  .navigation {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navigation ul li {
+    margin: 0;
+  }
+  
+  .navigation ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+  }
+  
+  .divider {
+    width: 100%;
+    border: none;
+    border-top: 2px solid #EB4F3E;
+    margin-top: 10px;
+  }
+  

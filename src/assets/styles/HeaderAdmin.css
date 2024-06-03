@@ -1,0 +1,87 @@
+.header {
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+  }
+  
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .menu-button {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .logo {
+    height: 50px;
+  }
+  
+  .user-profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-icon {
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .user-text {
+    text-align: left;
+  }
+  
+  .login-text {
+    font-size: 12px;
+  }
+  
+  .account-text {
+    font-size: 15px;
+  }
+  
+  .cart-icon {
+    height: 40px;
+  }
+  
+  .divider {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+  }
+  
+  .navigation {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navigation ul li {
+    margin: 0;
+  }
+  
+  .navigation ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+  }
+  
+  .divider-red {
+    width: 100%;
+    border: none;
+    border-top: 2px solid red;
+    margin-top: 10px;
+  }
+  
