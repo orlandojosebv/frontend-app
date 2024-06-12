@@ -15,6 +15,8 @@ import VerAdministradores from './components/VerAdministradores.jsx';
 import VerClientes from './components/VerClientes.jsx';
 import Inicio from "./Inicio.jsx";
 import HeaderAdmin from "./components/HeaderAdmin.jsx";
+import Header from "./components/Header.jsx";
+import HeaderPago from "./components/HeaderPago.jsx";
 
 const productos = [
   {
@@ -53,6 +55,9 @@ function App() {
           <Route path="/VerClientes" element={<VerClientes />} />
           <Route path="/Inicio" element={<Inicio />} />
           <Route path="/HeaderAdmin" element={<HeaderAdmin />} />
+          <Route path="/Header" element={<Header />} />
+          <Route path="/HeaderPago" element={<HeaderPago />} />
+
         </Routes>
       </div>
     </Router>

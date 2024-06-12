@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../assets/styles/ReestablecerContrasena.css';
+import TemplateUser from './TemplateUser';
 
 const ReestablecerContrasena = () => {
   const [newPassword, setNewPassword] = useState('');
@@ -20,6 +21,7 @@ const ReestablecerContrasena = () => {
   };
 
   return (
+    <TemplateUser>
     <div className="reestablecer-contrasena-container">
       <h2>Reestablecer Contraseña</h2>
       <form onSubmit={handleSubmit}>
@@ -46,6 +48,7 @@ const ReestablecerContrasena = () => {
         <button type="submit">Cambiar Contraseña</button>
       </form>
     </div>
+    </TemplateUser>
   );
 };
 
