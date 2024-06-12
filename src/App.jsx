@@ -1,4 +1,3 @@
-import React from 'react';
 import "./App.css";
 import Header from "./components/Header.jsx";
 import LoginRegistro from "./components/LoginRegistro.jsx";
@@ -15,7 +14,7 @@ import ComprarProductoUsuarioRegistrado from './components/ComprarProductoUsuari
 import SideBar from './components/SideBar.jsx';
 import VerAdministradores from './components/VerAdministradores.jsx';
 import VerClientes from './components/VerClientes.jsx';
-import Footer from './components/Footer.jsx';
+//import Footer from './components/Footer.jsx';
 
 const productos = [
   {
@@ -38,7 +37,6 @@ function App() {
   return (
     <Router>
       <div className="app-container">
-        <Header />
         <Routes>
           <Route path="/LoginRegistro" element={<LoginRegistro />} />
           <Route path="/SideBar" element={<SideBar />} />
