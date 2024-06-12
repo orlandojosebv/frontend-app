@@ -17,6 +17,7 @@ import Inicio from "./Inicio.jsx";
 import HeaderAdmin from "./components/HeaderAdmin.jsx";
 import Header from "./components/Header.jsx";
 import HeaderPago from "./components/HeaderPago.jsx";
+import MostrarProducto from "./components/MostrarProducto.jsx";
 
 const productos = [
   {
@@ -57,7 +58,7 @@ function App() {
           <Route path="/HeaderAdmin" element={<HeaderAdmin />} />
           <Route path="/Header" element={<Header />} />
           <Route path="/HeaderPago" element={<HeaderPago />} />
-
+          <Route path="/MostrarProducto" element={<MostrarProducto />} />
         </Routes>
       </div>
     </Router>
