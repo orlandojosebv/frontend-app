@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import '../assets/styles/VerificarCorreo.css';
 import ImagenProductoCompra from './ImagenProductoCompra';
+import TemplateComprarProducto from './TemplateComprarProducto';
 
 const productos = [
   {
@@ -29,6 +30,7 @@ const VerificarCorreo = () => {
   };
 
   return (
+    <TemplateComprarProducto>
     <div className="verificar-compra-container">
       <div className="verificar-correo">
         <h2>Verifica tu Correo Electrónico</h2>
@@ -50,6 +52,7 @@ const VerificarCorreo = () => {
         <ImagenProductoCompra productos={productos} />
       </div>
     </div>
+    </TemplateComprarProducto>
   );
 };
 

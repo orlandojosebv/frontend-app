@@ -1,8 +1,6 @@
 .ver-administradores-container {
   width: 80%;
-  margin-top: 2%;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 0%;
   padding: 2rem;
   border-radius: 10px;
 }
@@ -44,6 +42,6 @@ tbody button {
   cursor: pointer;
 }
 
-button:avck {
+button:hover {
   background-color: #cc0000;
 }

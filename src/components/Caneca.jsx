@@ -1,16 +1,33 @@
-import imagen_inicio from '../../public/img/imagen_inicio.jpg'; 
-import naruto from '../../public/img/productos/Naturo.png'
+import aguacate from '/img/productos/Aguacate.png';
+import CR7 from '/img/productos/CR7.png';
+import erizo from '/img/productos/Erizo.png';
+import bodoque from '/img/productos/Juanca Bodoque.png';
+import ramo1 from '/img/productos/Ramo ferxxo.png';
+import ramo2 from '/img/productos/Ramo Spiderman.png';
+import colgante from '/img/productos/Pedazo de tejido pa guindar aretes.png';
+import monedero from '/img/productos/Monedero cuadrado.png';
+import ImgCaneca from "./ImgCaneca";
+ 
 
+const categories = [
+    { name: 'Amigurumi', images: [aguacate, CR7], link: '/categoria1' },
+    { name: 'Llaveros', images: [bodoque, erizo], link: '/categoria2' },
+    { name: 'Accsesorios', images: [colgante], link: '/categoria3' },
+    { name: 'Ramos', images: [ramo1, ramo2], link: '/categoria4' },
+    { name: 'Carteras', images: [monedero], link: '/categoria5' }
+];
 
-export function Caneca(){
+export default function Caneca(){
     return<>
-    <div className='h-[130px]'>
-        <div className='w-8 h-8 align-middle justify-center'>
-            <div className='flex align-middle justify-center bg-[#F5BE90] rounded-full h-24 w-24'>
-            <img className='h-20 w-auto' src={naruto} alt="" />
-            </div>
-            <label className='text-sm' htmlFor="">Amigurumi</label>
-        </div>
+    <div className='h-[240px] flex flex-row gap-20 items-center justify-center'>
+            {categories.map((category, index) => (
+                <ImgCaneca
+                    key={index}
+                    image={category.images[0]}
+                    categoryName={category.name}
+                    link={category.link}
+                />
+            ))}
     </div>
     
     </>

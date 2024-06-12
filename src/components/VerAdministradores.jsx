@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../assets/styles/VerAdministradores.css';
 import Sidebar from './SideBar';  // Asegúrate de que la ruta sea correcta
+import TemplateAdmin from './TemplateAdmin';
 
 const VerAdministradores = () => {
   const [administradores, setAdministradores] = useState([
@@ -15,8 +16,8 @@ const VerAdministradores = () => {
   };
 
   return (
+    <TemplateAdmin>
       <div className="flex flex-grow">
-        <Sidebar />
         <div className="ver-administradores-container flex-1 p-4">
           <h2>Listado de administradores</h2>
           <table>
@@ -43,6 +44,7 @@ const VerAdministradores = () => {
           </table>
         </div>
       </div>
+      </TemplateAdmin>
   );
 };
 

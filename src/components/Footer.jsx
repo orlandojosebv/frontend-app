@@ -1,11 +1,11 @@
-import React from 'react';
+
 
 const Footer = () => {
   return (
     <footer>
       <div className="min-w-full bg-[#F5BE90] md:flex align-middle items-center justify-between px-[100px] py-[20px]">
         <div className="flex justify-center align-middle">
-          <img className="h-[80px] w-[170px]" src="/img/logo_lula.png" alt="logo_lula" />
+          <img className="h-[80px] w-auto" src="/img/logo_lula.png" alt="logo_lula" />
         </div>
         <div className="flex align-middle items-center justify-around w-80">
           <div>

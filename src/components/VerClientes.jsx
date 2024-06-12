@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import '../assets/styles/VerClientes.css';
-import Sidebar from './SideBar';  // Asegúrate de que la ruta sea correcta
+import TemplateAdmin from './TemplateAdmin';
 
 const VerClientes = () => {
   const [clientes, setClientes] = useState([
@@ -14,10 +14,8 @@ const VerClientes = () => {
   };
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="flex flex-grow">
-        <Sidebar />
-        <div className="ver-clientes-container flex-1 p-4">
+    <TemplateAdmin>
+        <div>
           <h2>Listado de clientes</h2>
           <table>
             <thead>
@@ -42,8 +40,7 @@ const VerClientes = () => {
             </tbody>
           </table>
         </div>
-      </div>
-    </div>
+    </TemplateAdmin>
   );
 };
 

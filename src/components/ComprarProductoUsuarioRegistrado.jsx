@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ImagenProductoCompra from './ImagenProductoCompra';
 import '../assets/styles/ComprarProductoUsuarioRegistrado.css';
+import TemplateComprarProducto from './TemplateComprarProducto';
 
 const ComprarProductoUsuarioRegistrado = ({ productos }) => {
   const [password, setPassword] = useState('');
@@ -35,6 +36,7 @@ const ComprarProductoUsuarioRegistrado = ({ productos }) => {
   };
 
   return (
+    <TemplateComprarProducto>
     <div className="comprar-producto-usuario-registrado">
       <div className="password-section">
         <h2>Escribe tu contraseña</h2>
@@ -56,6 +58,7 @@ const ComprarProductoUsuarioRegistrado = ({ productos }) => {
         <ImagenProductoCompra productos={productos} />
       </div>
     </div>
+    </TemplateComprarProducto>
   );
 };
 

@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5%;
 }
 
 .reestablecer-contrasena-container {
@@ -16,6 +15,9 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   /* Sombra para darle algo de profundidad */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
 }
 
 .reestablecer-contrasena-container h2 {
@@ -65,6 +67,6 @@
   padding: 0.5rem 1rem;
 }
 
-button:avck {
+button:hover {
   background-color: #EB4F3E;
 }

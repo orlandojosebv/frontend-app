@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ImagenProductoCompra from './ImagenProductoCompra';
 import '../assets/styles/ComprarProductoUbicacion.css';
+import TemplateComprarProducto from './TemplateComprarProducto';
 
 const ComprarProductoUbicacion = ({ productos }) => {
   const [departamento, setDepartamento] = useState('');
@@ -20,6 +21,7 @@ const ComprarProductoUbicacion = ({ productos }) => {
   };
 
   return (
+    <TemplateComprarProducto>
     <div className="ubicacion-producto-page">
       <div className="ubicacion-section">
         <h2>Completa con tu ubicación</h2>
@@ -61,6 +63,7 @@ const ComprarProductoUbicacion = ({ productos }) => {
         <ImagenProductoCompra productos={productos} />
       </div>
     </div>
+    </TemplateComprarProducto>
   );
 };
 

@@ -1,7 +1,7 @@
-import React from 'react';
 import ImagenProductoCompra from './ImagenProductoCompra';
 import Registro from './Registro';
 import '../assets/styles/ComprarProductoRegistro.css';
+import TemplateComprarProducto from './TemplateComprarProducto';
 
 const productos = [
   {
@@ -23,6 +23,7 @@ const productos = [
 
 const ComprarProductoRegistro = () => {
   return (
+    <TemplateComprarProducto>
     <div className="login-registro-page">
       <div className="register-section">
         <Registro />
@@ -31,6 +32,7 @@ const ComprarProductoRegistro = () => {
         <ImagenProductoCompra productos={productos} />
       </div>
     </div>
+    </TemplateComprarProducto>
   );
 }
 
