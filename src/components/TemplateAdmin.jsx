@@ -6,8 +6,7 @@ import Sidebar from './SideBar';  // Asegúrate de que la ruta sea correcta
 const TemplateAdmin = ({children}) => {
   return (
     <>
-        <Header />
-        
+    <Header />
     <div className="flex flex-col h-full">
       <div className="flex flex-grow">
         <Sidebar />
@@ -16,7 +15,6 @@ const TemplateAdmin = ({children}) => {
         </div>
       </div>
     </div>
-    
     </>
   );
 };
