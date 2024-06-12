@@ -1,33 +1,32 @@
 import React from 'react';
 import "./App.css";
-import Header from "./components/Header.tsx";
-import LoginRegistro from "./components/LoginRegistro.tsx";
+import Header from "./components/Header.jsx";
+import LoginRegistro from "./components/LoginRegistro.jsx";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import OlvidoContrasena from './components/OlvidoContrasena.tsx';
-import ReestablecerContrasena from './components/ReestablecerContrasena.tsx';
-import ContrasenaReestablecida from './components/ContrasenaReestablecida.tsx';
-import ComprarProducto from './components/ImagenProductoCompra';
-import VerificarCorreo from './components/VerificarCorreoComprar.tsx';
-import ComprarProductoRegistro from './components/ComprarProductoRegistro.tsx';
-import ComprarProductoUbicacion from './components/ComprarProductoUbicacion.tsx';
-import PagoExitoso from './components/PagoExitoso.tsx';
-import ComprarProductoUsuarioRegistrado from './components/ComprarProductoUsuarioRegistrado.tsx';
-import SideBar from './components/SideBar.tsx';
-import VerAdministradores from './components/VerAdministradores.tsx';
-import VerClientes from './components/VerClientes.tsx';
-import { Footer } from './components/footer.tsx';
-import { Index } from './index.tsx';
+import OlvidoContrasena from './components/OlvidoContrasena.jsx';
+import ReestablecerContrasena from './components/ReestablecerContrasena.jsx';
+import ContrasenaReestablecida from './components/ContrasenaReestablecida.jsx';
+import ImagenProductoCompra from './components/ImagenProductoCompra.jsx';
+import VerificarCorreo from './components/VerificarCorreoComprar.jsx';
+import ComprarProductoRegistro from './components/ComprarProductoRegistro.jsx';
+import ComprarProductoUbicacion from './components/ComprarProductoUbicacion.jsx';
+import PagoExitoso from './components/PagoExitoso.jsx';
+import ComprarProductoUsuarioRegistrado from './components/ComprarProductoUsuarioRegistrado.jsx';
+import SideBar from './components/SideBar.jsx';
+import VerAdministradores from './components/VerAdministradores.jsx';
+import VerClientes from './components/VerClientes.jsx';
+import Footer from './components/Footer.jsx';
 
 const productos = [
   {
-    imagen: 'Snupy.png', // Nombre del archivo de imagen en la carpeta public/img
+    imagen: 'Snupy.png',
     nombre: 'Producto 1',
     cantidad: 2,
     precio: 50000,
     tamano: '20cm'
   },
   {
-    imagen: 'Naturo.png', // Nombre del archivo de imagen en la carpeta public/img
+    imagen: 'Naturo.png',
     nombre: 'Producto 2',
     cantidad: 1,
     precio: 150000,
@@ -46,17 +45,15 @@ function App() {
           <Route path="/OlvidoContrasena" element={<OlvidoContrasena />} />
           <Route path="/ReestablecerContrasena" element={<ReestablecerContrasena />} />
           <Route path="/ContrasenaReestablecida" element={<ContrasenaReestablecida />} />
-          <Route path="/ComprarProducto" element={<ComprarProducto productos={productos} />} />
+          <Route path="/ComprarProducto" element={<ImagenProductoCompra productos={productos} />} />
           <Route path="/VerificarCorreoComprar" element={<VerificarCorreo />} />
           <Route path="/ComprarProductoRegistro" element={<ComprarProductoRegistro />} />
           <Route path="/ComprarProductoUbicacion" element={<ComprarProductoUbicacion productos={productos} />} />
           <Route path="/PagoExitoso" element={<PagoExitoso />} />
           <Route path="/ComprarProductoUsuarioRegistrado" element={<ComprarProductoUsuarioRegistrado productos={productos} />} />
-          <Route path="/VerAdministradores" element={<VerAdministradores/>} />
-          <Route path="/VerClientes" element={<VerClientes/>} />
-          <Route path="/Inicio" element={<Index/>} />
+          <Route path="/VerAdministradores" element={<VerAdministradores />} />
+          <Route path="/VerClientes" element={<VerClientes />} />
         </Routes>
-        <Footer/>
       </div>
     </Router>
   );

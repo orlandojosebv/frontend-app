@@ -1,15 +1,11 @@
-import { Caneca } from './components/caneca';
-import imagen_inicio from '/public/img/imagen_inicio.jpg'; 
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import './index.css';
 
-const categorias = ["Amigurumi","Carteras", "Llaveros", "Accesorios", "Ramos"];
-
-export function Index(){
-    return<>
-    <div className="flex h-60 overflow-hidden">
-        <img className="w-[100%] h-auto object-cover" src={imagen_inicio} alt='imagen_de_inicio' ></img>
-        
-        <label htmlFor=""></label>
-    </div>
-    <Caneca></Caneca>
-    </>
-}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);

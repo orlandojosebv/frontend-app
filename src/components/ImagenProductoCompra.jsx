@@ -1,19 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../assets/styles/ImagenProductoCompra.css';
 
-interface Producto {
-  imagen: string;
-  nombre: string;
-  cantidad: number;
-  precio: number;
-  tamano: string;
-}
-
-interface Props {
-  productos: Producto[];
-}
-
-const ImagenProductoCompra: React.FC<Props> = ({ productos }) => {
+const ImagenProductoCompra = ({ productos }) => {
   const totalPrecio = productos.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
 
   return (
@@ -34,6 +23,19 @@ const ImagenProductoCompra: React.FC<Props> = ({ productos }) => {
       <p className="total">Total: ${totalPrecio.toFixed(2)}</p>
     </div>
   );
+};
+
+// Validación de tipos con PropTypes
+ImagenProductoCompra.propTypes = {
+  productos: PropTypes.arrayOf(
+    PropTypes.shape({
+      imagen: PropTypes.string.isRequired,
+      nombre: PropTypes.string.isRequired,
+      cantidad: PropTypes.number.isRequired,
+      precio: PropTypes.number.isRequired,
+      tamano: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default ImagenProductoCompra;

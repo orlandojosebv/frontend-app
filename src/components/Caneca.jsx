@@ -1,5 +1,6 @@
-import imagen_inicio from '/public/img/imagen_inicio.jpg'; 
-import naruto from '/public/img/productos/Naturo.png'
+import imagen_inicio from '../../public/img/imagen_inicio.jpg'; 
+import naruto from '../../public/img/productos/Naturo.png'
+
 
 export function Caneca(){
     return<>

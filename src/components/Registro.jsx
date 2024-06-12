@@ -10,12 +10,12 @@ const Registro = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({ email: '', firstName: '', lastName: '', phone: '', idNumber: '', password: '' });
 
-  const validateEmail = (email: string) => {
+  const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
   };
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     let formIsValid = true;
     let errors = { email: '', firstName: '', lastName: '', phone: '', idNumber: '', password: '' };
@@ -63,7 +63,7 @@ const Registro = () => {
 
     if (formIsValid) {
       try {
-        const response = await fetch('http://localhost:3001/register', { //Aquí iria donde está el servidor
+        const response = await fetch('http://localhost:3001/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const Registro = () => {
         console.error('Error:', error);
       }
     }
-  }; //Se supone que con esto ya se hace la petición POST para el backend
+  };
 
   return (
     <div className="register-container">
@@ -124,7 +124,7 @@ const Registro = () => {
         </div>
         <div className="form-row">
           <div className="form-group half-width">
-            <label htmlFor="phone">Teléfono:</label>
+            <label htmlFor="phone">Teléfono</label>
             <input
               type="text"
               id="phone"
