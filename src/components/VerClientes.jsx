@@ -15,7 +15,7 @@ const VerClientes = () => {
 
   return (
     <TemplateAdmin>
-<div>
+        <div>
           <h2>Listado de clientes</h2>
           <table>
             <thead>

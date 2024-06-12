@@ -12,8 +12,8 @@
 } 
 
 .logo {
-  height: 100px;
-  margin-left: 10%;  /* Espaciado a la izquierda para el logo */
+  height: 60px;
+  margin-left: 5%;  /* Espaciado a la izquierda para el logo */
 }
 
 .header-right {

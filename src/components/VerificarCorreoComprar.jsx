@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import '../assets/styles/VerificarCorreo.css';
 import ImagenProductoCompra from './ImagenProductoCompra';
 
