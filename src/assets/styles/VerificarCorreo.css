@@ -1,101 +1,106 @@
 .verificar-compra-container {
-    display: flex;
-    justify-content: space-between;
-    
-    width: 80%;
-    padding: 30px;
-    max-width: 90%;
-    margin: auto;
-    margin-top: 5%;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    gap: 30px; /* Agrega más espacio en el centro */
-  }
-  
-  .verificar-correo {
-    width: 40%; /* Reduce el tamaño del contenedor de verificar correo */
-    padding-right: 15px;
-  }
-  
-  .verificar-correo h2 {
-    margin-bottom: 1rem;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 5px;
-    text-align: center;
-  }
-  
-  .form-group {
-    margin-bottom: 1.5rem;
-    text-align: left;
-    width: 100%;
-  }
-  
-  .form-group label {
-    margin-bottom: 0.5rem;
-    margin-top: 20px;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  .verificar-correo button {
-    border-radius: 5px;
-    background-color: #1E1E1E;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    width: 30%;
-    padding: 0.5rem;
-  }
-  
-  button:hover {
-    background-color: #EB4F3E;
-  }
-  
-  .imagen-producto-compra {
-    width: 40%; /* Reduce el tamaño del contenedor de imagen del producto */
-    padding-left: 15px;
-  }
-  
-  .compra-container {
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .producto {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .producto-imagen {
-    width: 50px; /* Tamaño reducido */
-    height: 50px; /* Tamaño reducido */
-    background-color: #a8d5ba; /* Verde claro */
-    border-radius: 5px;
-    margin-right: 20px;
-  }
-  
-  .producto-detalles {
-    flex-grow: 1;
-  }
-  
-  .producto-precio {
-    font-weight: bold;
-    color: #ff6b6b;
-  }
-  
-  .total {
-    font-size: 18px;
-    font-weight: bold;
-    text-align: right;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+
+  width: 80%;
+  padding: 30px;
+  max-width: 90%;
+  margin: auto;
+  margin-top: 5%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  gap: 30px;
+  /* Agrega más espacio en el centro */
+}
+
+.verificar-correo {
+  width: 40%;
+  /* Reduce el tamaño del contenedor de verificar correo */
+  padding-right: 15px;
+}
+
+.verificar-correo h2 {
+  margin-bottom: 1rem;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+  width: 100%;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  margin-top: 20px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.verificar-correo button {
+  border-radius: 5px;
+  background-color: #1E1E1E;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 30%;
+  padding: 0.5rem;
+}
+
+button:avck {
+  background-color: #EB4F3E;
+}
+
+.imagen-producto-compra {
+  width: 40%;
+  /* Reduce el tamaño del contenedor de imagen del producto */
+  padding-left: 15px;
+}
+
+.compra-container {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.producto {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.producto-imagen {
+  width: 50px;
+  /* Tamaño reducido */
+  height: 50px;
+  /* Tamaño reducido */
+  background-color: #a8d5ba;
+  /* Verde claro */
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.producto-detalles {
+  flex-grow: 1;
+}
+
+.producto-precio {
+  font-weight: bold;
+  color: #ff6b6b;
+}
+
+.total {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: right;
+}

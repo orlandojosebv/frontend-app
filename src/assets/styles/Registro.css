@@ -1,68 +1,67 @@
 .register-container {
-    width: 80%;
-    padding: 2rem;
-    border-radius: 10px;
-  }
-  
-  .register-container h2 {
-    text-align: left;
-    margin-bottom: 5px;
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .intro-text {
-    text-align: left;
-    margin-bottom: 10px;
-    font-size: 15px;
-  }
-  
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-  
-  .form-row {
-    display: flex;
-    gap: 15px;
-  }
-  
-  .form-row input {
-    width: 100%;
-  }
-  
-  .half-width {
-    flex: 1;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  
-  input {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  .register-container button {
-    padding: 8px;
-    border-radius: 5px;
-    background-color: #1E1E1E;
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-    width: 30%;
+  width: 80%;
+  padding: 2rem;
+  border-radius: 10px;
 }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  .error {
-    color: red;
-    font-size: 0.875em;
-  }
-  
+
+.register-container h2 {
+  text-align: left;
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.intro-text {
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.form-row input {
+  width: 100%;
+}
+
+.half-width {
+  flex: 1;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.register-container button {
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #1E1E1E;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  width: 30%;
+}
+
+button:avck {
+  background-color: #0056b3;
+}
+
+.error {
+  color: red;
+  font-size: 0.875em;
+}

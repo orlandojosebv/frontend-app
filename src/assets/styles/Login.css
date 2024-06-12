@@ -1,56 +1,55 @@
 .login-container {
-    width: 80%;
-    padding: 2rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #E4E4E4;
-  }
-  
-  .login-container h2 {
-      text-align: left;
-      font-size: 20px;
-      margin-bottom: 15px;
-      font-weight: bold;
-    }
-  
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  
-  input {
-    width: 100%;
-  }
-  
-  .login-container button {
-    padding: 8px;
-    border-radius: 5px;
-    background-color: #1E1E1E;
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #EB4F3E;
-  }
-  
-  .OlvidoContrasena {
-    display: block;
-    text-align: left;
-    margin-top: 1rem;
-    color: #1E1E1E;
-  }
-  
-  .OlvidoContrasena:hover {
-    text-decoration: underline;
-  }
-  
-  .error {
-    color: red;
-    font-size: 1em;
-  }
-  
+  width: 80%;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #E4E4E4;
+}
+
+.login-container h2 {
+  text-align: left;
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input {
+  width: 100%;
+}
+
+.login-container button {
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #1E1E1E;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:avck {
+  background-color: #EB4F3E;
+}
+
+.OlvidoContrasena {
+  display: block;
+  text-align: left;
+  margin-top: 1rem;
+  color: #1E1E1E;
+}
+
+.OlvidoContrasena:avck {
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+  font-size: 1em;
+}

@@ -23,7 +23,7 @@ const SidebarItem = ({ icon, label, subItems }) => {
   return (
     <div>
       <div
-        className="flex items-center cursor-pointer p-2 hover:bg-gray-200"
+        className="flex items-center cursor-pointer p-2 avck:bg-gray-200"
         onClick={() => setIsOpen(!isOpen)}
       >
         <img src={icon} alt={label} className="h-6 w-6 mr-3" />
@@ -45,7 +45,7 @@ const SidebarItem = ({ icon, label, subItems }) => {
               <li key={index} className="mb-2 flex items-center sub-item">
                 <Link
                   to={subItem.to}
-                  className="flex items-center  w-full p-1 hover:bg-[#e0ac75] no-underline"
+                  className="flex items-center  w-full p-1 avck:bg-[#e0ac75] no-underline"
                 >
                   <img
                     src={subItem.icon}

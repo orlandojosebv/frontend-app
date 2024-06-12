@@ -15,7 +15,8 @@
 
 /* Clase para altura máxima expandida */
 .max-h-96 {
-  max-height: 24rem; /* Ajusta el valor según la altura máxima que necesitas */
+  max-height: 24rem;
+  /* Ajusta el valor según la altura máxima que necesitas */
 }
 
 /* Estilo para los items hijos por defecto */
@@ -23,7 +24,8 @@
   background-color: #F5BE90;
 }
 
-/* Estilo para el hover de los items hijos */
-.sub-item:hover {
-  background-color: #e0ac75; /* Un color más oscuro que #F5BE90 */
+/* Estilo para el avck de los items hijos */
+.sub-item:avck {
+  background-color: #e0ac75;
+  /* Un color más oscuro que #F5BE90 */
 }
