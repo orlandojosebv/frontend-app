@@ -1,12 +1,12 @@
 import '../assets/styles/VerClientes.css';
-import Header from './Header';
+import HeaderAdmin from './HeaderAdmin.jsx';
 import Sidebar from './SideBar';  // Asegúrate de que la ruta sea correcta
 
 
 const TemplateAdmin = ({children}) => {
   return (
     <>
-    <Header />
+    <HeaderAdmin />
     <div className="flex flex-col h-full">
       <div className="flex flex-grow">
         <Sidebar />

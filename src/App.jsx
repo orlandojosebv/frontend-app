@@ -14,7 +14,7 @@ import SideBar from './components/SideBar.jsx';
 import VerAdministradores from './components/VerAdministradores.jsx';
 import VerClientes from './components/VerClientes.jsx';
 import Inicio from "./Inicio.jsx";
-//import Footer from './components/Footer.jsx';
+import HeaderAdmin from "./components/HeaderAdmin.jsx";
 
 const productos = [
   {
@@ -52,6 +52,7 @@ function App() {
           <Route path="/VerAdministradores" element={<VerAdministradores />} />
           <Route path="/VerClientes" element={<VerClientes />} />
           <Route path="/Inicio" element={<Inicio />} />
+          <Route path="/HeaderAdmin" element={<HeaderAdmin />} />
         </Routes>
       </div>
     </Router>

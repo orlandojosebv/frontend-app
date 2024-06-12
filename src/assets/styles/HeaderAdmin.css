@@ -1,87 +1,63 @@
 .header {
-    width: 100%;
-    padding: 10px 20px;
-    box-sizing: border-box;
-  }
-  
-  .header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .menu-button {
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .logo {
-    height: 50px;
-  }
-  
-  .user-profile {
-    display: flex;
-    align-items: center;
-  }
-  
-  .user-icon {
-    height: 40px;
-    margin-right: 10px;
-  }
-  
-  .user-text {
-    text-align: left;
-  }
-  
-  .login-text {
-    font-size: 12px;
-  }
-  
-  .account-text {
-    font-size: 15px;
-  }
-  
-  .cart-icon {
-    height: 40px;
-  }
-  
-  .divider {
-    width: 100%;
-    border: none;
-    border-top: 1px solid #ccc;
-    margin: 10px 0;
-  }
-  
-  .navigation {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .navigation ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 20px;
-  }
-  
-  .navigation ul li {
-    margin: 0;
-  }
-  
-  .navigation ul li a {
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-  }
-  
-  .divider-red {
-    width: 100%;
-    border: none;
-    border-top: 2px solid red;
-    margin-top: 10px;
-  }
-  
+  width: 100%;
+  background-color: #f8f9fa;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 50px; 
+  margin-left: 10%;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.icon {
+  height: 40px;
+  width: 40px;
+  margin-left: 0px;
+}
+
+.logout-icon {
+  height: 30px; 
+  width: 30px;
+  margin-left: 20px;
+}
+
+.user-section {
+  margin-right: 10%;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.user-name, .user-email {
+  margin: 0;
+  font-size: 14px;
+}
+
+.divider {
+  height: 4px; /* Más grueso */
+  background-color: red; /* Color rojo */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow */
+  margin-top: 10px; /* Ajuste de margen para separar del contenido */
+  border: none;
+}
