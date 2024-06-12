@@ -48,8 +48,8 @@
 }
 
 .account-text {
-  font-size: 16px;  /* Tamaño de fuente ajustado */
-  margin-bottom: 0;  /* Sin margen inferior adicional */
+  font-size: 16px;  
+  margin-bottom: 0; /* Sin margen inferior adicional */
   font-weight: bold; /* Texto en negrilla */
   color: black; /* Color del texto */
 }
@@ -63,7 +63,6 @@
   display: flex;
   justify-content: center;
   gap: 20px;
-  
 }
 
 .navigation ul {
@@ -83,4 +82,12 @@
   text-decoration: none;
   color: black;
   font-size: 16px;
+}
+
+.divider {
+  height: 3px; /* Más grueso */
+  background-color: #EB4F3E; /* Color rojo */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow */
+  margin-top: 5px; /* Ajuste de margen para separar del contenido */
+  border: none;
 }

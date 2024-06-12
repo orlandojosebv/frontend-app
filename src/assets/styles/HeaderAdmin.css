@@ -1,19 +1,19 @@
 .header {
   width: 100%;
-  background-color: #f8f9fa;
-  padding: 10px 20px;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 80%;
 }
 
 .logo {
   height: 50px; 
-  margin-left: 10%;
 }
 
 .user-section {
@@ -24,23 +24,17 @@
 .user-profile {
   display: flex;
   align-items: center;
-  margin-right: 20px;
 }
 
 .icon {
   height: 40px;
   width: 40px;
-  margin-left: 0px;
 }
 
 .logout-icon {
   height: 30px; 
   width: 30px;
   margin-left: 20px;
-}
-
-.user-section {
-  margin-right: 10%;
 }
 
 .user-info {
@@ -55,9 +49,9 @@
 }
 
 .divider {
-  height: 4px; /* Más grueso */
-  background-color: red; /* Color rojo */
+  height: 3px; /* Más grueso */
+  background-color: #EB4F3E; /* Color rojo */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow */
-  margin-top: 10px; /* Ajuste de margen para separar del contenido */
+  margin-top: 5px; /* Ajuste de margen para separar del contenido */
   border: none;
 }
