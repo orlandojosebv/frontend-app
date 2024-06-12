@@ -1,0 +1,30 @@
+.login-registro-page {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .login-section {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .register-section {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+  }
+  
+ 
+  /*.login-section, .register-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }*/

@@ -1,0 +1,65 @@
+.olvido-contrasena-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #E4E4E4;
+    width: 50%;
+    padding: 30px;
+    max-width: 500px; /* Tamaño máximo del contenedor */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle algo de profundidad */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%
+  }
+  
+  .olvido-contrasena-container h2 {
+    margin-bottom: 1rem;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px;
+    text-align: left;
+  }
+  
+  .olvido-contrasena-container p {
+    font-size: 16px;
+    text-align: left;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+    width: 100%;
+  }
+  
+  .form-group label {
+    margin-bottom: 0.5rem;
+    margin-top: 20px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: flex-end; /* Alinear el botón a la derecha */
+  }
+  
+  .olvido-contrasena-container button {
+    border-radius: 5px;
+    background-color: #1E1E1E;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    width: 30%;
+  }
+  
+  button:hover {
+    background-color: #EB4F3E;
+  }
+  

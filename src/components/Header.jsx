@@ -1,22 +1,25 @@
 import React from 'react';
-import logo from '../assets/images/logo-icon.png';  // Ruta correcta
-import userIcon from '../assets/images/usuario-icon.svg';  // Ruta correcta
-import cartIcon from '../assets/images/carrito-icon.svg';  // Ruta correcta
+import logo from '../../public/img/iconos/logo-icon.png';  // Ruta correcta
+import userIcon from '../../public/img/iconos/usuario-icon.svg';  // Ruta correcta
+import cartIcon from '../../public/img/iconos/carrito-icon.png';  // Ruta correcta
 import '../assets/styles/Header.css';  // Ruta correcta
-
+import { Link } from 'react-router-dom';
+ 
 const Header = () => {
   return (
     <header className="header">
       <div className="header-top">
         <img src={logo} alt="Logo" className="logo" />
-        <div className="user-profile">
-          <img src={userIcon} alt="User" className="user-icon" />
-          <div className="user-text">
-            <p className="login-text">Hola, inicia sesión</p>
-            <p className="account-text">Tu cuenta</p>
+        <div className="header-right">
+          <div className="user-profile">
+            <img src={userIcon} alt="User" className="user-icon" />
+            <div className="user-text">
+            <Link to="/LoginRegistro" className="login-text">Hola, inicia sesión</Link>
+              <p className="account-text">Tu cuenta</p>
+            </div>
           </div>
+          <img src={cartIcon} alt="Carrito" className="cart-icon" />
         </div>
-        <img src={cartIcon} alt="Carrito" className="cart-icon" />
       </div>
       <hr className="divider" />
       <nav className="navigation">
