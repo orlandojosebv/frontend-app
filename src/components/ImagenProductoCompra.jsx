@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../assets/styles/ImagenProductoCompra.css';
 
+
+
+
 const ImagenProductoCompra = ({ productos }) => {
   const totalPrecio = productos.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
 

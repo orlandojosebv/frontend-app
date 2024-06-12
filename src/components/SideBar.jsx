@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import "../assets/styles/SideBar.css";
 import clienteIcon from "../../public/img/iconos/cliente-icon.png";
 import verClienteIcon from "../../public/img/iconos/verClienteAdmin-icon.png";
@@ -28,36 +29,50 @@ const SidebarItem = ({ icon, label, subItems }) => {
         <img src={icon} alt={label} className="h-6 w-6 mr-3" />
         <span className="flex-1">{label}</span>
         <ChevronDownIcon
-          className={`h-4 w-4 transition-transform ${
+          className={`h-4 w-4 transition-transform duration-300 ${
             isOpen ? "rotate-180" : ""
           }`}
         />
       </div>
-      {isOpen && subItems && (
-        <ul
-          className={`pl-8 bg-[#F5BE90] transition-max-height  ${
-            isOpen ? "duration-500 ease-in-out max-h-96" : ""
-          }`}
-        >
-          {subItems.map((subItem, index) => (
-            <li key={index} className="mb-2 flex items-center sub-item">
-              <Link
-                to={subItem.to}
-                className="flex items-center block w-full p-1 hover:bg-[#e0ac75] no-underline"
-              >
-                <img
-                  src={subItem.icon}
-                  alt={subItem.label}
-                  className="h-5 w-5 mr-2"
-                />
-                <span>{subItem.label}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      <div
+        className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
+          isOpen ? "max-h-96" : "max-h-0"
+        }`}
+      >
+        {isOpen && subItems && (
+          <ul className="pl-8 bg-[#F5BE90]">
+            {subItems.map((subItem, index) => (
+              <li key={index} className="mb-2 flex items-center sub-item">
+                <Link
+                  to={subItem.to}
+                  className="flex items-center  w-full p-1 hover:bg-[#e0ac75] no-underline"
+                >
+                  <img
+                    src={subItem.icon}
+                    alt={subItem.label}
+                    className="h-5 w-5 mr-2"
+                  />
+                  <span>{subItem.label}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
+};
+
+SidebarItem.propTypes = {
+  icon: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  subItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      icon: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      to: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 const Sidebar = () => {
@@ -100,7 +115,11 @@ const Sidebar = () => {
             label: "Ver productos",
             to: "/VerProductos",
           },
-          { icon: crearCategoriaIcon, label: "Crear categoría", to: "/CrearCategoria" },
+          {
+            icon: crearCategoriaIcon,
+            label: "Crear categoría",
+            to: "/CrearCategoria",
+          },
           { icon: verIcon, label: "Ver categorías", to: "/VerCategorias" },
           { icon: crearModelo, label: "Crear modelo", to: "/CrearModelo" },
           { icon: verIcon, label: "Ver modelos", to: "/VerModelos" },

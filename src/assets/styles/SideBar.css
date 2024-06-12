@@ -8,7 +8,7 @@
 
 /* Clase para transiciones de altura máxima */
 .transition-max-height {
-  transition-property: max-height;
+  transition: max-height 0.5s ease-in-out;
   max-height: 0;
   overflow: hidden;
 }
