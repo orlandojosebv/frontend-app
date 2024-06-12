@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import Header from "./Header";
 
 const TemplateUser = ({children}) => {
@@ -9,6 +10,7 @@ const TemplateUser = ({children}) => {
                 {children}
             </div>
         </div> 
+        <Footer />
     </>
   );
 };
