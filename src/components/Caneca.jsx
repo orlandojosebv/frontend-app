@@ -19,7 +19,7 @@ const categories = [
 
 export default function Caneca(){
     return<>
-    <div className='h-[240px] flex flex-row gap-20 items-center justify-center'>
+    <div className='w-[80%] h-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 items-center justify-center py-12'>
             {categories.map((category, index) => (
                 <ImgCaneca
                     key={index}

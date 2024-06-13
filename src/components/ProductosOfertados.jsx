@@ -1,39 +1,39 @@
 import ProductoNoBorder from "./ProductoNoBorder";
-import pochita from "/img/productos/Un perro con una sierra en la frente.png";
-import messi from "/img/productos/Messi God.png";
-import naruto from "/img/productos/Naturo.png";
-import conejo from "/img/productos/Conejo gigante con vestido rojo.png";
+import pochita from "/img/productos/Mafalda.png";
+import messi from "/img/productos/Conejo gigante.png";
+import naruto from "/img/productos/Ramo de enrredados.png";
+import conejo from "/img/productos/Dororo.png";
 
 const products = [
     {
         id: 1,
         image: [pochita],
-        categoryName: 'Amigurumi',
-        name: 'Pochita',
+        priceOff: 20.000,
+        name: 'Mafalda',
         price: 40.000,
         ofert: 20
     },
     {
         id: 2,
         image: [messi],
-        categoryName: 'Amigurumi',
-        name: 'Messi',
+        priceOff: 20.000,
+        name: 'Conejo con gorrito y cesta de flores',
         price: 55.000,
         ofert: 20
     },
     {
         id: 3,
         image: [naruto],
-        categoryName: 'Llavero',
-        name: 'Naruto',
+        priceOff: 20.000,
+        name: 'Ramo de enrredados',
         price: 70.000,
         ofert: 20
     },
     {
         id: 4,
         image: [conejo],
-        categoryName: 'Amigurumi',
-        name: 'Conejo con vestido de fresa',
+        priceOff: 20.000,
+        name: 'Totoro',
         price: 170.000,
         ofert: 20
     }
@@ -41,16 +41,19 @@ const products = [
 
 export default function ProductosOfertados(){
     return<>
-        <div className="w-[75%] h-auto mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 h-[320px] ">
+    <div className="flex items-center justify-center h-auto w-full">
+        <div className="w-[75%] h-auto mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 border rounded-[5px] px-2">
             {products.map((product, index) => (
                 <ProductoNoBorder
                     key={index}
                     image={product.image}
-                    categoryName={product.categoryName}
+                    priceOff={product.priceOff}
                     productName={product.name}
                     price={product.price}
+                    ofert={product.ofert}
                 />
             ))}
         </div>
+    </div>
     </>
 }
