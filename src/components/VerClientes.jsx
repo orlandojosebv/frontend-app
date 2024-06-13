@@ -1,17 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../assets/styles/VerClientes.css';
 import TemplateAdmin from './TemplateAdmin';
+import {getUsers} from "../services/UserService"
+import useUser from "../hooks/useUser"
 
 const VerClientes = () => {
-  const [clientes, setClientes] = useState([
-    { id: 1, nombre: 'Carlos', apellido: 'Sanchez', correo: 'carlos.sanchez@example.com', telefono: '1112223333' },
-    { id: 2, nombre: 'Lucia', apellido: 'Martinez', correo: 'lucia.martinez@example.com', telefono: '4445556666' },
-    // Agrega más clientes según sea necesario
-  ]);
+  const {token} = useUser()
+  const [clientes, setClientes] = useState([]);
 
-  const darDeBaja = (id) => {
-    setClientes(clientes.filter(cliente => cliente.id !== id));
+  const darDeBaja = (correo) => {
+    setClientes(clientes.filter(cliente => cliente.correo !== correo));
   };
+
+  useEffect(() => {
+    if (!token) return
+
+    getUsers(token).then(data => {
+      setClientes(data)
+    })
+  }, [token])
 
   return (
     <TemplateAdmin>
@@ -29,12 +36,12 @@ const VerClientes = () => {
             </thead>
             <tbody>
               {clientes.map((cliente) => (
-                <tr key={cliente.id}>
+                <tr key={cliente.correo}>
                   <td>{cliente.nombre}</td>
                   <td>{cliente.apellido}</td>
                   <td>{cliente.correo}</td>
                   <td>{cliente.telefono}</td>
-                  <td><button onClick={() => darDeBaja(cliente.id)}>Dar de baja</button></td>
+                  <td><button onClick={() => darDeBaja(cliente.correo)}>Dar de baja</button></td>
                 </tr>
               ))}
             </tbody>

@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import '../assets/styles/Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { login as loginService } from "../services/UserService"
+import useUser from "../hooks/useUser"
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({ email: '', password: '' });
+
+  let navigate = useNavigate();
+  const { setToken, setLoading, setUser } = useUser()
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -36,19 +41,19 @@ const Login = () => {
     setErrors(errors);
 
     if (formIsValid) {
-      try {
-        const response = await fetch('http://localhost:3001/login', { //Aquí iría la dirección del servidor donde se enviará la petición.
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, password }),
-        });
-        const data = await response.json();
-        console.log(data); // Aquí puedes manejar la respuesta del backend
-      } catch (error) {
-        console.error('Error:', error);
-      }
+      setLoading(true)
+
+      loginService(email, password).then(data => {
+        console.log(data)
+
+        if (data.token) {
+          setToken(data.token)
+          setUser(data.data)
+          navigate("/")//Ruta direccionar.
+        }
+      }).finally(() => {
+        setLoading(false)
+      })
     }
   }; //Con esto se supone que se haría la petición POST para el backend.
 
