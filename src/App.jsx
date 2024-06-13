@@ -22,6 +22,7 @@ import RegistrarAdministrador from "./components/RegistrarAdministrador.jsx";
 import CrearCategoria from "./components/CrearCategoria.jsx";
 import EditarCategoria from "./components/EditarCategoria.jsx";
 import VerCategorias from "./components/VerCategorias.jsx";
+import CrearProducto from "./components/CrearProducto.jsx";
 
 const productos = [
   {
@@ -67,6 +68,8 @@ function App() {
           <Route path="/CrearCategoria" element={<CrearCategoria />} />
           <Route path="/EditarCategoria" element={<EditarCategoria />} />
           <Route path="/VerCategorias" element={<VerCategorias />} />
+          <Route path="/CrearProducto" element={<CrearProducto />} />
+
         </Routes>
       </div>
     </Router>
