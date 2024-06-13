@@ -133,7 +133,7 @@ const Sidebar = () => {
           { icon: verIcon, label: "Ver Ofertas", to: "/VerOfertas" },
         ]}
       />
-      <SidebarItem
+      {/* <SidebarItem
         icon={estadisticaLogisticaIcon}
         label="Estadísticas"
         subItems={[
@@ -151,7 +151,7 @@ const Sidebar = () => {
           { icon: entregasIcon, label: "Entregas", to: "/Entregas" },
           { icon: devolucionIcon, label: "Devoluciones", to: "/Devoluciones" },
         ]}
-      />
+      /> */}
     </div>
   );
 };

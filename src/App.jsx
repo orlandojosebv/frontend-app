@@ -27,6 +27,9 @@ import EditarOferta from "./components/EditarOferta.jsx";
 import CatalogoDeProductos from "./components/CatalogoProductos.jsx";
 import ProductosPorCategoria from "./components/ListadoPorCategoria.jsx";
 import VerOfertas from "./components/VerOfertas.jsx"
+import CrearModelo from "./components/CrearModelo.jsx";
+import EditarModelo from "./components/EditarModelo.jsx";
+import CrearOfertaProducto from "./components/CrearOfertaProductos.jsx";
 
 const productos = [
   {
@@ -77,6 +80,9 @@ function App() {
           <Route path="/ListadoDeCategorias" element={<ProductosPorCategoria></ProductosPorCategoria>}/>
           <Route path="/VerOfertas" element={<VerOfertas />} />
           <Route path="/CatalogoDeProductos" element={<CatalogoDeProductos />} />
+          <Route path="/CrearModelo" element={<CrearModelo />} />
+          <Route path="/EditarModelo" element={<EditarModelo />} />
+          <Route path="/CrearOfertaProducto" element={<CrearOfertaProducto />} />
         </Routes>
       </div>
     </Router>

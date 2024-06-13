@@ -6,7 +6,7 @@ export default function ImgCaneca({ image, categoryName, link }){
                     <img className="w-auto h-24  p-1" src={image} alt={categoryName} />
                 </a>
             </div>
-            <label htmlFor="">{categoryName}</label>
+            <label htmlFor=""> {categoryName} </label>
         </div>
     </>
-}
+} 

@@ -16,7 +16,6 @@ export default function CatalogoDeProductos(){
                 </div>
             </div>
         </div>
-        
     </TemplateUser>
     </>
 }

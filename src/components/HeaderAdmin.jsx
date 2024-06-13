@@ -20,7 +20,7 @@ const HeaderAdmin = ({ toggleSideBar }) => {
               <p className="text-sm">{user.correo}</p>
             </div>
           </div>
-          <img src={logoutIcon} alt="Logout" className="h-8 w-auto" />
+          <a href="/Inicio"><img src={logoutIcon} alt="Logout" className="h-8 w-auto" /></a>
         </div>
       </div>
       <hr className="h-2 w-full" />

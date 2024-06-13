@@ -8,7 +8,7 @@ import colgante from '/img/productos/Pedazo de tejido pa guindar aretes.png';
 import monedero from '/img/productos/Monedero cuadrado.png';
 import ImgCaneca from "./ImgCaneca";
  
-
+ 
 const categories = [
     { name: 'Amigurumi', images: [aguacate, CR7], link: '/categoria1' },
     { name: 'Llaveros', images: [bodoque, erizo], link: '/categoria2' },
