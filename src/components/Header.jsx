@@ -15,7 +15,7 @@ const Header = () => {
               <img src={userIcon} alt="User" className="user-icon" />
               <div className="user-text">
                 <Link to="/LoginRegistro" className="login-text">Hola, inicia sesión</Link>
-                <p className="account-text">Tu cuenta</p>
+                <p className="account-text">Nuestra Cuenta</p>
               </div>
             </div>
             <img src={cartIcon} alt="Carrito" className="cart-icon" />
