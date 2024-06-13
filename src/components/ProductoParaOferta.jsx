@@ -4,7 +4,7 @@ export default function ProductoParaOferta({imagen, nombre, referenica, cantidad
         <div className="h-36 w-32 flex items-center justify-center bg-[#F4F4F4]">
             <img className="h-28 w-auto" src={imagen} alt={nombre} />
         </div>
-        <div className="w-[70%]"  >
+        <div className="w-[70%]"  > 
             <table className="mb-0">
                 <tr className="h-fit p-0 align-middle">
                     <td className="h-fit p-0 w-[20%]">
@@ -19,13 +19,13 @@ export default function ProductoParaOferta({imagen, nombre, referenica, cantidad
                         <label  className="text-sm" htmlFor="">#Referencia:</label>
                     </td>
                     <td className="h-fit p-0">
-                        <label className="font-normal text-sm"  htmlFor="">{nombre}</label>
+                        <label className="font-normal text-sm"  htmlFor="">{referenica}</label>
                     </td>
                     <td className="h-fit p-0 w-[20%]">
                         <label className="text-sm" htmlFor="">Tamaño:</label>
                     </td>
                     <td className="h-fit p-0 w-[30%]">
-                        <label className="font-normal text-sm " htmlFor="">{nombre}</label>
+                        <label className="font-normal text-sm " htmlFor="">{tamaño}</label>
                     </td>
                 </tr>
                 <tr>
@@ -33,13 +33,13 @@ export default function ProductoParaOferta({imagen, nombre, referenica, cantidad
                         <label className="text-sm" htmlFor="">Cantidad:</label>
                     </td>
                     <td className="h-fit p-0">
-                        <label className="font-normal text-sm"  htmlFor="">{nombre}</label>
+                        <label className="font-normal text-sm"  htmlFor="">{cantidad}</label>
                     </td>
                     <td className="h-fit p-0 w-[20%]">
                         <label className="text-sm" htmlFor="">Categoría:</label>
                     </td>
                     <td className="h-fit p-0 w-[30%]">
-                        <label className="font-normal text-sm"  htmlFor="">{nombre}</label>
+                        <label className="font-normal text-sm"  htmlFor="">{categoria}</label>
                     </td>
                 </tr>
                 <tr>
@@ -47,7 +47,7 @@ export default function ProductoParaOferta({imagen, nombre, referenica, cantidad
                         <label className="text-sm" htmlFor="">Material:</label>
                     </td>
                     <td className="h-fit p-0">
-                        <label className="font-normal text-sm"  htmlFor="">{nombre}</label>
+                        <label className="font-normal text-sm"  htmlFor="">{material}</label>
                     </td>
                 </tr>
                 <tr>
@@ -55,7 +55,7 @@ export default function ProductoParaOferta({imagen, nombre, referenica, cantidad
                         <label className="text-sm" htmlFor="">Precio:</label>
                     </td>
                     <td className="h-fit p-0 ">
-                        <label className="font-normal text-sm"  htmlFor="">{nombre}</label>
+                        <label className="font-normal text-sm"  htmlFor="">{precio}</label>
                     </td>
                 </tr>
             </table>

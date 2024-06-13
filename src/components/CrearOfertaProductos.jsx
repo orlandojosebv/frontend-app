@@ -2,6 +2,7 @@ import TemplateAdmin from './TemplateAdmin';
 import naruto from "/img/productos/Naturo.png";
 import pollito from "/img/productos/Don pato.png";
 import ProductoParaOferta from './ProductoParaOferta';
+import { Link } from 'react-router-dom';
 
 const producto = [
   {
@@ -33,7 +34,7 @@ const CrearOfertaProducto = () => {
       <h2 className="w-[80%] items-start justify-start">Crear Oferta</h2>
       <span className='mb-10'>¿A que productos desea aplicarles una oferta?</span>
         {producto.map((product, index) => (
-          <ProductoParaOferta
+          <ProductoParaOferta 
             key={index}
             imagen={product.imagen}
             nombre={product.nombre}
@@ -45,6 +46,7 @@ const CrearOfertaProducto = () => {
             precio={product.precio}
           />
         ))}
+        <Link to="/CrearOferta" className="flex items-center justify-center text-white bg-[#1E1E1E] h-[35px] w-[100px] rounded-[5px]">Continuar</Link>
     </div>
     </TemplateAdmin>
   );
