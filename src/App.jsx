@@ -38,7 +38,7 @@ const productos = [
 
 function App() {
   return (
-    <Router>
+    <Router> 
       <div className="app-container">
         <Routes>
           <Route path="/LoginRegistro" element={<LoginRegistro />} />

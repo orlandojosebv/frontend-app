@@ -1,36 +1,35 @@
 import logo from '../../public/img/iconos/logo-icon.png';  // Ruta correcta
 import userIcon from '../../public/img/iconos/usuario-icon.svg';  // Ruta correcta
 import cartIcon from '../../public/img/iconos/carrito-icon.png';  // Ruta correcta
-import '../assets/styles/Header.css';  // Ruta correcta
 import { Link } from 'react-router-dom';
  
 const Header = () => {
   return (
-    <header className="header">
-      <div className='flex m-0 p-0 items-center justify-center'>
-        <div className="header-top">
-          <img src={logo} alt="Logo" className="logo" />
-          <div className="header-right">
-            <div className="user-profile">
-              <img src={userIcon} alt="User" className="user-icon" />
-              <div className="user-text">
-                <Link to="/LoginRegistro" className="login-text">Hola, inicia sesión</Link>
-                <p className="account-text">Tu cuenta</p>
+    <header className="h-fit w-full flex flex-col">
+      <div className='flex items-center justify-center'>
+        <div className="flex flex-row w-[80%] items-center justify-between">
+          <img src={logo} alt="Logo" className="h-20 w-auto" />
+          <div className="flex flex-row w-[35%] items-center justify-between">
+            <div className="flex flex-row w-[50%] justify-between">
+              <img src={userIcon} alt="User" className="h-10 w-auto" />
+              <div className="flex flex-col justify-center">
+                <Link to="/LoginRegistro" className="text-xs">Hola, inicia sesión</Link>
+                <p className="text-sm ">Tu cuenta</p>
               </div>
-            </div>
-            <img src={cartIcon} alt="Carrito" className="cart-icon" />
+            </div> 
+            <img src={cartIcon} alt="Carrito" className="h-8 w-auto" />
           </div>
         </div>
       </div>  
-      <hr className="divider" />
-      <nav className="navigation">
-        <ul>
+      <hr className=""/>
+      <nav className="flex w-full items-center justify-center">
+        <ul className='flex flex-row w-[75%] gap-20'>
           <li><a href="/catalog">Catálogo</a></li>
           <li><a href="/offers">Ofertas</a></li>
           <li><a href="/categories">Categorías</a></li>
         </ul>
       </nav>
-      <hr className="divider" />
+      <hr className="" />
     </header>
   );
 }
