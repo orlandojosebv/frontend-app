@@ -42,6 +42,6 @@ tbody button {
   cursor: pointer;
 }
 
-button:avck {
+.ver-administradores-container button:hover {
   background-color: #c21b1b;
 }
