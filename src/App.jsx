@@ -19,6 +19,9 @@ import Header from "./components/Header.jsx";
 import HeaderPago from "./components/HeaderPago.jsx";
 import MostrarProducto from "./components/MostrarProducto.jsx";
 import RegistrarAdministrador from "./components/RegistrarAdministrador.jsx";
+import CrearCategoria from "./components/CrearCategoria.jsx";
+import EditarCategoria from "./components/EditarCategoria.jsx";
+import VerCategorias from "./components/VerCategorias.jsx";
 
 const productos = [
   {
@@ -61,7 +64,9 @@ function App() {
           <Route path="/HeaderPago" element={<HeaderPago />} />
           <Route path="/MostrarProducto" element={<MostrarProducto />} />
           <Route path="/RegistrarAdministrador" element={<RegistrarAdministrador />} />
-
+          <Route path="/CrearCategoria" element={<CrearCategoria />} />
+          <Route path="/EditarCategoria" element={<EditarCategoria />} />
+          <Route path="/VerCategorias" element={<VerCategorias />} />
         </Routes>
       </div>
     </Router>
