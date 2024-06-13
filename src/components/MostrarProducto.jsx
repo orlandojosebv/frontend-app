@@ -1,13 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TemplateUser from "./TemplateUser";
 import ProductCarousel from "./ProductCarousel";
 import QuantityControl from "./QuantityControl";
+import { CambiarFormato, Tranformada } from "./ComponenteProducto";
 
 const sizes = ["15", "20", "25"];
 const materials = ["hilo", "algodón", "lana"];
 
+const PRODUCTO = {
+  id: 2,
+  id_modelo: 1,
+  tamanio: 50,
+  cantidadDisponible: 5,
+  precio: 500000,
+  Modelo: {
+    id: 1,
+    nombre: "aguacate",
+    id_categoria: 3
+  },
+  descuento: 1.5
+}
+
+//stock no es lo que parece, stock en el fondo 
 export default function MostrarProducto() {
   const [quantity, setQuantity] = useState(1);
+  const [producto, setProducto] = useState(0);
 
   const increaseQuantity = () => {
     setQuantity(prevQuantity => prevQuantity + 1);
@@ -18,6 +35,17 @@ export default function MostrarProducto() {
       setQuantity(prevQuantity => prevQuantity - 1);
     }
   };
+
+  useEffect(
+    () => {
+      setProducto(PRODUCTO);
+    }, []
+  )
+
+  console.log(producto)
+
+
+
 
   return (
     <TemplateUser>
@@ -36,9 +64,30 @@ export default function MostrarProducto() {
           <h2 className="text-2xl text-black font-bold">Naruto</h2>
           <div className="stock bg-[#F5BE90] rounded inline-flex">
             <h2 className="cant py-1 pl-5 text-[#EB4F3E]">Disponible:</h2>
-            <h2 className="ml-2 py-1 pr-5 font-bold text-black">5 unidades</h2>
+            <h2 className="ml-2 py-1 pr-5 font-bold text-black">{5} unidades</h2>
           </div>
-          <div className="text-2xl text-black font-bold">$70.000</div>
+
+          {
+            (producto != 0 && <>
+              <div className="text-2xl text-black font-bold">${CambiarFormato(producto.precio)}</div>
+
+              {<>
+                <div className="">${Tranformada(producto.precio, producto.descuento)}</div>
+                <div className="flex justify-center align-middle items-center">
+                  <div className="line-through">${(producto.precio)}</div>
+                  <div className="font-bold ml-3 p-2 bg-red-500 text-white rounded-md ">{(producto.descuento)}%</div>
+                </div>
+              </>
+              }
+            </>
+
+            )
+          }
+
+
+
+
+
           <div className="materiales">
             <div className="material">Material:</div>
             <ul className="list-disc pl-5 ml-10">
