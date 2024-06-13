@@ -1,16 +1,16 @@
 .login-registro-page {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
 
-  .register-section{
-    margin-top: 0;
-    width: 60%;
-  }
 
-  .producto-section{
-    width: 40%;
-    margin-top: 2%;
-  }
+.register-section {
+  margin-top: 0;
+  width: 60%;
+}
+
+.producto-section {
+  width: 40%;
+  margin-top: 2%;
+}

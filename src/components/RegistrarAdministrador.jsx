@@ -172,7 +172,7 @@ const RegistrarAdministrador = () => {
             {errors.password && <span className="text-red-500 text-sm">{errors.password}</span>}
           </div>
           <div className="flex justify-center">
-            <button type="submit" className="py-2 px-6 bg-black text-white rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500">Registrar</button>
+            <button type="submit" className="py-2 px-6 bg-black text-white rounded-md avck:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500">Registrar</button>
           </div>
         </form>
       </div>

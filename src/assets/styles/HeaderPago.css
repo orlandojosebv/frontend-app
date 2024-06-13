@@ -14,23 +14,28 @@
 .left-section {
   flex: 1;
   display: flex;
-  justify-content: center; /* Centra el contenido horizontalmente */
+  justify-content: center;
+  /* Centra el contenido horizontalmente */
 }
 
 .logo {
-  height: 50px; 
+  height: 50px;
 }
 
 .logout-icon {
-  height: 30px; 
+  height: 30px;
   width: 30px;
   margin-right: 5%;
 }
 
 .divider {
-  height: 4px; /* Más grueso */
-  background-color: red; /* Color rojo */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow */
-  margin-top: 10px; /* Ajuste de margen para separar del contenido */
+  height: 4px;
+  /* Más grueso */
+  background-color: red;
+  /* Color rojo */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Box shadow */
+  margin-top: 10px;
+  /* Ajuste de margen para separar del contenido */
   border: none;
 }
