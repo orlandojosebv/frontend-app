@@ -10,7 +10,6 @@ import ComprarProductoRegistro from './components/ComprarProductoRegistro.jsx';
 import ComprarProductoUbicacion from './components/ComprarProductoUbicacion.jsx';
 import PagoExitoso from './components/PagoExitoso.jsx';
 import ComprarProductoUsuarioRegistrado from './components/ComprarProductoUsuarioRegistrado.jsx';
-import SideBar from './components/SideBar.jsx';
 import VerAdministradores from './components/VerAdministradores.jsx';
 import VerClientes from './components/VerClientes.jsx';
 import Inicio from "./Inicio.jsx";
@@ -19,6 +18,13 @@ import Header from "./components/Header.jsx";
 import HeaderPago from "./components/HeaderPago.jsx";
 import MostrarProducto from "./components/MostrarProducto.jsx";
 import RegistrarAdministrador from "./components/RegistrarAdministrador.jsx";
+import CrearCategoria from "./components/CrearCategoria.jsx";
+import EditarCategoria from "./components/EditarCategoria.jsx";
+import VerCategorias from "./components/VerCategorias.jsx";
+import CrearProducto from "./components/CrearProducto.jsx";
+import EditarProducto from "./components/EditarProducto.jsx";
+import CrearOferta from "./components/CrearOferta.jsx";
+import EditarOferta from "./components/EditarOferta.jsx";
 import CatalogoDeProductos from "./components/CatalogoProductos.jsx";
 
 const productos = [
@@ -44,7 +50,6 @@ function App() {
       <div className="app-container">
         <Routes>
           <Route path="/LoginRegistro" element={<LoginRegistro />} />
-          <Route path="/SideBar" element={<SideBar />} />
           <Route path="/OlvidoContrasena" element={<OlvidoContrasena />} />
           <Route path="/ReestablecerContrasena" element={<ReestablecerContrasena />} />
           <Route path="/ContrasenaReestablecida" element={<ContrasenaReestablecida />} />
@@ -62,6 +67,13 @@ function App() {
           <Route path="/HeaderPago" element={<HeaderPago />} />
           <Route path="/MostrarProducto" element={<MostrarProducto />} />
           <Route path="/RegistrarAdministrador" element={<RegistrarAdministrador />} />
+          <Route path="/CrearCategoria" element={<CrearCategoria />} />
+          <Route path="/EditarCategoria" element={<EditarCategoria />} />
+          <Route path="/VerCategorias" element={<VerCategorias />} />
+          <Route path="/CrearProducto" element={<CrearProducto />} />
+          <Route path="/CrearOferta" element={<CrearOferta />} />
+          <Route path="/EditarOferta" element={<EditarOferta />} />
+
           <Route path="/CatalogoDeProductos" element={<CatalogoDeProductos />} />
         </Routes>
       </div>
