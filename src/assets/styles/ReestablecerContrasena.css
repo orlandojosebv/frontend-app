@@ -67,6 +67,6 @@
   padding: 0.5rem 1rem;
 }
 
-button:hover {
+.reestablecer-contrasena-container button:hover {
   background-color: #EB4F3E;
-}
+} 

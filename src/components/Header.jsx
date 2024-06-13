@@ -8,8 +8,8 @@ const Header = () => {
     <header className="h-fit w-full flex flex-col">
       <div className='flex items-center justify-center'>
         <div className="flex flex-row w-[80%] items-center justify-between">
-          <img src={logo} alt="Logo" className="h-20 w-auto" />
-          <div className="flex flex-row w-[35%] items-center justify-between">
+          <a href="/Inicio"><img src={logo} alt="Logo" className="h-20 w-auto" /></a>
+          <div className="flex flex-row w-[28%] items-center justify-between">
             <div className="flex flex-row w-[50%] justify-between">
               <img src={userIcon} alt="User" className="h-10 w-auto" />
               <div className="flex flex-col justify-center">
@@ -24,7 +24,7 @@ const Header = () => {
       <hr className=""/>
       <nav className="flex w-full items-center justify-center">
         <ul className='flex flex-row w-[75%] gap-20'>
-          <li><a href="/catalog">Catálogo</a></li>
+          <li><a href="/CatalogoDeProductos">Catálogo</a></li>
           <li><a href="/offers">Ofertas</a></li>
           <li><a href="/categories">Categorías</a></li>
         </ul>
