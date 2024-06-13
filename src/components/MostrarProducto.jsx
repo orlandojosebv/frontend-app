@@ -58,7 +58,6 @@ export default function MostrarProducto() {
           </div>
 
           <div className="">Cantidad</div>
-
           <QuantityControl
             quantity={quantity}
             increaseQuantity={increaseQuantity}
