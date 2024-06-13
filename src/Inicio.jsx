@@ -11,7 +11,10 @@ export default function Inicio(){
             <div className="flex h-60 overflow-hidden">
                 <img className="w-[100%] h-auto object-cover" src={imagen_inicio} alt='imagen_de_inicio' ></img>
             </div>
-            <Caneca />
+            <div className="flex flex-col items-center justify-center">
+                <Caneca />
+            </div>
+            
             <div className="flex flex-col items-center justify-center mb-[60px]">
                 <h1 className="w-[80%] text-3xl font-bold">NUEVOS PRODUCTOS</h1>
                 <ListaProductos />
