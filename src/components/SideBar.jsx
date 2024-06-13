@@ -91,8 +91,8 @@ const Sidebar = () => {
         subItems={[
           {
             icon: verClienteIcon,
-            label: "Crear administrador",
-            to: "/CrearAdministrador",
+            label: "Registrar administrador",
+            to: "/RegistrarAdministrador",
           },
           {
             icon: verIcon,

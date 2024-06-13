@@ -18,6 +18,7 @@ import HeaderAdmin from "./components/HeaderAdmin.jsx";
 import Header from "./components/Header.jsx";
 import HeaderPago from "./components/HeaderPago.jsx";
 import MostrarProducto from "./components/MostrarProducto.jsx";
+import RegistrarAdministrador from "./components/RegistrarAdministrador.jsx";
 
 const productos = [
   {
@@ -59,6 +60,8 @@ function App() {
           <Route path="/Header" element={<Header />} />
           <Route path="/HeaderPago" element={<HeaderPago />} />
           <Route path="/MostrarProducto" element={<MostrarProducto />} />
+          <Route path="/RegistrarAdministrador" element={<RegistrarAdministrador />} />
+
         </Routes>
       </div>
     </Router>

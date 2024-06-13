@@ -111,7 +111,7 @@ export default function MostrarProducto() {
               className="bg-white ml-4 border rounded-md p-1 text-center">Añadir al carrito</button>
           </div>
 
-          <button className="mt-4 bg-red-500 text-white px-4 py-2 rounded-md w-full ">
+          <button className="mt-4 bg-red-500 text-white px-4 py-2 rounded-md w-full  hover:none !important ">
             Comprar producto
           </button>
           </div>
