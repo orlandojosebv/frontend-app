@@ -5,6 +5,7 @@ import snupyLlavero from "/img/productos/Snupy llavero.png";
 import spidermanLlavero from "/img/productos/Spiderman llavero.png";
 import spiderman from "/img/productos/Spiderman.png";
 import  { useState } from "react";
+import TemplateUser from "./TemplateUser";
 
 const x = ["15", "20", "25"]
 
@@ -25,6 +26,7 @@ export default function MostrarProducto() {
  
   return (
     <>
+    <TemplateUser>
       <div className="contenedor h-[500px] w-[90%] max-w-[1000px] my-20 mx-auto flex justify-between">
         <div className="conteIzq h-[80%] w-full max-w-[350px] bg-gray-100">
           <Carousel leftControl={"<"} rightControl={">"}>
@@ -109,7 +111,7 @@ export default function MostrarProducto() {
               className="bg-white ml-4 border rounded-md p-1 text-center">Añadir al carrito</button>
           </div>
 
-          <button className="mt-4 bg-red-500 text-white px-4 py-2 rounded-md w-full ">
+          <button className="mt-4 bg-red-500 text-white px-4 py-2 rounded-md w-full  hover:none !important ">
             Comprar producto
           </button>
           </div>
@@ -119,6 +121,7 @@ export default function MostrarProducto() {
 
         </div>
       </div>
+      </TemplateUser>
     </>
   );
 }
