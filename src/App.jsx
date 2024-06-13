@@ -22,11 +22,11 @@ import CrearCategoria from "./components/CrearCategoria.jsx";
 import EditarCategoria from "./components/EditarCategoria.jsx";
 import VerCategorias from "./components/VerCategorias.jsx";
 import CrearProducto from "./components/CrearProducto.jsx";
-import EditarProducto from "./components/EditarProducto.jsx";
 import CrearOferta from "./components/CrearOferta.jsx";
 import EditarOferta from "./components/EditarOferta.jsx";
 import CatalogoDeProductos from "./components/CatalogoProductos.jsx";
 import ProductosPorCategoria from "./components/ListadoPorCategoria.jsx";
+import VerOfertas from "./components/VerOfertas.jsx"
 
 const productos = [
   {
@@ -75,6 +75,7 @@ function App() {
           <Route path="/CrearOferta" element={<CrearOferta />} />
           <Route path="/EditarOferta" element={<EditarOferta />} />
           <Route path="/ListadoDeCategorias" element={<ProductosPorCategoria></ProductosPorCategoria>}/>
+          <Route path="/VerOfertas" element={<VerOfertas />} />
           <Route path="/CatalogoDeProductos" element={<CatalogoDeProductos />} />
         </Routes>
       </div>
