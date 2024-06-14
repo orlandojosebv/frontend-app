@@ -1,53 +1,32 @@
 import ProductoCard from "./ProductoCard";
-import pochita from "/img/productos/Un perro con una sierra en la frente.png";
-import messi from "/img/productos/Messi God.png";
-import naruto from "/img/productos/Naturo.png";
-import conejo from "/img/productos/Conejo gigante con vestido rojo.png";
-import { useState } from "react";
-
-const products = [
-    {
-        id: 1,
-        image: [pochita],
-        categoryName: 'Amigurumi',
-        name: 'Pochita',
-        price: 40.000
-    },
-    {
-        id: 2,
-        image: [messi],
-        categoryName: 'Amigurumi',
-        name: 'Messi',
-        price: 55.000
-    },
-    {
-        id: 3,
-        image: [naruto],
-        categoryName: 'Llavero',
-        name: 'Naruto',
-        price: 70.000
-    },
-    {
-        id: 4,
-        image: [conejo],
-        categoryName: 'Amigurumi',
-        name: 'Conejo con vestido de fresa',
-        price: 170.000
-    }
-]; 
+import { getProducts } from "../services/ProductService";
+import { useEffect, useState } from "react";
 
 const ITEMS_PER_PAGE = 12;
 
 function Paginacion(){
+
+    const [productos, setProductos] = useState([])
+
+    useEffect(
+        ()=>{
+            const rodrigoLindo = async ()=>{
+                setProductos(await getProducts())
+                console.log(await getProducts())
+            }
+            rodrigoLindo()
+        },[]
+    )
+
     const [currentPage, setCurrentPage] = useState(1);
 
-    const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
+    const totalPages = Math.ceil(productos.length / ITEMS_PER_PAGE);
 
     const handleClick = (page) => {
-        setCurrentPage(page);
+        setCurrentPage(page);  
     };
 
-    const currentItems = products.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+    const currentItems = productos.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
     return(
        <div className="w-full flex flex-col justify-center items-center">
@@ -56,9 +35,9 @@ function Paginacion(){
                     <ProductoCard
                         key={index}
                         image={product.image}
-                        categoryName={product.categoryName}
-                        productName={product.name}
-                        price={product.price}
+                        categoryName={product.Modelo.Categorium.nombre}
+                        productName={product.Modelo.nombre}
+                        price={product.precio}
                     />
                 ))}
 

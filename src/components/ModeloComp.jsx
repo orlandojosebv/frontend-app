@@ -18,6 +18,12 @@ export default function ModeloComp({imagen, nombre, referencia, tamano, categori
                         <td className="h-fit p-0">
                             <label className="font-normal text-sm"  htmlFor="">{nombre}</label>
                         </td>
+                        <td className="h-fit p-0 w-[20%]">
+                            <label className="text-sm" htmlFor="">Categoría:</label>
+                        </td> 
+                        <td className="h-fit p-0 w-[30%]">
+                            <label className="font-normal text-sm"  htmlFor="">{categoria}</label>
+                        </td>
                     </tr>
                     <tr>
                         <td className="h-fit p-0 w-[20%]">
@@ -31,14 +37,6 @@ export default function ModeloComp({imagen, nombre, referencia, tamano, categori
                         </td>
                         <td className="h-fit p-0 w-[30%]">
                             <label className="font-normal text-sm " htmlFor="">{tamano} cm</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="h-fit p-0 w-[20%]">
-                            <label className="text-sm" htmlFor="">Categoría:</label>
-                        </td>
-                        <td className="h-fit p-0 w-[30%]">
-                            <label className="font-normal text-sm"  htmlFor="">{categoria}</label>
                         </td>
                     </tr>
                     <tr>

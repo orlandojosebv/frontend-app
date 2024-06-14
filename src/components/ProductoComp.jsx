@@ -14,7 +14,7 @@ export default function ProductoComp({imagen, nombre, referencia, cantidad, tama
                     <tr className="h-fit p-0 align-middle">
                         <td className="h-fit p-0 w-[20%]">
                             <label className="text-sm" htmlFor="">Nombre:</label>
-                        </td>
+                        </td> 
                         <td className="h-fit p-0">
                             <label className="font-normal text-sm"  htmlFor="">{nombre}</label>
                         </td>
