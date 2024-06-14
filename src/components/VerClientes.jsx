@@ -4,7 +4,7 @@ import TemplateAdmin from './TemplateAdmin';
 import {getUsers} from "../services/UserService"
 import useUser from "../hooks/useUser"
 
-const VerClientes = () => {
+const VerClientes = () => { 
   const {token} = useUser()
   const [clientes, setClientes] = useState([]);
 

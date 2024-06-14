@@ -23,7 +23,7 @@ const products = [
         id: 3,
         image: [naruto],
         categoryName: 'Llavero',
-        name: 'Naruto',
+        name: 'Naruto', 
         price: 70.000
     },
     {

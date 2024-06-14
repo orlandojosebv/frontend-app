@@ -15,7 +15,7 @@ export default function CatalogoDeProductos(){
                     <Paginacion />
                 </div>
             </div>
-        </div>
+        </div> 
     </TemplateUser>
     </>
 }
