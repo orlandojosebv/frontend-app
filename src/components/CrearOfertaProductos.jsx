@@ -6,7 +6,7 @@ import { getProductos } from '../services/InventarioService';
 
 const CrearOfertaProducto = () => {
   const [productos, setProductos] = useState([]);
-
+console.log(productos)
   useEffect(() => {
     getProductos().then(data => {
       if (data) {
@@ -28,11 +28,11 @@ const CrearOfertaProducto = () => {
           <ProductoParaOferta 
             key={product.id} // Utiliza un identificador único si está disponible
             imagen={product.imagen || ''} // Asegúrate de que la propiedad imagen exista
-            nombre={product.nombre}
-            referencia={product.referencia}
-            cantidad={product.cantidad}
-            tamano={product.tamano}
-            categoria={product.categoria}
+            nombre={product.Modelo.nombre}
+            referencia={product.id}
+            cantidad={product.cantidadDisponible}
+            tamanio={product.tamanio}
+            categoria={product.Modelo.Categorium.nombre}
             material={product.material}
             precio={product.precio}
           />

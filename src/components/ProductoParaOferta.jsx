@@ -1,4 +1,4 @@
-export default function ProductoParaOferta({imagen, nombre, referenica, cantidad, tamaño, categoria, material, precio}){
+export default function ProductoParaOferta({imagen, nombre, referencia, cantidad, tamanio, categoria, material, precio}){
     return<>
     <div className="flex flex-row items-center justify-between w-[80%] mb-10">
         <div className="h-36 w-32 flex items-center justify-center bg-[#F4F4F4]">
@@ -19,13 +19,13 @@ export default function ProductoParaOferta({imagen, nombre, referenica, cantidad
                         <label  className="text-sm" htmlFor="">#Referencia:</label>
                     </td>
                     <td className="h-fit p-0">
-                        <label className="font-normal text-sm"  htmlFor="">{referenica}</label>
+                        <label className="font-normal text-sm"  htmlFor="">{referencia}</label>
                     </td>
                     <td className="h-fit p-0 w-[20%]">
                         <label className="text-sm" htmlFor="">Tamaño:</label>
                     </td>
                     <td className="h-fit p-0 w-[30%]">
-                        <label className="font-normal text-sm " htmlFor="">{tamaño}</label>
+                        <label className="font-normal text-sm " htmlFor="">{tamanio}</label>
                     </td>
                 </tr>
                 <tr>
