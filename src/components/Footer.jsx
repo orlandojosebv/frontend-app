@@ -12,7 +12,7 @@ const Footer = () => {
             <h3 className="text-xl">Contáctanos</h3>
           </div>
           <div className="flex w-32 justify-around">
-            <a target="_blank" href="https://youtu.be/tYb7-KmMyRs?si=x1YWHRguf8ePuzEr&t=740">
+            <a target="_blank" href="https://wa.me/573183522345">
               <img className="h-[35px] w-[35px]" src="/img/whatsapp.png" alt="logo_whatsapp" />
             </a>
             <a target="_blank" href="https://www.instagram.com/lula_crochet_/">
