@@ -1,25 +1,38 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TemplateAdmin from './TemplateAdmin';
+import { crearCategoria } from '../services/InventarioService';
 
 const CrearCategoria = () => {
   const [nombre, setNombre] = useState('');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const navigate = useNavigate();
 
-  const handleGuardar = () => {
+  const handleGuardar = async () => {
     if (!nombre) {
       setError('El nombre es obligatorio');
       return;
     }
     setError('');
-    // Lógica para guardar la categoría
-    console.log('Categoría guardada:', nombre);
+    setSuccess('');
+    
+    try {
+      const response = await crearCategoria({ nombre });
+      if (response) {
+        setSuccess('Categoría guardada exitosamente');
+        setNombre(''); // Limpiar el campo después de guardar
+      } else {
+        setError('Hubo un error al guardar la categoría');
+      }
+    } catch (error) {
+      setError('Hubo un error al guardar la categoría');
+      console.error('Error:', error);
+    }
   };
 
   const handleCancelar = () => {
-    // Redirige a la ventana anterior
-    navigate(-1);
+    navigate(-1); // Redirige a la ventana anterior
   };
 
   return (
@@ -38,6 +51,7 @@ const CrearCategoria = () => {
               className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
             />
             {error && <span className="text-red-500 text-sm">{error}</span>}
+            {success && <span className="text-green-500 text-sm">{success}</span>}
           </div>
           <div className="flex justify-center space-x-4">
             <button
