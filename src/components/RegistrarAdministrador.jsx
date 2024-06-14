@@ -74,7 +74,8 @@ const RegistrarAdministrador = () => {
         apellido: lastName,
         telefono:phone,
         cedula:idNumber,
-        contrasena:password
+        contrasena:password,
+        id_rol:1
       },token).then( data => (console.log(data)))
     }
   };

@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { getModelos, crearProducto } from '../services/InventarioService';
 
 const CrearEditarProducto = () => {
-  const [referencia, setReferencia] = useState('');
+  const [id_modelo, setId_modelo] = useState('');
   const [nombre, setNombre] = useState('');
-  const [tamano, setTamano] = useState('');
+  const [tamanio, setTamanio] = useState('');
   const [precio, setPrecio] = useState('');
-  const [cantidad, setCantidad] = useState('');
+  const [cantidadDisponible, setCantidadDisponible] = useState('');
   const [errors, setErrors] = useState({});
   const [modelos, setModelos] = useState([]);
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const CrearEditarProducto = () => {
     let formErrors = {};
     let isValid = true;
 
-    if (!referencia) {
+    if (!id_modelo) {
       formErrors.referencia = 'La referencia es obligatoria';
       isValid = false;
     }
@@ -30,7 +30,7 @@ const CrearEditarProducto = () => {
       formErrors.nombre = 'El nombre es obligatorio';
       isValid = false;
     }
-    if (!tamano || tamano <= 0 || !Number.isInteger(Number(tamano))) {
+    if (!tamanio || tamanio <= 0 || !Number.isInteger(Number(tamanio))) {
       formErrors.tamano = 'El tamaño debe ser un número entero positivo';
       isValid = false;
     }
@@ -38,7 +38,7 @@ const CrearEditarProducto = () => {
       formErrors.precio = 'El precio debe ser un número entero positivo';
       isValid = false;
     }
-    if (!cantidad || cantidad < 0 || !Number.isInteger(Number(cantidad))) {
+    if (!cantidadDisponible || cantidadDisponible < 0 || !Number.isInteger(Number(cantidadDisponible))) {
       formErrors.cantidad = 'La cantidad debe ser un número entero positivo o cero';
       isValid = false;
     }
@@ -51,7 +51,7 @@ const CrearEditarProducto = () => {
     event.preventDefault();
 
     if (validateForm()) {
-      const producto = { referencia, nombre, tamano, precio, cantidad };
+      const producto = { id_modelo, nombre,tamanio, precio, cantidadDisponible };
       const response = await crearProducto(producto);
 
       if (response) {
@@ -75,10 +75,10 @@ const CrearEditarProducto = () => {
           <div className="flex items-center">
             <select
               id="referencia"
-              value={referencia}
+              value={id_modelo}
               onChange={(e) => {
                 const selectedModel = modelos.find(model => model.id === parseInt(e.target.value));
-                setReferencia(selectedModel ? selectedModel.id : '');
+                setId_modelo(selectedModel ? selectedModel.id : '');
                 setNombre(selectedModel ? selectedModel.nombre : '');
               }}
               className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
@@ -98,8 +98,8 @@ const CrearEditarProducto = () => {
             <input
               type="number"
               id="tamano"
-              value={tamano}
-              onChange={(e) => setTamano(e.target.value)}
+              value={tamanio}
+              onChange={(e) => setTamanio(e.target.value)}
               className="mt-1 p-2 w-1/4 border rounded-md focus:ring focus:ring-indigo-200"
             />
             <span className="ml-2 text-gray-700">cm</span>
@@ -126,8 +126,8 @@ const CrearEditarProducto = () => {
             <input
               type="number"
               id="cantidad"
-              value={cantidad}
-              onChange={(e) => setCantidad(e.target.value)}
+              value={cantidadDisponible}
+              onChange={(e) => setCantidadDisponible(e.target.value)}
               className="mt-1 p-2 w-1/4 border rounded-md focus:ring focus:ring-indigo-200"
             />
             <span className="ml-2 text-gray-700">unidades</span>

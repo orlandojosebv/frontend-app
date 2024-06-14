@@ -50,7 +50,7 @@ const Login = () => {
           setUser(data.data)
 
           if (data.data?.id_rol === 0) {
-            navigate("/Inicio")//Ruta direccionar.
+            navigate("/")//Ruta direccionar.
           } else {
             navigate("/VerClientes")//Ruta direccionar.
           }
