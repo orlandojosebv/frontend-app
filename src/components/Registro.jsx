@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../assets/styles/Registro.css';
+import { registro } from '../services/UserService';
 
 const Registro = () => {
   const [email, setEmail] = useState('');
@@ -9,6 +10,8 @@ const Registro = () => {
   const [idNumber, setIdNumber] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({ email: '', firstName: '', lastName: '', phone: '', idNumber: '', password: '' });
+
+  
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -62,19 +65,14 @@ const Registro = () => {
     setErrors(errors);
 
     if (formIsValid) {
-      try {
-        const response = await fetch('http://localhost:3001/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, firstName, lastName, phone, idNumber, password }),
-        });
-        const data = await response.json();
-        console.log(data); // Aquí puedes manejar la respuesta del backend
-      } catch (error) {
-        console.error('Error:', error);
-      }
+      registro({
+        correo: email,
+        nombre: firstName,
+        apellido: lastName,
+        telefono:phone,
+        cedula:idNumber,
+        contrasena:password
+      }).then( data => (console.log(data)))
     }
   };
 
