@@ -1,42 +1,33 @@
-import TemplateAdmin from './TemplateAdmin';
-import naruto from "/img/productos/Naturo.png";
-import pollito from "/img/productos/Don pato.png";
-import ProductoParaOferta from './ProductoParaOferta';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-const producto = [
-  {
-    imagen: naruto,
-    nombre: 'Naruto',
-    referencia: '0001',
-    cantidad: 20,
-    tamano: 15,
-    categoria: 'Amigurumi',
-    material: 'Hilo macramé 1.5mm',
-    precio: '40.000'
-  },
-  {
-    imagen: pollito,
-    nombre: 'pollito',
-    referencia: '0002',
-    cantidad: 10,
-    tamano: 15,
-    categoria: 'Amigurumi',
-    material: 'Lana cheline 6mm',
-    precio: '40.000'
-  }
-];
+import TemplateAdmin from './TemplateAdmin';
+import ProductoParaOferta from './ProductoParaOferta';
+import { getProductos } from '../services/InventarioService';
 
 const CrearOfertaProducto = () => {
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    getProductos().then(data => {
+      if (data) {
+        setProductos(data);
+      } else {
+        console.error('Error al obtener productos');
+      }
+    }).catch(error => {
+      console.error('Error al obtener productos:', error);
+    });
+  }, []);
+
   return (
     <TemplateAdmin>
-    <div className="w-full mx-auto flex items-center justify-center flex-col">
-      <h2 className="w-[80%] items-start justify-start">Crear Oferta</h2>
-      <span className='mb-10'>¿A que productos desea aplicarles una oferta?</span>
-        {producto.map((product, index) => (
+      <div className="w-full mx-auto flex items-center justify-center flex-col">
+        <h2 className="w-[80%] items-start justify-start">Crear Oferta</h2>
+        <span className='mb-10'>¿A qué productos desea aplicarles una oferta?</span>
+        {productos.map((product, index) => (
           <ProductoParaOferta 
-            key={index}
-            imagen={product.imagen}
+            key={product.id} // Utiliza un identificador único si está disponible
+            imagen={product.imagen || ''} // Asegúrate de que la propiedad imagen exista
             nombre={product.nombre}
             referencia={product.referencia}
             cantidad={product.cantidad}
@@ -47,7 +38,7 @@ const CrearOfertaProducto = () => {
           />
         ))}
         <Link to="/CrearOferta" className="flex items-center justify-center text-white bg-[#1E1E1E] h-[35px] w-[100px] rounded-[5px]">Continuar</Link>
-    </div>
+      </div>
     </TemplateAdmin>
   );
 };

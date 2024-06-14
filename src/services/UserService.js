@@ -36,6 +36,24 @@ export async function getUsers(token) {
     }
 }
 
+export async function getAdmins(token) {
+  try {
+      const response = await fetch(`${API_URL}/usuarios/admins`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      const data = await response.json();
+      console.log(data); // Aquí puedes manejar la respuesta del backend
+      return data.response
+    } catch (error) {
+      console.error('Error:', error);
+      return null
+    }
+}
+
 export async function registro(data) {
   try {
       const response = await fetch(`${API_URL}/usuarios/register`, { //Aquí iría la dirección del servidor donde se enviará la petición.

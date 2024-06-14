@@ -1,13 +1,13 @@
 import { useEffect,useState } from 'react';
 import '../assets/styles/VerAdministradores.css';
 import TemplateAdmin from './TemplateAdmin';
-import { getUsers } from "../services/UserService";
+import { getUsers, getAdmins} from "../services/UserService";
 import useUser from "../hooks/useUser";
-
+import AccesoDenegado from './AccesoDenegado';
 
 
 const VerAdministradores = () => {
-  const { token } = useUser();
+  const {user,token } = useUser();
   const [administradores, setAdministradores] = useState([]);
 
   const darDeBaja = (correo) => {
@@ -17,12 +17,17 @@ const VerAdministradores = () => {
   useEffect(() => {
     if (!token) return;
 
-    getUsers(token).then(data => {
+    getAdmins(token).then(data => {
       // Filtrar los clientes con id_rol !== 0
       const clientesFiltrados = data.filter(cliente => cliente.id_rol !== 0);
       setAdministradores(clientesFiltrados);
     });
   }, [token]);
+
+  if (user?.id_rol === 0) {
+    // retorna la pagina de no autorizado
+    return <AccesoDenegado></AccesoDenegado>
+  }
 
   return (
     <TemplateAdmin>

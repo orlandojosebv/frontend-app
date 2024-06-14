@@ -140,3 +140,38 @@ export async function getProductos() {
         return null
       }
   }
+
+  export async function crearOferta(data) {
+    try {
+        const response = await fetch(`${API_URL}/ofertas/`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+        const dataRegistro = await response.json();
+        console.log(dataRegistro); // Aquí puedes manejar la respuesta del backend
+        return dataRegistro
+      } catch (error) {
+        console.error('Error:', error);
+        return null
+      }
+  }
+
+  export async function getOfertas() {
+    try {
+        const response = await fetch(`${API_URL}/ofertas/`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+        const data = await response.json();
+        console.log(data); // Aquí puedes manejar la respuesta del backend
+        return data
+      } catch (error) {
+        console.error('Error:', error);
+        return null
+      }
+  }
