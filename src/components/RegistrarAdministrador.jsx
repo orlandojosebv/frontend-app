@@ -2,6 +2,7 @@ import { useState } from 'react';
 import TemplateAdmin from './TemplateAdmin';
 import useUser from '../hooks/useUser';
 import { registroAdmin } from '../services/UserService';
+import AccesoDenegado from './AccesoDenegado';
 
 const RegistrarAdministrador = () => {
   const [email, setEmail] = useState('');
@@ -80,7 +81,7 @@ const RegistrarAdministrador = () => {
 
   if (user?.id_rol === 0) {
     // retorna la pagina de no autorizado
-    return <span>No autorizado</span>
+    return <AccesoDenegado></AccesoDenegado>
   }
 
   return (

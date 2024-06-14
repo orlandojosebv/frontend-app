@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { crearOferta } from '../services/InventarioService';
 
 const CrearEditarOferta = () => {
   const [porcentaje, setPorcentaje] = useState('');
@@ -29,12 +30,19 @@ const CrearEditarOferta = () => {
     return isValid;
   };
 
-  const handleSave = (event) => {
+  const handleSave = async (event) => {
     event.preventDefault();
 
     if (validateForm()) {
-      // Lógica para guardar la oferta
-      console.log('Oferta guardada:', { porcentaje, fechaInicio, fechaFin });
+      const oferta = { porcentaje, fechaInicio, fechaFin };
+      const response = await crearOferta(oferta);
+
+      if (response) {
+        console.log('Oferta guardada:', response);
+        //navigate('/ruta-de-redireccionamiento'); // Reemplaza con la ruta a la que quieres redirigir después de guardar
+      } else {
+        console.error('Error al guardar la oferta');
+      }
     }
   };
 

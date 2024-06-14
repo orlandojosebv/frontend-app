@@ -3,9 +3,10 @@ import '../assets/styles/VerClientes.css';
 import TemplateAdmin from './TemplateAdmin';
 import { getUsers } from "../services/UserService";
 import useUser from "../hooks/useUser";
+import AccesoDenegado from './AccesoDenegado';
 
 const VerClientes = () => {
-  const { token } = useUser();
+  const { user,token } = useUser();
   const [clientes, setClientes] = useState([]);
 
   const darDeBaja = (correo) => {
@@ -21,6 +22,11 @@ const VerClientes = () => {
       setClientes(clientesFiltrados);
     });
   }, [token]);
+
+  if (user?.id_rol === 0) {
+    // retorna la pagina de no autorizado
+    return <AccesoDenegado></AccesoDenegado>
+  }
 
   return (
     <TemplateAdmin>

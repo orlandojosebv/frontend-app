@@ -2,13 +2,16 @@ import TemplateAdmin from './TemplateAdmin';
 import ProductoComp from './ProductoComp';
 import { useState, useEffect } from 'react';
 import { getProductos } from '../services/InventarioService';
+import useUser from "../hooks/useUser";
+import AccesoDenegado from './AccesoDenegado';
 
 const ITEMS_PER_PAGE = 6;
 
 function PaginacionAdmin() {
     const [productos, setProductos] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-
+    const { user } = useUser();
+    
     useEffect(() => {
         getProductos().then(data => {
             if (Array.isArray(data)) {
@@ -30,6 +33,11 @@ function PaginacionAdmin() {
     };
 
     const currentItems = productos.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+
+    if (user?.id_rol === 0) {
+        // retorna la pagina de no autorizado
+        return <AccesoDenegado></AccesoDenegado>
+      }
 
     return (
         <TemplateAdmin>
