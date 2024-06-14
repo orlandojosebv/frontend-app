@@ -88,6 +88,24 @@ export async function getModelos() {
       }
   }
 
+  export async function addMaterial(data) {
+    try {
+        const response = await fetch(`${API_URL}/materiales/`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+        const dataModelo = await response.json();
+        console.log(dataModelo); // Aquí puedes manejar la respuesta del backend
+        return data
+      } catch (error) {
+        console.error('Error:', error);
+        return null
+      }
+}
+
   export async function crearProducto(data) {
     try {
         const response = await fetch(`${API_URL}/productos/`, { //Aquí iría la dirección del servidor donde se enviará la petición.
@@ -105,3 +123,20 @@ export async function getModelos() {
         return null
       }
 }
+
+export async function getProductos() {
+    try {
+        const response = await fetch(`${API_URL}/productos/`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+        const data = await response.json();
+        console.log(data); // Aquí puedes manejar la respuesta del backend
+        return data
+      } catch (error) {
+        console.error('Error:', error);
+        return null
+      }
+  }
