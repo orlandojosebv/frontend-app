@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import TemplateAdmin from './TemplateAdmin';
+import useUser from '../hooks/useUser';
+import { registroAdmin } from '../services/UserService';
 
 const RegistrarAdministrador = () => {
   const [email, setEmail] = useState('');
@@ -9,6 +11,8 @@ const RegistrarAdministrador = () => {
   const [idNumber, setIdNumber] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({ email: '', firstName: '', lastName: '', phone: '', idNumber: '', password: '' });
+  const {user, token} = useUser();
+
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -62,21 +66,22 @@ const RegistrarAdministrador = () => {
     setErrors(errors);
 
     if (formIsValid) {
-      try {
-        const response = await fetch('http://localhost:3001/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, firstName, lastName, phone, idNumber, password }),
-        });
-        const data = await response.json();
-        console.log(data); // Aquí puedes manejar la respuesta del backend
-      } catch (error) {
-        console.error('Error:', error);
-      }
+      if (!token) return
+      registroAdmin({
+        correo: email,
+        nombre: firstName,
+        apellido: lastName,
+        telefono:phone,
+        cedula:idNumber,
+        contrasena:password
+      },token).then( data => (console.log(data)))
     }
   };
+
+  if (user?.id_rol === 0) {
+    // retorna la pagina de no autorizado
+    return <span>No autorizado</span>
+  }
 
   return (
     <TemplateAdmin>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import '../assets/styles/Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { login as loginService } from "../services/UserService"
@@ -42,14 +42,18 @@ const Login = () => {
 
     if (formIsValid) {
       setLoading(true)
-
       loginService(email, password).then(data => {
         console.log(data)
 
         if (data.token) {
           setToken(data.token)
           setUser(data.data)
-          navigate("/")//Ruta direccionar.
+
+          if (data.data?.id_rol === 0) {
+            navigate("/Inicio")//Ruta direccionar.
+          } else {
+            navigate("/VerClientes")//Ruta direccionar.
+          }
         }
       }).finally(() => {
         setLoading(false)
