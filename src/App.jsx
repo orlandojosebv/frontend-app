@@ -30,7 +30,8 @@ import VerOfertas from "./components/VerOfertas.jsx"
 import CrearModelo from "./components/CrearModelo.jsx";
 import EditarModelo from "./components/EditarModelo.jsx";
 import CrearOfertaProducto from "./components/CrearOfertaProductos.jsx";
-import VerProductosAdmin from "./components/VerProductosAdmin.jsx";
+import PaginacionAdmin from "./components/VerProductosAdmin.jsx";
+import PaginacionMAdmin from "./components/VerModelosAdmin.jsx";
 
 const productos = [
   {
@@ -84,7 +85,8 @@ function App() {
           <Route path="/CrearModelo" element={<CrearModelo />} />
           <Route path="/EditarModelo" element={<EditarModelo />} />
           <Route path="/CrearOfertaProducto" element={<CrearOfertaProducto />} />
-          <Route path="/VerProductos" element={<VerProductosAdmin />} />
+          <Route path="/VerProductos" element={<PaginacionAdmin />} />
+          <Route path="/VerModelos" element={<PaginacionMAdmin />} />
         </Routes>
       </div>
     </Router>

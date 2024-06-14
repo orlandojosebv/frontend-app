@@ -1,8 +1,8 @@
 import TemplateAdmin from './TemplateAdmin';
 import naruto from "/img/productos/Naturo.png";
 import pollito from "/img/productos/Don pato.png";
-import ProductoComp from './ProductoComp';
 import { useState } from 'react';
+import ModeloComp from './ModeloComp';
 
 const products = [
   {
@@ -29,7 +29,7 @@ const products = [
 
 const ITEMS_PER_PAGE = 6;
 
-function PaginacionAdmin(){
+function PaginacionMAdmin(){
     const [currentPage, setCurrentPage] = useState(1);
 
     const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
@@ -44,18 +44,16 @@ function PaginacionAdmin(){
         <TemplateAdmin>
             <div className="w-full flex flex-col justify-center items-center">
                 <div className="w-full mx-auto flex items-center justify-center flex-col">
-                <h2 className="w-[80%] items-start justify-start">Listado de productos</h2>
+                <h2 className="w-[80%] items-start justify-start">Listado de modelos</h2>
                     {currentItems.map((product, index) => (
-                    <ProductoComp 
+                    <ModeloComp 
                         key={index}
                         imagen={product.imagen}
                         nombre={product.nombre}
                         referencia={product.referencia}
-                        cantidad={product.cantidad}
                         tamano={product.tamano}
                         categoria={product.categoria}
                         material={product.material}
-                        precio={product.precio}
                     />
                     ))}
                 </div>
@@ -76,4 +74,5 @@ function PaginacionAdmin(){
 
 }
 
-export default PaginacionAdmin;
+
+export default PaginacionMAdmin;

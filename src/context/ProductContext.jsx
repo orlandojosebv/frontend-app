@@ -9,7 +9,7 @@ const ProductContext = createContext({});
 
 const ProductContextProvider = (props) => {
   const [products, setProducts] = useState([]);
-
+ 
   useEffect(() => {
       fetchProducts();
   }, []);
