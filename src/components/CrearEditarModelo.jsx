@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getMaterial } from '../services/InventarioService';
 
 const CrearEditarModelo = () => {
   const [nombre, setNombre] = useState('');
@@ -8,7 +9,14 @@ const CrearEditarModelo = () => {
   const [materials, setMaterials] = useState([{ material: '', grosor: '' }]);
   const [images, setImages] = useState([]);
   const [errors, setErrors] = useState({});
+  const [allMaterials, setAllMaterials] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getMaterial().then(data => {
+      setAllMaterials(data);
+    });
+  }, []);
 
   const validateForm = () => {
     let formErrors = {};
@@ -66,7 +74,7 @@ const CrearEditarModelo = () => {
     navigate(-1);  // Navega a la página anterior
   };
 
-  const addMaterial = () => {
+  const addMaterialField = () => {
     setMaterials([...materials, { material: '', grosor: '' }]);
   };
 
@@ -76,7 +84,19 @@ const CrearEditarModelo = () => {
 
   const handleMaterialChange = (index, field, value) => {
     const newMaterials = materials.map((item, i) => i === index ? { ...item, [field]: value } : item);
+    if (field === 'material') {
+      const selectedMaterial = allMaterials.find(mat => mat.nombre === value);
+      if (selectedMaterial) {
+        newMaterials[index].grosor = selectedMaterial.grosor;
+      }
+    }
     setMaterials(newMaterials);
+  };
+
+  const handleAddMaterial = async () => {
+    const newMaterial = { nombre: 'NuevoMaterial', grosor: 3 };  // Aquí puedes ajustar según los datos necesarios
+    const addedMaterial = await addMaterial(newMaterial);
+    setAllMaterials([...allMaterials, addedMaterial]);
   };
 
   return (
@@ -126,13 +146,17 @@ const CrearEditarModelo = () => {
           <div key={index} className="mb-4 flex space-x-4 items-center">
             <div className="w-1/2">
               <label htmlFor={`material${index}`} className="block text-gray-700">Material</label>
-              <input
-                type="text"
+              <select
                 id={`material${index}`}
                 value={item.material}
                 onChange={(e) => handleMaterialChange(index, 'material', e.target.value)}
                 className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
-              />
+              >
+                <option value="">Seleccione un material</option>
+                {allMaterials.map(mat => (
+                  <option key={mat.id} value={mat.nombre}>{mat.nombre}</option>
+                ))}
+              </select>
               {errors[`material${index}`] && <span className="text-red-500 text-sm">{errors[`material${index}`]}</span>}
             </div>
             <div className="w-1/2">
@@ -143,10 +167,11 @@ const CrearEditarModelo = () => {
                 value={item.grosor}
                 onChange={(e) => handleMaterialChange(index, 'grosor', e.target.value)}
                 className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
+                disabled
               />
               {errors[`grosor${index}`] && <span className="text-red-500 text-sm">{errors[`grosor${index}`]}</span>}
             </div>
-            {index > 0 && ( 
+            {index > 0 && (
               <button
                 type="button"
                 onClick={() => removeMaterial(index)}
@@ -159,10 +184,17 @@ const CrearEditarModelo = () => {
         ))}
         <button
           type="button"
-          onClick={addMaterial}
+          onClick={addMaterialField}
           className="mb-4 px-4 py-2 bg-black text-white rounded-md"
         >
           Añadir material
+        </button>
+        <button
+          type="button"
+          onClick={handleAddMaterial}
+          className="mb-4 px-4 py-2 bg-black text-white rounded-md"
+        >
+          Guardar nuevo material
         </button>
         <div className="mb-4">
           <label htmlFor="images" className="block text-gray-700">Imágenes del modelo:</label>
@@ -182,14 +214,14 @@ const CrearEditarModelo = () => {
           </div>
           {errors.images && <span className="text-red-500 text-sm">{errors.images}</span>}
           <div className="mt-4">
-            {images.length > 0 && (
+          {images.length > 0 && (
               <ul>
                 {images.map((image, index) => (
                   <li key={index} className="text-gray-700">{image.name}</li>
                 ))}
               </ul>
             )}
-          </div>
+            </div>
         </div>
         <div className="flex justify-center">
           <button
@@ -210,5 +242,4 @@ const CrearEditarModelo = () => {
     </div>
   );
 };
-
 export default CrearEditarModelo;

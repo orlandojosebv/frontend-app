@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getModelos, crearProducto } from '../services/InventarioService';
 
 const CrearEditarProducto = () => {
   const [referencia, setReferencia] = useState('');
@@ -8,13 +9,20 @@ const CrearEditarProducto = () => {
   const [precio, setPrecio] = useState('');
   const [cantidad, setCantidad] = useState('');
   const [errors, setErrors] = useState({});
+  const [modelos, setModelos] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getModelos().then(data => {
+      setModelos(data);
+    });
+  }, []);
 
   const validateForm = () => {
     let formErrors = {};
     let isValid = true;
 
-    if (!referencia.trim()) {
+    if (!referencia) {
       formErrors.referencia = 'La referencia es obligatoria';
       isValid = false;
     }
@@ -39,12 +47,19 @@ const CrearEditarProducto = () => {
     return isValid;
   };
 
-  const handleSave = (event) => {
+  const handleSave = async (event) => {
     event.preventDefault();
 
     if (validateForm()) {
-      // Lógica para guardar el producto
-      console.log('Producto guardado:', { referencia, nombre, tamano, precio, cantidad });
+      const producto = { referencia, nombre, tamano, precio, cantidad };
+      const response = await crearProducto(producto);
+
+      if (response) {
+        console.log('Producto guardado:', response);
+        //navigate('/ruta-de-redireccionamiento'); // Reemplaza con la ruta a la que quieres redirigir después de guardar
+      } else {
+        console.error('Error al guardar el producto');
+      }
     }
   };
 
@@ -58,14 +73,22 @@ const CrearEditarProducto = () => {
         <div className="mb-4">
           <label htmlFor="referencia" className="block text-gray-700">Referencia del Modelo</label>
           <div className="flex items-center">
-            <input
-              type="text"
+            <select
               id="referencia"
               value={referencia}
-              onChange={(e) => setReferencia(e.target.value)}
-              className="mt-1 p-2 w-1/2 border rounded-md focus:ring focus:ring-indigo-200"
-            />
-            <span className="ml-2 text-gray-700">Nombre del Modelo</span>
+              onChange={(e) => {
+                const selectedModel = modelos.find(model => model.id === parseInt(e.target.value));
+                setReferencia(selectedModel ? selectedModel.id : '');
+                setNombre(selectedModel ? selectedModel.nombre : '');
+              }}
+              className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
+            >
+              <option value="">Seleccione una referencia</option>
+              {modelos.map(model => (
+                <option key={model.id} value={model.id}>{model.nombre}</option>
+              ))}
+            </select>
+            <span className="ml-2 text-gray-700">{nombre}</span>
           </div>
           {errors.referencia && <span className="text-red-500 text-sm">{errors.referencia}</span>}
         </div>

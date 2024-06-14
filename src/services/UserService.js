@@ -56,7 +56,7 @@ export async function registro(data) {
 
 export async function registroAdmin(data,token) {
   try {
-      const response = await fetch(`${API_URL}/usuarios/register`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+      const response = await fetch(`${API_URL}/usuarios/`, { //Aquí iría la dirección del servidor donde se enviará la petición.
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

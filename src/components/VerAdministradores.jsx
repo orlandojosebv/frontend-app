@@ -1,19 +1,28 @@
-import React, { useState } from 'react';
+import { useEffect,useState } from 'react';
 import '../assets/styles/VerAdministradores.css';
-import Sidebar from './SideBar';  // Asegúrate de que la ruta sea correcta
 import TemplateAdmin from './TemplateAdmin';
+import { getUsers } from "../services/UserService";
+import useUser from "../hooks/useUser";
+
+
 
 const VerAdministradores = () => {
-  const [administradores, setAdministradores] = useState([
-    { id: 1, nombre: 'Juan', apellido: 'Perez', correo: 'juan.perez@example.com', telefono: '1234567890' },
-    { id: 2, nombre: 'Ana', apellido: 'Gomez', correo: 'ana.gomez@example.com', telefono: '0987654321' },
-    { id: 3, nombre: 'Gianpiero', apellido: 'Fusco', correo: 'gf@example.com', telefono: '15489121321' },
-    // Agrega más administradores según sea necesario
-  ]);
+  const { token } = useUser();
+  const [administradores, setAdministradores] = useState([]);
 
-  const darDeBaja = (id) => {
-    setAdministradores(administradores.filter(admin => admin.id !== id));
+  const darDeBaja = (correo) => {
+    setAdministradores(administradores.filter(administrador => administrador.correo !== correo));
   };
+
+  useEffect(() => {
+    if (!token) return;
+
+    getUsers(token).then(data => {
+      // Filtrar los clientes con id_rol !== 0
+      const clientesFiltrados = data.filter(cliente => cliente.id_rol !== 0);
+      setAdministradores(clientesFiltrados);
+    });
+  }, [token]);
 
   return (
     <TemplateAdmin>
