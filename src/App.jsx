@@ -34,6 +34,7 @@ import PaginacionAdmin from "./components/VerProductosAdmin.jsx";
 import PaginacionMAdmin from "./components/VerModelosAdmin.jsx";
 import ProductoPorOferta from "./components/ProductoPorOferta.jsx";
 import CatalogoDeProductosCategoria from "./components/ListarProductosPorCategoria.jsx";
+import CatalogoDeProductosOferta from "./components/CatalogoDeProductosOferta.jsx";
 
 const productos = [
   {
@@ -92,6 +93,7 @@ function App() {
           <Route path="/ProductoPorOferta" element={<ProductoPorOferta />} />
           <Route path="/ProductoPorOferta" element={<ProductoPorOferta />} />
           <Route path="/categoria/:id" element={<CatalogoDeProductosCategoria />} />
+          <Route path="/CatalogoDeProductosOferta" element={<CatalogoDeProductosOferta />} />
         </Routes>
       </div>
     </Router>
