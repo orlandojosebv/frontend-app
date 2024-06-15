@@ -1,4 +1,3 @@
-import React from 'react';
 import '../assets/styles/Home.css'; // Asegúrate de crear este archivo de estilos
 import bannerImage from '../assets/images/banner.jpg'; // Asegúrate de que esta imagen exista
 import amigurumiIcon from '../assets/images/amigurumi-icon.png';

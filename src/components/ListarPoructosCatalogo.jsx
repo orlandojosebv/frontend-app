@@ -34,7 +34,7 @@ function Paginacion(){
                 {currentItems.map((product, index) => (
                     <ProductoCard
                         key={index}
-                        image={product.image}
+                        image={product.fotos[0].url}
                         categoryName={product.Modelo.Categorium.nombre}
                         productName={product.Modelo.nombre}
                         price={product.precio}

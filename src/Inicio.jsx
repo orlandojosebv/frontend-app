@@ -3,7 +3,7 @@ import ListaProductos from "./components/ListaProductos";
 import ProductosOfertados from "./components/ProductosOfertados";
 import TemplateUser from "./components/TemplateUser";
 import imagen_inicio from '/public/img/imagen_inicio.jpg'; 
-
+ 
 export default function Inicio(){
     return<>
     <TemplateUser>
@@ -13,7 +13,7 @@ export default function Inicio(){
             </div>
             <div className="flex flex-col items-center justify-center">
                 <Caneca />
-            </div>
+            </div> 
             
             <div className="flex flex-col items-center justify-center mb-[60px]">
                 <h1 className="w-[80%] text-3xl font-bold">NUEVOS PRODUCTOS</h1>

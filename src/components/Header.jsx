@@ -34,7 +34,7 @@ const Header = () => {
                 }
               </div>
             </div>
-            <img src={cartIcon} alt="Carrito" className="h-8 w-auto" />
+            {/* <img src={cartIcon} alt="Carrito" className="h-8 w-auto" /> */}
             <img src={logoutIcon} alt="Logout" className="h-8 w-auto cursor-pointer" onClick={handleLogout} />
           </div>
         </div>

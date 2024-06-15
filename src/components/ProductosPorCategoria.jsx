@@ -8,7 +8,7 @@ export default function ProductosDeCategoria() {
     const [productosFiltrados, setProductosFiltrados] = useState([]);
 
     const [productos, setProductos] = useState([])
-
+ 
     useEffect( 
         ()=>{
             const productosCATALOGO = async ()=>{
@@ -30,7 +30,7 @@ export default function ProductosDeCategoria() {
             {productosFiltrados.map((product, index) => (
                 <ProductoCard
                     key={index}
-                    image={product.image}
+                    image={product.fotos[0].url}
                     categoryName={product.Modelo.Categorium.nombre}
                     productName={product.Modelo.nombre}
                     price={product.precio}
