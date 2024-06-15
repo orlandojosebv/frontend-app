@@ -34,11 +34,11 @@ function ProductoPorOferta() {
     return (
         <TemplateAdmin>
             <div className="w-full flex flex-col justify-center items-center">
-                <h2 className="w-[80%] items-start justify-start">Listado de productos con descuneto del</h2>
+                <h2 className="w-[80%] items-start justify-start">Listado de productos con descuento de</h2>
                 <div className="w-[90%] h-auto mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    
+
                     {currentItems.map((product, index) => (
-                        <ProductoCompOferta 
+                        <ProductoCompOferta
                             key={product.referencia} // Usar una referencia única
                             imagen={product.imagen}
                             nombre={product.Modelo.nombre}
