@@ -23,7 +23,7 @@ export default function Inicio(){
             <div className="flex flex-col items-center justify-center mb-[100px]">
                 <h1 className="w-[80%] text-3xl font-bold">OFERTAS EN CATÁLOGO</h1>
                 <ProductosOfertados />
-                <a className="text-[#EB4F3E] font-bold text-lg text-right w-[80%] mt-3" href="">Ver más {">"}</a>
+                <a className="text-[#EB4F3E] font-bold text-lg text-right w-[80%] mt-3" href="/CatalogoDeProductosOferta">Ver más {">"}</a>
             </div>
         </div>
     </TemplateUser>
