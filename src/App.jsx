@@ -33,6 +33,7 @@ import CrearOfertaProducto from "./components/CrearOfertaProductos.jsx";
 import PaginacionAdmin from "./components/VerProductosAdmin.jsx";
 import PaginacionMAdmin from "./components/VerModelosAdmin.jsx";
 import ProductoPorOferta from "./components/ProductoPorOferta.jsx";
+import CatalogoDeProductosCategoria from "./components/ListarProductosPorCategoria.jsx";
 import OffersPage from "./components/OffersPage.jsx";
 
 const productos = [
@@ -81,6 +82,7 @@ function App() {
           <Route path="/CrearProducto" element={<CrearProducto />} />
           <Route path="/CrearOferta" element={<CrearOferta />} />
           <Route path="/EditarOferta" element={<EditarOferta />} />
+          <Route path="/Productos/Categoria/" element={<ProductosPorCategoria />} />
           <Route path="/ListadoDeCategorias" element={<ProductosPorCategoria></ProductosPorCategoria>} />
           <Route path="/VerOfertas" element={<VerOfertas />} />
           <Route path="/CatalogoDeProductos" element={<CatalogoDeProductos />} />
@@ -90,6 +92,8 @@ function App() {
           <Route path="/VerProductos" element={<PaginacionAdmin />} />
           <Route path="/VerModelos" element={<PaginacionMAdmin />} />
           <Route path="/ProductoPorOferta" element={<ProductoPorOferta />} />
+          <Route path="/ProductoPorOferta" element={<ProductoPorOferta />} />
+          <Route path="/categoria/:id" element={<CatalogoDeProductosCategoria />} />
           <Route path="/OffersPage" element={<OffersPage />} />
         </Routes>
       </div>

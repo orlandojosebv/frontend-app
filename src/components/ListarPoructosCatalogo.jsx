@@ -8,13 +8,13 @@ function Paginacion(){
 
     const [productos, setProductos] = useState([])
 
-    useEffect(
+    useEffect( 
         ()=>{
-            const rodrigoLindo = async ()=>{
+            const productosCATALOGO = async ()=>{
                 setProductos(await getProducts())
                 console.log(await getProducts())
             }
-            rodrigoLindo()
+            productosCATALOGO()
         },[]
     )
 
@@ -34,7 +34,7 @@ function Paginacion(){
                 {currentItems.map((product, index) => (
                     <ProductoCard
                         key={index}
-                        image={product.image}
+                        image={product.fotos[0].url}
                         categoryName={product.Modelo.Categorium.nombre}
                         productName={product.Modelo.nombre}
                         price={product.precio}

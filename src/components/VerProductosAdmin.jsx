@@ -1,7 +1,7 @@
 import TemplateAdmin from './TemplateAdmin';
 import ProductoComp from './ProductoComp';
 import { useState, useEffect } from 'react';
-import { getProductos } from '../services/InventarioService';
+import { getProductos, deleteProducto } from '../services/InventarioService';
 import useUser from "../hooks/useUser";
 import AccesoDenegado from './AccesoDenegado';
 
@@ -10,7 +10,7 @@ const ITEMS_PER_PAGE = 6;
 function PaginacionAdmin() {
     const [productos, setProductos] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const { user } = useUser();
+    const { user, token } = useUser();  // Asegúrate de obtener el token
     
     useEffect(() => {
         getProductos().then(data => {
@@ -32,29 +32,38 @@ function PaginacionAdmin() {
         setCurrentPage(page);
     };
 
+    const handleDelete = async (id) => {
+        const response = await deleteProducto(id);
+        if (response) {
+            setProductos(productos.filter(product => product.id !== id));
+        } else {
+            console.error('Error al eliminar el producto');
+        }
+    };
+
     const currentItems = productos.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
     if (user?.id_rol === 0) {
-        // retorna la pagina de no autorizado
-        return <AccesoDenegado></AccesoDenegado>
-      }
+        return <AccesoDenegado />;
+    }
 
     return (
         <TemplateAdmin>
             <div className="w-full flex flex-col justify-center items-center">
                 <div className="w-full mx-auto flex items-center justify-center flex-col">
                     <h2 className="w-[80%] items-start justify-start">Listado de productos</h2>
-                    {currentItems.map((product, index) => (
+                    {currentItems.map((product) => (
                         <ProductoComp 
-                            key={product.referencia} // Usar una referencia única
-                            imagen={product.imagen}
+                            key={product.id} // Usar una referencia única
+                            imagen={product.fotos && product.fotos[0] ? product.fotos[0].url : ""}
                             nombre={product.Modelo.nombre}
                             referencia={product.id}
                             cantidad={product.cantidadDisponible}
                             tamano={product.tamanio}
                             categoria={product.Modelo.Categorium.nombre}
-                            material={product.material}
+                            material={product.Modelo.Materials[0].nombre}
                             precio={product.precio}
+                            onDelete={() => handleDelete(product.id)}
                         />
                     ))}
                 </div>

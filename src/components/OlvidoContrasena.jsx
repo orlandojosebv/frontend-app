@@ -25,7 +25,7 @@ const OlvidoContrasena = () => {
 
   return (
     <TemplateUser>
-      <div className="olvido-contrasena-container">
+      <div className="olvido-contrasena-container mb-24">
         <h2>¿Olvidó su contraseña?</h2>
         <p>Ingresa un correo para restablecer tu contraseña.</p>
         <p>Accede a tu perfil y cambia tu contraseña desde ahí.</p>
