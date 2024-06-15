@@ -35,6 +35,7 @@ import PaginacionMAdmin from "./components/VerModelosAdmin.jsx";
 import ProductoPorOferta from "./components/ProductoPorOferta.jsx";
 import CatalogoDeProductosCategoria from "./components/ListarProductosPorCategoria.jsx";
 import CatalogoDeProductosOferta from "./components/CatalogoDeProductosOferta.jsx";
+import OffersPage from "./components/OffersPage.jsx";
 
 const productos = [
   {
@@ -55,7 +56,7 @@ const productos = [
 
 function App() {
   return (
-    <Router> 
+    <Router>
       <div className="app-container">
         <Routes>
           <Route path="/LoginRegistro" element={<LoginRegistro />} />
@@ -82,7 +83,8 @@ function App() {
           <Route path="/CrearProducto" element={<CrearProducto />} />
           <Route path="/CrearOferta" element={<CrearOferta />} />
           <Route path="/EditarOferta" element={<EditarOferta />} />
-          <Route path="/Productos/Categoria/" element={<ProductosPorCategoria/>}/>
+          <Route path="/Productos/Categoria/" element={<ProductosPorCategoria />} />
+          <Route path="/ListadoDeCategorias" element={<ProductosPorCategoria></ProductosPorCategoria>} />
           <Route path="/VerOfertas" element={<VerOfertas />} />
           <Route path="/CatalogoDeProductos" element={<CatalogoDeProductos />} />
           <Route path="/CrearModelo" element={<CrearModelo />} />
@@ -94,6 +96,7 @@ function App() {
           <Route path="/ProductoPorOferta" element={<ProductoPorOferta />} />
           <Route path="/categoria/:id" element={<CatalogoDeProductosCategoria />} />
           <Route path="/CatalogoDeProductosOferta" element={<CatalogoDeProductosOferta />} />
+          <Route path="/OffersPage" element={<OffersPage />} />
         </Routes>
       </div>
     </Router>
