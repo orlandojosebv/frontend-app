@@ -77,6 +77,8 @@ const CrearEditarModelo = () => {
       imagenes.forEach((image) => {
         formData.append('imagenes', image);
       });
+      console.log(formData);
+      console.log(materials);
 
       const response = await crearModelo(formData);
 

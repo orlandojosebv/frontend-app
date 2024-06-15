@@ -190,3 +190,55 @@ export async function getProductos() {
       return null;
     }
   }
+
+  export async function deleteOferta(id_oferta,token) {
+    try {
+      const response = await fetch(`${API_URL}/ofertas/${id_oferta}`, { // Aquí va la URL para eliminar un usuario
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      });
+      const data = await response.json();
+      console.log(data); // Aquí puedes manejar la respuesta del backend
+      return data;
+    } catch (error) {
+      console.error('Error:', error);
+      return null;
+    }
+  }
+
+  export async function deleteModelo(id_modelo) {
+    try {
+      const response = await fetch(`${API_URL}/modelos/${id_modelo}`, { // Aquí va la URL para eliminar un usuario
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await response.json();
+      console.log(data); // Aquí puedes manejar la respuesta del backend
+      return data;
+    } catch (error) {
+      console.error('Error:', error);
+      return null;
+    }
+  }
+
+  export async function deleteProducto(id_producto) {
+    try {
+      const response = await fetch(`${API_URL}/productos/${id_producto}`, { // Aquí va la URL para eliminar un usuario
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await response.json();
+      console.log(data); // Aquí puedes manejar la respuesta del backend
+      return data;
+    } catch (error) {
+      console.error('Error:', error);
+      return null;
+    }
+  }

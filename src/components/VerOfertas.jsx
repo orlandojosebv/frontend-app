@@ -1,92 +1,74 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import viewIcon from '../../public/img/iconos/visualizar.png';  // Asegúrate de que este archivo exista
-import editIcon from '../../public/img/iconos/editar.png';  // Asegúrate de que este archivo exista
-import deleteIcon from '../../public/img/iconos/eliminar.png';  // Asegúrate de que este archivo exista
+import { getModelos } from '../services/InventarioService';
 import TemplateAdmin from './TemplateAdmin';
-import { getOfertas } from '../services/InventarioService';
 import useUser from "../hooks/useUser";
-import AccesoDenegado from './AccesoDenegado';
+import ModeloComp from './ModeloComp';
 
-const VerOfertas = () => {
-  const [ofertas, setOfertas] = useState([]);
-  const { user } = useUser();
+const ITEMS_PER_PAGE = 6;
+
+const VerModelosAdmin = () => {
+  const [modelos, setModelos] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const { token } = useUser();
 
   useEffect(() => {
-    getOfertas().then(data => {
-      if (data) {
-        setOfertas(data);
+    getModelos().then(data => {
+      if (data && Array.isArray(data)) {
+        setModelos(data);
       } else {
-        console.error('Error al obtener ofertas');
+        console.error('Data no es un array');
       }
     }).catch(error => {
-      console.error('Error al obtener ofertas:', error);
+      console.error('Error al obtener modelos:', error);
     });
   }, []);
 
-  const handleDelete = (id) => {
-    setOfertas(ofertas.filter(oferta => oferta.id !== id));
+  const totalPages = Math.ceil(modelos.length / ITEMS_PER_PAGE);
+
+  const handleClick = (page) => {
+    setCurrentPage(page);
   };
 
-  const navigate = useNavigate();
+  const handleDelete = (id) => {
+    setModelos(modelos.filter(modelo => modelo.id !== id));
+  };
 
-  if (user?.id_rol === 0) {
-    // retorna la pagina de no autorizado
-    return <AccesoDenegado></AccesoDenegado>
-  }
+  const currentItems = modelos.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
   return (
     <TemplateAdmin>
-      <div className="flex flex-col items-center mx-2 md:mx-10">
-        <h2 className="text-2xl font-bold mb-4">Ver Ofertas</h2>
-        <p className="text-gray-600 mb-6 text-center">Selecciona una oferta y mira qué productos están en ella.</p>
-        <div className="overflow-x-auto w-full">
-          <table className="table-auto bg-white shadow-md rounded-lg w-full">
-            <thead>
-              <tr>
-                <th className="px-4 py-2 border">ID</th>
-                <th className="px-4 py-2 border">Descripción</th>
-                <th className="px-2 py-2 border">Porcentaje</th> {/* Ajuste del ancho de la columna */}
-                <th className="px-4 py-2 border">Fecha de Inicio</th>
-                <th className="px-4 py-2 border">Fecha de Fin</th>
-                <th className="px-4 py-2 border"></th>
-                <th className="px-4 py-2 border"></th>
-                <th className="px-4 py-2 border"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {ofertas.map((oferta) => (
-                <tr key={oferta.id} className="hover:bg-gray-100">
-                  <td className="px-4 py-2 border">{oferta.id}</td>
-                  <td className="px-4 py-2 border">{oferta.descripcion}</td>
-                  <td className="px-2 py-2 border text-center">{oferta.descuento}%</td> {/* Ajuste del ancho de la columna */}
-                  <td className="px-4 py-2 border">{oferta.fechaInicio}</td>
-                  <td className="px-4 py-2 border">{oferta.fechaFin}</td>
-                  <td className="px-4 py-2 border text-center">
-                    <img src={viewIcon} alt="View" className="h-6 w-6 mx-auto cursor-pointer" />
-                  </td>
-                  <td className="px-4 py-2 border text-center">
-                    <Link to="/EditarOferta">
-                      <img src={editIcon} alt="Edit" className="h-6 w-6 mx-auto cursor-pointer" />
-                    </Link>
-                  </td>
-                  <td className="px-4 py-2 border text-center">
-                    <img
-                      src={deleteIcon}
-                      alt="Delete"
-                      className="h-6 w-6 mx-auto cursor-pointer"
-                      onClick={() => handleDelete(oferta.id)}
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      <div className="w-full flex flex-col justify-center items-center">
+        <div className="w-full mx-auto flex items-center justify-center flex-col">
+          <h2 className="w-[80%] items-start justify-start">Listado de modelos</h2>
+          {currentItems.map((modelo) => (
+            <ModeloComp
+              key={modelo.id}
+              id={modelo.id}
+              imagen={modelo.Fotos && modelo.Fotos[0] ? modelo.Fotos[0].url : ''}
+              nombre={modelo.nombre}
+              referencia={modelo.referencia}
+              tamano={modelo.tamano}
+              categoria={modelo.categoria}
+              material={modelo.material}
+              token={token}
+              onDelete={handleDelete}
+            />
+          ))}
         </div>
-        <button className="mt-6 px-4 py-2 bg-black text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-black">Mostrar oferta por producto</button>
+        <div className="mt-4 flex justify-center">
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index}
+              onClick={() => handleClick(index + 1)}
+              className={`mx-1 px-3 py-1 border rounded-1 ${currentPage === index + 1 ? 'bg-[#F5855B] text-white' : 'bg-[#F5BE90]'}`}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
       </div>
     </TemplateAdmin>
   );
-};
+}
 
-export default VerOfertas;
+export default VerModelosAdmin;
