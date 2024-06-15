@@ -10,11 +10,17 @@ const VerAdministradores = () => {
   const {user,token } = useUser();
   const [administradores, setAdministradores] = useState([]);
 
-  const darDeBaja = (correo) => {
-    setAdministradores(administradores.filter(administrador => administrador.correo !== correo));
+  const darDeBaja = async (correo) => {
+    const response = await deleteUser(correo, token);
+    if (response) {
+      setAdministradores(administradores.filter(administrador => administrador.correo !== correo));
+      console.log('Usuario eliminado:', response);
+    } else {
+      console.error('Error al eliminar el usuario');
+    }
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     if (!token) return;
  
     getAdmins(token).then(data => {

@@ -5,7 +5,7 @@ const categorias = [
     {id: 4, name: 'Accesorios'}, 
     {id: 5, name: 'Ramos'}
 ];
-
+ 
 export default function Categorias(){
     return<>
     <div className="w-[25%] mt-5">
