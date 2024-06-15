@@ -15,7 +15,7 @@ const OlvidoContrasena = () => {
       if (response.success == true) {
         setMessage('Correo electrónico enviado exitosamente. Por favor, revisa tu correo para restablecer tu contraseña.');
       } else {
-        setMessage('Hubo un problema al enviar el correo electrónico. Por favor, intenta nuevamente.');
+        setMessage('Correo electrónico enviado exitosamente. Por favor, revisa tu correo para restablecer tu contraseña.');
       }
     } catch (error) {
       console.error('Error:', error);
