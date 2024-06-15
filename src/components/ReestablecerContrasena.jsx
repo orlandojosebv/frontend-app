@@ -35,7 +35,7 @@ const ReestablecerContrasena = () => {
 
   return (
     <TemplateUser>
-      <div className="reestablecer-contrasena-container">
+      <div className="reestablecer-contrasena-container mb-12">
         <h2>Reestablecer Contraseña</h2>
         <form onSubmit={handleSubmit} className="mb-[10%]">
           <div className="form-group">
