@@ -43,8 +43,8 @@ const Header = () => {
       <nav className="flex w-full items-center justify-center">
         <ul className='flex flex-row w-[75%] gap-20'>
           <li><a href="/CatalogoDeProductos">Catálogo</a></li>
-          <li><a href="/offers">Ofertas</a></li>
-          <li><a href="/categories">Categorías</a></li>
+          <li><a href="/CatalogoDeProductosOferta">Ofertas</a></li>
+          <li><a href="/CatalogoDeProductos">Categorías</a></li>
         </ul>
       </nav>
       <hr className="border-t-2 border-gray-300 w-full mt-2" />
