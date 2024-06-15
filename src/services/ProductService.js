@@ -8,7 +8,7 @@ export async function getProducts(){
             headers: {
                 'Content-Type': 'aplication/json'
             }
-        });  
+        });   
         const data = await result.data;
         return data
     }catch(error){

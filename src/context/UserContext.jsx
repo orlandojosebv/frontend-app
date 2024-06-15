@@ -34,7 +34,7 @@ import {
   
     const value = useMemo(() => {
       return {
-        user,
+        user, 
         token,
         setUser,
         loading,

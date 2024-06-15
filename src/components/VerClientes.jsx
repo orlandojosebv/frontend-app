@@ -37,7 +37,7 @@ const VerClientes = () => {
     // retorna la pagina de no autorizado
     return <AccesoDenegado />
   }
-
+ 
   return (
     <TemplateAdmin>
       <div>
@@ -56,11 +56,11 @@ const VerClientes = () => {
             {clientes.map((cliente) => (
               <tr key={cliente.id}>
                 <td>{cliente.nombre}</td>
-                <td>{cliente.apellido}</td>
+                <td>{cliente.apellido}</td> 
                 <td>{cliente.correo}</td>
                 <td>{cliente.telefono}</td>
                 <td>
-                  <button onClick={() => darDeBaja(cliente.id)}>Dar de baja</button>
+                  <button onClick={() => darDeBaja(cliente.correo)}>Dar de baja</button>
                 </td>
               </tr>
             ))}

@@ -1,7 +1,7 @@
 import { useEffect,useState } from 'react';
 import '../assets/styles/VerAdministradores.css';
 import TemplateAdmin from './TemplateAdmin';
-import { getUsers, getAdmins} from "../services/UserService";
+import { getAdmins, deleteUser} from "../services/UserService";
 import useUser from "../hooks/useUser";
 import AccesoDenegado from './AccesoDenegado';
 
@@ -16,7 +16,7 @@ const VerAdministradores = () => {
 
   useEffect(() => {
     if (!token) return;
-
+ 
     getAdmins(token).then(data => {
       // Filtrar los clientes con id_rol !== 0
       const clientesFiltrados = data.filter(cliente => cliente.id_rol !== 0);
@@ -51,7 +51,7 @@ const VerAdministradores = () => {
                   <td>{admin.apellido}</td>
                   <td>{admin.correo}</td>
                   <td>{admin.telefono}</td>
-                  <td><button onClick={() => darDeBaja(admin.id)}>Dar de baja</button></td>
+                  <td><button onClick={() => darDeBaja(admin.correo)}>Dar de baja</button></td>
                 </tr>
               ))}
             </tbody>

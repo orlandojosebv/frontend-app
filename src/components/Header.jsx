@@ -18,7 +18,7 @@ const Header = () => {
     <header className="h-fit w-full flex flex-col">
       <div className='flex items-center justify-center'>
         <div className="flex flex-row w-[80%] items-center justify-between">
-          <a href="/Inicio"><img src={logo} alt="Logo" className="h-20 w-auto" /></a>
+          <a href="/"><img src={logo} alt="Logo" className="h-20 w-auto" /></a>
           <div className="flex flex-row items-center justify-between space-x-4">
             <div className="flex flex-row items-center space-x-2">
               <img src={userIcon} alt="User" className="h-10 w-auto" />
