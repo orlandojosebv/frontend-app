@@ -47,7 +47,7 @@ function PaginacionAdmin() {
                     {currentItems.map((product, index) => (
                         <ProductoComp 
                             key={product.referencia} // Usar una referencia única
-                            imagen={product.imagen}
+                            imagen={product.fotos && product.fotos[0] ? product.fotos[0].url : ""}
                             nombre={product.Modelo.nombre}
                             referencia={product.id}
                             cantidad={product.cantidadDisponible}

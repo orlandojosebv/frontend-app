@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getMaterial, getCategoria, addMaterial } from '../services/InventarioService';
+import { getMaterial, getCategoria, addMaterial ,crearModelo} from '../services/InventarioService';
 
 const CrearEditarModelo = () => {
   const [nombre, setNombre] = useState('');
-  const [tamano, setTamano] = useState('');
-  const [categoria, setCategoria] = useState('');
+  const [tamanio, setTamano] = useState('');
+  const [id_categoria, setCategoria] = useState('');
   const [materials, setMaterials] = useState([{ material: '', grosor: '' }]);
-  const [images, setImages] = useState([]);
+  const [imagenes, setImages] = useState([]);
   const [errors, setErrors] = useState({});
   const [allMaterials, setAllMaterials] = useState([]);
   const [categorias, setCategorias] = useState([]);
@@ -33,11 +33,11 @@ const CrearEditarModelo = () => {
       formErrors.nombre = 'El nombre es obligatorio';
       isValid = false;
     }
-    if (!tamano || tamano <= 0 || !Number.isInteger(Number(tamano))) {
+    if (!tamanio || tamanio <= 0 || !Number.isInteger(Number(tamanio))) {
       formErrors.tamano = 'El tamaño debe ser un número entero positivo';
       isValid = false;
     }
-    if (!categoria) {
+    if (!id_categoria) {
       formErrors.categoria = 'La categoría es obligatoria';
       isValid = false;
     }
@@ -51,11 +51,11 @@ const CrearEditarModelo = () => {
         isValid = false;
       }
     });
-    if (images.length === 0) {
-      formErrors.images = 'Debe subir al menos una imagen';
+    if (imagenes.length === 0) {
+      formErrors.imagenes = 'Debe subir al menos una imagen';
       isValid = false;
-    } else if (images.length > 5) {
-      formErrors.images = 'No puede subir más de 5 imágenes';
+    } else if (imagenes.length > 5) {
+      formErrors.imagenes = 'No puede subir más de 5 imágenes';
       isValid = false;
     }
 
@@ -63,19 +63,37 @@ const CrearEditarModelo = () => {
     return isValid;
   };
 
+  const handleSave = async (event) => {
+    event.preventDefault();
+
+    if (validateForm()) {
+      const formData = new FormData();
+      formData.append('nombre', nombre);
+      formData.append('tamanio', tamanio);
+      formData.append('id_categoria', id_categoria);
+      materials.forEach((item, index) => {
+        formData.append(`materiales[${index}]`, item.material);
+      });
+      imagenes.forEach((image) => {
+        formData.append('imagenes', image);
+      });
+
+      const response = await crearModelo(formData);
+
+      if (response) {
+        console.log('Modelo guardado:', response);
+        //navigate('/ruta-de-redireccionamiento'); // Reemplaza con la ruta a la que quieres redirigir después de guardar
+      } else {
+        console.error('Error al guardar el modelo');
+      }
+    }
+  };
+
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
     setImages((prevImages) => [...prevImages, ...files].slice(0, 5));
   };
 
-  const handleSave = (event) => {
-    event.preventDefault();
-
-    if (validateForm()) {
-      // Lógica para guardar el producto
-      console.log('Producto guardado:', { nombre, tamano, categoria, materials, images });
-    }
-  };
 
   const handleCancel = () => {
     navigate(-1);  // Navega a la página anterior
@@ -122,12 +140,12 @@ const CrearEditarModelo = () => {
           {errors.nombre && <span className="text-red-500 text-sm">{errors.nombre}</span>}
         </div>
         <div className="mb-4">
-          <label htmlFor="tamano" className="block text-gray-700">Tamaño de referencia del producto</label>
+          <label htmlFor="tamano" className="block text-gray-700">Tamaño de referencia de la foto del modelo</label>
           <div>
             <input
               type="text"
               id="tamano"
-              value={tamano}
+              value={tamanio}
               onChange={(e) => setTamano(e.target.value)}
               className="mt-1 p-2 w-[30%] border rounded-md focus:ring focus:ring-indigo-200"
             />
@@ -139,7 +157,7 @@ const CrearEditarModelo = () => {
           <label htmlFor="categoria" className="block text-gray-700">Categoría</label>
           <select
             id="categoria"
-            value={categoria}
+            value={id_categoria}
             onChange={(e) => setCategoria(e.target.value)}
             className="mt-1 p-2 w-[40%] border rounded-md focus:ring focus:ring-indigo-200"
           >
@@ -255,9 +273,9 @@ const CrearEditarModelo = () => {
           </div>
           {errors.images && <span className="text-red-500 text-sm">{errors.images}</span>}
           <div className="mt-4">
-            {images.length > 0 && (
+            {imagenes.length > 0 && (
               <ul>
-                {images.map((image, index) => (
+                {imagenes.map((image, index) => (
                   <li key={index} className="text-gray-700">{image.name}</li>
                 ))}
               </ul>

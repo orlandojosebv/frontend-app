@@ -40,10 +40,7 @@ export async function crearModelo(data) {
     try {
         const response = await fetch(`${API_URL}/modelos/`, { //Aquí iría la dirección del servidor donde se enviará la petición.
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
+          body:data,
         });
         const dataModelo = await response.json();
         console.log(dataModelo); // Aquí puedes manejar la respuesta del backend
@@ -176,4 +173,20 @@ export async function getProductos() {
       }
   }
 
-  
+  export async function deleteCategoria(id_categoria,token) {
+    try {
+      const response = await fetch(`${API_URL}/categorias/${id_categoria}`, { // Aquí va la URL para eliminar un usuario
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      });
+      const data = await response.json();
+      console.log(data); // Aquí puedes manejar la respuesta del backend
+      return data;
+    } catch (error) {
+      console.error('Error:', error);
+      return null;
+    }
+  }
