@@ -10,10 +10,10 @@ const VerCategorias = () => {
 
   useEffect(() => {
     getCategoria().then(data => {
-      if (data) {
+      if (data) { 
         setCategorias(data);
       }
-    });
+    }); 
   }, []);
 
   const handleDelete = (id) => {

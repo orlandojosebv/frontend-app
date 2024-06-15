@@ -14,7 +14,7 @@ export default function CatalogoDeProductos(){
                 <div className="w-[85%] flex items-center justify-center">
                     <Paginacion />
                 </div>
-            </div> 
+            </div>  
         </div> 
     </TemplateUser>
     </>

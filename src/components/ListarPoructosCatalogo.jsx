@@ -8,13 +8,13 @@ function Paginacion(){
 
     const [productos, setProductos] = useState([])
 
-    useEffect(
+    useEffect( 
         ()=>{
-            const rodrigoLindo = async ()=>{
+            const productosCATALOGO = async ()=>{
                 setProductos(await getProducts())
                 console.log(await getProducts())
             }
-            rodrigoLindo()
+            productosCATALOGO()
         },[]
     )
 
