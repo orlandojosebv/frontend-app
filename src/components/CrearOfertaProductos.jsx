@@ -27,7 +27,7 @@ console.log(productos)
         {productos.map((product, index) => (
           <ProductoParaOferta 
             key={product.id} // Utiliza un identificador único si está disponible
-            imagen={product.imagen || ''} // Asegúrate de que la propiedad imagen exista
+            imagen={product.fotos[0].url} // Asegúrate de que la propiedad imagen exista
             nombre={product.Modelo.nombre}
             referencia={product.id}
             cantidad={product.cantidadDisponible}

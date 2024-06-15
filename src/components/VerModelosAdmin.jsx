@@ -39,10 +39,10 @@ function PaginacionMAdmin() {
                     {currentItems.map((product, index) => (
                         <ModeloComp 
                             key={index}
-                            imagen={product.imagen}
+                            imagen={product.Fotos[0].url}
                             nombre={product.nombre}
-                            referencia={product.referencia}
-                            tamano={product.tamano}
+                            referencia={product.id}
+                            tamano={product.tamanio}
                             categoria={product.categoria}
                             material={product.material}
                         />
