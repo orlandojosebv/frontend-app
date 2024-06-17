@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from './producto/ProductCard';
-import TemplateUser from '../TemplateUser';
+import TemplateUser from '../cliente/TemplateUser';
 
 const ITEMS_PER_PAGE = 6;
 

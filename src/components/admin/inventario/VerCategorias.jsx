@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import editIcon from '../../public/img/iconos/editar.png';  // Asegúrate de que este archivo exista
-import deleteIcon from '../../public/img/iconos/eliminar.png';  // Asegúrate de que este archivo exista
-import TemplateAdmin from './TemplateAdmin';
+import editIcon from '../../../../public/img/iconos/editar.png';  // Asegúrate de que este archivo exista
+import deleteIcon from '../../../../public/img/iconos/eliminar.png';  // Asegúrate de que este archivo exista
+import TemplateAdmin from '../TemplateAdmin';
 import { getCategoria, deleteCategoria } from '../../../services/InventarioService';
 import useUser from '../../../hooks/useUser'; // Importa tu hook de usuario si lo tienes
 

@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import TemplateAdmin from '../TemplateAdmin';
-import ProductoParaOferta from '../../ProductoParaOferta';
+import ProductoParaOferta from '../../cliente/producto/ProductoPorOferta';
+
 import { getProductos } from '../../../services/InventarioService';
 
 const CrearOfertaProducto = () => {

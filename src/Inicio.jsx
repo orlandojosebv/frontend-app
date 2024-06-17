@@ -1,7 +1,7 @@
-import Caneca from "./components/Caneca";
-import ListaProductos from "./components/ListaProductos";
-import ProductosOfertados from "./components/ProductosOfertados";
-import TemplateUser from "./components/TemplateUser";
+import Caneca from "./components/cliente/producto/Caneca";
+import ListaProductos from "./components/cliente/producto/ListaProductos";
+import ProductosOfertados from "./components/cliente/producto/ProductosOfertados";
+import TemplateUser from "./components/cliente/TemplateUser";
 import imagen_inicio from '/public/img/imagen_inicio.jpg'; 
  
 export default function Inicio(){

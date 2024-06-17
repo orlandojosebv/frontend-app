@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getModelos } from '../../../services/InventarioService';
-import TemplateAdmin from './TemplateAdmin';
+import TemplateAdmin from '../TemplateAdmin';
 import useUser from "../../../hooks/useUser";
 import ModeloComp from './ModeloComp';
 

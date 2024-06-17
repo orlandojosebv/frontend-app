@@ -1,7 +1,7 @@
 import ImagenProductoCompra from './ImagenProductoCompra';
-import Registro from '../../Registro';
-import '../assets/styles/ComprarProductoRegistro.css';
-import TemplateComprarProducto from '../../TemplateComprarProducto';
+import Registro from '../login/Registro';
+import '../../../assets/styles/ComprarProductoRegistro.css';
+import TemplateComprarProducto from '../comprarProducto/TemplateComprarProducto';
 
 const productos = [
   {

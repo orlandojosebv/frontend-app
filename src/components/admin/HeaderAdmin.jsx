@@ -1,8 +1,9 @@
-import logo from '../../public/img/iconos/logo-icon.png';  // Asegúrate de que este archivo exista
-import userIcon from '../../public/img/iconos/usuario-icon.svg';  // Asegúrate de que este archivo exista
-import logoutIcon from '../../public/img/iconos/salidaHeader.png';  // Asegúrate de que este archivo exista
+import logo from '../../../public/img/iconos/logo-icon.png';  // Asegúrate de que este archivo exista
+import userIcon from '../../../public/img/iconos/usuario-icon.svg';  // Asegúrate de que este archivo exista
+import logoutIcon from '../../../public/img/iconos/salidaHeader.png';  // Asegúrate de que este archivo exista
 import { Link, useNavigate } from 'react-router-dom';
-import useUser from '../hooks/useUser';
+import useUser from '../../hooks/useUser';
+
 
 const HeaderAdmin = ({ toggleSideBar }) => {
   const { user, logout } = useUser();

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import '../assets/styles/ReestablecerContrasena.css';
-import TemplateUser from '../../TemplateUser';
+import '../../../assets/styles/ReestablecerContrasena.css';
+import TemplateUser from '../TemplateUser';
 import { ResetPassword } from '../../../services/UserService';
 
 const ReestablecerContrasena = () => {

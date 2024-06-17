@@ -1,5 +1,5 @@
 import Categorias from "../categoria/Categorias";
-import PPP from "../../PPP";
+import PPP from "../producto/PPP";
 import TemplateUser from "../TemplateUser";
  
 export default function CatalogoDeProductosOferta(){

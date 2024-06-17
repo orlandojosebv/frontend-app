@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import '../assets/styles/PagoExitoso.css';
-import TemplateUser from '../../TemplateUser';
+import '../../../assets/styles/PagoExitoso.css';
+import TemplateUser from '../../cliente/TemplateUser';
 
 const PagoExitoso = () => {
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import '../assets/styles/VerClientes.css';
+import '../../assets/styles/VerClientes.css';
 import HeaderAdmin from './HeaderAdmin.jsx';
 import Sidebar from './SideBar.jsx';  // Asegúrate de que la ruta sea correcta
 

@@ -1,9 +1,9 @@
 import { useEffect,useState } from 'react';
-import '../assets/styles/VerAdministradores.css';
-import TemplateAdmin from './TemplateAdmin';
+import '../../../assets/styles/VerAdministradores.css';
+import TemplateAdmin from '../TemplateAdmin';
 import { getAdmins, deleteUser} from "../../../services/UserService";
 import useUser from "../../../hooks/useUser";
-import AccesoDenegado from './AccesoDenegado';
+import AccesoDenegado from '../AccesoDenegado';
 
 
 const VerAdministradores = () => {

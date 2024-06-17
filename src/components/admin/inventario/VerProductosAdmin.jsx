@@ -1,9 +1,9 @@
-import TemplateAdmin from './TemplateAdmin';
+import TemplateAdmin from '../TemplateAdmin';
 import ProductoComp from '../../cliente/producto/ProductoComp';
 import { useState, useEffect } from 'react';
 import { getProductos, deleteProducto } from '../../../services/InventarioService';
 import useUser from "../../../hooks/useUser";
-import AccesoDenegado from './AccesoDenegado';
+import AccesoDenegado from '../AccesoDenegado';
 
 const ITEMS_PER_PAGE = 6;
 

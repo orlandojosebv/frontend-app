@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import '../assets/styles/VerClientes.css';
+import '../../../assets/styles/VerClientes.css';
 import TemplateAdmin from '../TemplateAdmin';
 import { getUsers,deleteUser} from "../../../services/UserService";
 import useUser from "../../../hooks/useUser";

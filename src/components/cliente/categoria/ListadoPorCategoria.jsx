@@ -1,5 +1,6 @@
 import Paginacion from "../producto/ListarProductosCatalogo";
-import ProductosDeCategoria from "../../ProductosPorCategoria";
+import ProductosDeCategoria from "../producto/ProductosPorCategoria";
+
 import TemplateUser from "../TemplateUser";
  
 export default function ProductosPorCategoria(){

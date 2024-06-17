@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getModelos } from '../../../services/InventarioService';
 import TemplateAdmin from '../TemplateAdmin';
 import useUser from "../../../hooks/useUser";
-import ModeloComp from './ModeloComp';
+import ModeloComp from '../inventario/ModeloComp';
 
 const ITEMS_PER_PAGE = 6;
 

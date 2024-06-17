@@ -1,7 +1,7 @@
-import logo from '../../public/img/iconos/logo-icon.png';  // Ruta correcta
-import userIcon from '../../public/img/iconos/usuario-icon.svg';  // Ruta correcta
-import cartIcon from '../../public/img/iconos/carrito-icon.png';  // Ruta correcta
-import logoutIcon from '../../public/img/iconos/salidaHeader.png';  // Ruta correcta
+import logo from '../../../public/img/iconos/logo-icon.png';  // Ruta correcta
+import userIcon from '../../../public/img/iconos/usuario-icon.svg';  // Ruta correcta
+import cartIcon from '../../../public/img/iconos/carrito-icon.png';  // Ruta correcta
+import logoutIcon from '../../../public/img/iconos/salidaHeader.png';  // Ruta correcta
 import { Link, useNavigate } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
 

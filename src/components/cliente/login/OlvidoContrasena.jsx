@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import '../assets/styles/OlvidoContrasena.css';
-import TemplateUser from '../../TemplateUser';
+import '../../../assets/styles/OlvidoContrasena.css';
+import TemplateUser from '../TemplateUser';
 import { ForgotPassword } from '../../../services/UserService';
 
 const OlvidoContrasena = () => {

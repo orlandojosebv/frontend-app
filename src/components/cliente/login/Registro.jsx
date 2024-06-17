@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import '../assets/styles/Registro.css';
-import { registro } from '../services/UserService';
+import '../../../assets/styles/Registro.css';
+import { registro } from '../../../services/UserService';
 
 const Registro = () => {
   const [email, setEmail] = useState('');

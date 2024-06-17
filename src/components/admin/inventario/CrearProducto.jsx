@@ -1,7 +1,7 @@
 import CrearEditarProducto from './CrearEditarProducto';
 import TemplateAdmin from '../TemplateAdmin';
 import useUser from "../../../hooks/useUser";
-import AccesoDenegado from './AccesoDenegado';
+import AccesoDenegado from '../AccesoDenegado';
 
 
 

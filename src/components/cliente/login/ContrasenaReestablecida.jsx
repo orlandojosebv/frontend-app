@@ -1,6 +1,6 @@
-import "../assets/styles/ContrasenaReestablecida.css";
+import "../../../assets/styles/ContrasenaReestablecida.css";
 import { Link } from 'react-router-dom';
-import TemplateUser from '../../TemplateUser';
+import TemplateUser from '../TemplateUser';
 
 const ContrasenaReestablecida = () => {
   return (

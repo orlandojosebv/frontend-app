@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ImagenProductoCompra from './ImagenProductoCompra';
-import '../assets/styles/ComprarProductoUsuarioRegistrado.css';
+import '../../../assets/styles/ComprarProductoUsuarioRegistrado.css';
 import TemplateComprarProducto from './TemplateComprarProducto';
 
 const ComprarProductoUsuarioRegistrado = ({ productos }) => {

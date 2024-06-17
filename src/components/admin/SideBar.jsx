@@ -1,20 +1,19 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import "../assets/styles/SideBar.css";
-import clienteIcon from "../../public/img/iconos/cliente-icon.png";
-import verClienteIcon from "../../public/img/iconos/verClienteAdmin-icon.png";
-import adminIcon from "../../public/img/iconos/admin-icon.png";
-import verIcon from "../../public/img/iconos/ver-icon.png";
-import crearProductoIcon from "../../public/img/iconos/crearProducto-icon.png";
-import crearCategoriaIcon from "../../public/img/iconos/crearCategoria-icon.png";
-import crearModelo from "../../public/img/iconos/crearModelo-icon.png";
-import ofertasIcon from "../../public/img/iconos/ofertas-icon.png";
-import crearOfertaIcon from "../../public/img/iconos/crearOferta-icon.png";
-// import estadisticaLogisticaIcon from "../../public/img/iconos/estadisticaLogistica-icon.png";
-// import entregasIcon from "../../public/img/iconos/entregas-icon.png";
-// import devolucionIcon from "../../public/img/iconos/devoluciones-icon.png";
-import inventarioIcon from "../../public/img/iconos/inventario-icon.png";
+import clienteIcon from "../../../public/img/iconos/cliente-icon.png";
+import verClienteIcon from "../../../public/img/iconos/verClienteAdmin-icon.png";
+import adminIcon from "../../../public/img/iconos/admin-icon.png";
+import verIcon from "../../../public/img/iconos/ver-icon.png";
+import crearProductoIcon from "../../../public/img/iconos/crearProducto-icon.png";
+import crearCategoriaIcon from "../../../public/img/iconos/crearCategoria-icon.png";
+import crearModelo from "../../../public/img/iconos/crearModelo-icon.png";
+import ofertasIcon from "../../../public/img/iconos/ofertas-icon.png";
+import crearOfertaIcon from "../../../public/img/iconos/crearOferta-icon.png";
+import estadisticaLogisticaIcon from "../../../public/img/iconos/estadisticaLogistica-icon.png";
+import entregasIcon from "../../../public/img/iconos/entregas-icon.png";
+import devolucionIcon from "../../../public/img/iconos/devoluciones-icon.png";
+import inventarioIcon from "../../../public/img/iconos/inventario-icon.png";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const SidebarItem = ({ icon, label, subItems }) => {

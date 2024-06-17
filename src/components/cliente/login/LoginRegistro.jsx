@@ -1,7 +1,7 @@
 import Login from './Login';
-import Registro from '../../Registro';
-import '../assets/styles/LoginRegistro.css';
-import TemplateUser from '../../TemplateUser';
+import Registro from './Registro';
+import '../../../assets/styles/LoginRegistro.css';
+import TemplateUser from '../TemplateUser';
 
 const LoginRegistro = () => {
   return (

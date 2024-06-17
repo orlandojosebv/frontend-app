@@ -1,7 +1,6 @@
-import React from 'react';
-import logo from '../../public/img/iconos/logo_lula_2.png';  // Asegúrate de que este archivo exista
-import logoutIcon from '../../public/img/iconos/salidaHeader.png';  // Asegúrate de que este archivo exista
-import '../assets/styles/HeaderPago.css';  // Asegúrate de que el archivo de estilos exista
+import logo from '../../../../public/img/iconos/logo_lula_2.png';  // Asegúrate de que este archivo exista
+import logoutIcon from '../../../../public/img/iconos/salidaHeader.png';  // Asegúrate de que este archivo exista
+import '../../../assets/styles/HeaderPago.css';  // Asegúrate de que el archivo de estilos exista
 
 const HeaderPago = () => {
   return (
