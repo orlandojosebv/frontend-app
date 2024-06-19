@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getMaterial, getCategoria, addMaterial ,crearModelo} from '../../../services/InventarioService';
+import { getMaterial, getCategoria, addMaterial ,crearModelo, updateModelo} from '../../../services/InventarioService';
+import useUser from '../../../hooks/useUser'; 
+
 
 const CrearEditarModelo = () => {
   const [nombre, setNombre] = useState('');
@@ -14,6 +16,7 @@ const CrearEditarModelo = () => {
   const [newMaterial, setNewMaterial] = useState({ nombre: '', grosor: '' });
   const [showNewMaterialFields, setShowNewMaterialFields] = useState(false);
   const navigate = useNavigate();
+  const {token}=useUser();
 
   useEffect(() => {
     getMaterial().then(data => {

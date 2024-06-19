@@ -78,7 +78,7 @@ function App() {
           <Route path="/MostrarProducto" element={<MostrarProducto />} />
           <Route path="/RegistrarAdministrador" element={<RegistrarAdministrador />} />
           <Route path="/CrearCategoria" element={<CrearCategoria />} />
-          <Route path="/EditarCategoria" element={<EditarCategoria />} />
+          <Route path="/EditarCategoria/:id" element={<EditarCategoria />} />
           <Route path="/VerCategorias" element={<VerCategorias />} />
           <Route path="/CrearProducto" element={<CrearProducto />} />
           <Route path="/CrearOferta" element={<CrearOferta />} />
@@ -88,7 +88,7 @@ function App() {
           <Route path="/VerOfertas" element={<VerOfertas />} />
           <Route path="/CatalogoDeProductos" element={<CatalogoDeProductos />} />
           <Route path="/CrearModelo" element={<CrearModelo />} />
-          <Route path="/EditarModelo" element={<EditarModelo />} />
+          <Route path="/EditarModelo/:id" element={<EditarModelo />} />
           <Route path="/CrearOfertaProducto" element={<CrearOfertaProducto />} />
           <Route path="/VerProductos" element={<PaginacionAdmin />} />
           <Route path="/VerModelos" element={<PaginacionMAdmin />} />
