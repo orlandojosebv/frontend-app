@@ -1,6 +1,7 @@
 import editar from "/img/iconos/editar.png";
 import eliminar from "/img/iconos/eliminar.png";
 import { deleteModelo } from '../../../services/InventarioService';
+import { Link } from "react-router-dom";
 
 export default function ModeloComp({ id, imagen, nombre, referencia, tamano, categoria, material, token, onDelete }) {
   const handleDelete = async () => {
@@ -65,7 +66,9 @@ export default function ModeloComp({ id, imagen, nombre, referencia, tamano, cat
           </table>
         </div>
         <div className="flex flex-col items-center h-[100%] justify-around">
-          <a href="/EditarModelo"><img src={editar} alt="Editar" className="h-10 cursor-pointer" /></a>
+          <Link to={`/EditarModelo/${id}`}>
+            <img src={editar} alt="Editar" className="h-10 cursor-pointer" />
+          </Link>
           <img src={eliminar} alt="Eliminar" className="h-10 cursor-pointer" onClick={handleDelete} />
         </div>
       </div>

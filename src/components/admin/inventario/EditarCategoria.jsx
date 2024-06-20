@@ -1,33 +1,45 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import TemplateAdmin from '../TemplateAdmin';
+import { getCategoriaPorId } from '../../../services/InventarioService';
+import { updateCategoria } from '../../../services/InventarioService';
+import useUser from '../../../hooks/useUser';
 
 const EditarCategoria = () => {
   const [nombre, setNombre] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const { id } = useParams();
+  const { token } = useUser(); // Usa tu hook de usuario para obtener el token
 
   useEffect(() => {
     // Simular la carga de datos de la categoría
     const fetchCategoria = async () => {
-      // Reemplaza con la lógica real de carga de datos
-      const data = { id, nombre: 'Categoría de ejemplo' }; // Simulación de datos
-      setNombre(data.nombre);
+      const categoria = await getCategoriaPorId(id);
+      if(categoria){
+        setNombre(categoria.nombre);
+      }
     };
 
     fetchCategoria();
   }, [id]);
 
-  const handleGuardar = () => {
+  const handleGuardar = async () => {
     if (!nombre) {
       setError('El nombre es obligatorio');
       return;
     }
-    setError('');
-    // Lógica para guardar la categoría actualizada
-    console.log('Categoría actualizada:', nombre);
-    navigate(-1); // Regresar a la vista anterior (Ver Categorías)
+
+    const result = await updateCategoria({id, nombre},token)
+    if (result.success){
+      setNombre('');
+      navigate(-1);
+      console.log('Categoría actualizada:', nombre);
+    }
+
+  // Lógica para guardar la categoría actualizada
+   
+     // Regresar a la vista anterior (Ver Categorías)
   };
 
   const handleCancelar = () => {

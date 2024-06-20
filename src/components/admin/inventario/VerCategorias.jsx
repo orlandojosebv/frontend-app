@@ -51,7 +51,7 @@ const VerCategorias = () => {
                 <td className="px-4 py-2 border">{categoria.id}</td>
                 <td className="px-4 py-2 border">{categoria.nombre}</td>
                 <td className="px-4 py-2 border text-center">
-                  <Link to={`/EditarCategoria`}>
+                  <Link to={`/EditarCategoria/${categoria.id}`}>
                     <img src={editIcon} alt="Edit" className="h-6 w-6 mx-auto cursor-pointer" />
                   </Link>
                 </td>

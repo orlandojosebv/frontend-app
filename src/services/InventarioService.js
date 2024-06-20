@@ -35,6 +35,42 @@ export async function getCategoria() {
   }
 }
 
+export async function getCategoriaPorId(id) {
+  try {
+    const response = await fetch(`${API_URL}/categorias/${id}`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    const data = await response.json();
+    console.log(data); // Aquí puedes manejar la respuesta del backend
+    return data
+  } catch (error) {
+    console.error('Error:', error);
+    return null
+  }
+}
+
+export async function updateCategoria(categoriaData, token) {
+  try {
+    const response = await fetch(`${API_URL}/categorias/${categoriaData.id}`, { // Aquí va la URL para eliminar un usuario
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ nombre: categoriaData.nombre }),
+    });
+    const data = await response.json();
+    console.log(data); // Aquí puedes manejar la respuesta del backend
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+    return null;
+  }
+}
+
 
 export async function crearModelo(data) {
   try {
@@ -50,6 +86,26 @@ export async function crearModelo(data) {
     return null
   }
 }
+
+export async function updateModelo(modeloData, token) {
+  try {
+    const response = await fetch(`${API_URL}/categorias/${modeloData.id}`, { // Aquí va la URL para eliminar un usuario
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ nombre: modeloData.nombre, id_categoria: modeloData.id_categoria }),
+    });
+    const data = await response.json();
+    console.log(data); // Aquí puedes manejar la respuesta del backend
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+    return null;
+  }
+}
+
 
 export async function getModelos() {
   try {
@@ -67,6 +123,38 @@ export async function getModelos() {
     return null
   }
 }
+
+export async function getModeloPorId(id) {
+  try {
+    const response = await fetch(`${API_URL}/categorias/${id}`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    const data = await response.json();
+    console.log(data); // Aquí puedes manejar la respuesta del backend
+    return data
+  } catch (error) {
+    console.error('Error:', error);
+    return null
+  }
+}
+try {
+  const response = await fetch(`${API_URL}/modelos`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+  const data = await response.json();
+  console.log(data); // Aquí puedes manejar la respuesta del backend
+  return data
+} catch (error) {
+  console.error('Error:', error);
+  return null
+}
+
 
 export async function getModelo(id) {
   try {
