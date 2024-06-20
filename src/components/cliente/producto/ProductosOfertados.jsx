@@ -3,6 +3,7 @@ import messi from "/img/productos/Conejo gigante.png";
 import naruto from "/img/productos/Ramo de enrredados.png";
 import conejo from "/img/productos/Dororo.png";
 import ProductoNoBorder from "./ProductoNoBorder";
+import { Link } from "react-router-dom";
 
 const products = [
     {
@@ -37,25 +38,27 @@ const products = [
         price: 170.000,
         ofert: 20
     }
-]; 
+];
 
 const productosLimitados = products.slice(0, 4);
 
-export default function ProductosOfertados(){
-    return<>
-    <div className="flex items-center justify-center h-auto w-full">
-        <div className="w-[75%] h-auto mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 border rounded-[5px] px-2">
-            {productosLimitados.map((product, index) => (
-                <ProductoNoBorder
-                    key={index}
-                    image={product.image}
-                    priceOff={product.priceOff}
-                    productName={product.name}
-                    price={product.price}
-                    ofert={product.ofert}
-                />
-            ))}
+export default function ProductosOfertados() {
+    return <>
+        <div className="flex items-center justify-center h-auto w-full">
+            <div className="w-[75%] h-auto mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 border rounded-[5px] px-2">
+                {productosLimitados.map((product, index) => (
+                    <Link to={"MostrarProducto?id=" + product.id} className="h-auto w-auto"
+                    >
+                        <ProductoNoBorder
+                            key={index}
+                            image={product.image}
+                            priceOff={product.priceOff}
+                            productName={product.name}
+                            price={product.price}
+                            ofert={product.ofert}
+                        /></Link>
+                ))}
+            </div>
         </div>
-    </div>
     </>
 }
