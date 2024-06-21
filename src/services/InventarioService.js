@@ -80,22 +80,21 @@ export async function crearModelo(data) {
         });
         const dataModelo = await response.json();
         console.log(dataModelo); // Aquí puedes manejar la respuesta del backend
-        return data
+        return dataModelo
       } catch (error) {
         console.error('Error:', error);
         return null
       }
 }
 
-export async function updateModelo(modeloData,token) {
+export async function updateModelo(formData, id, token) {
   try {
-    const response = await fetch(`${API_URL}/categorias/${modeloData.id}`, { // Aquí va la URL para eliminar un usuario
+    const response = await fetch(`${API_URL}/modelos/${id}`, { // Asegúrate de que la URL sea correcta
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({nombre: modeloData.nombre, id_categoria:modeloData.id_categoria}),
+      body: formData,
     });
     const data = await response.json();
     console.log(data); // Aquí puedes manejar la respuesta del backend
@@ -105,7 +104,6 @@ export async function updateModelo(modeloData,token) {
     return null;
   }
 }
-
 
 export async function getModelos() {
     try {
@@ -126,7 +124,7 @@ export async function getModelos() {
 
   export async function getModeloPorId(id) {
     try {
-        const response = await fetch(`${API_URL}/categorias/${id}`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+        const response = await fetch(`${API_URL}/modelos/${id}`, { //Aquí iría la dirección del servidor donde se enviará la petición.
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -185,9 +183,9 @@ export async function getModelos() {
           },
           body: JSON.stringify(data),
         });
-        const dataModelo = await response.json();
-        console.log(dataModelo); // Aquí puedes manejar la respuesta del backend
-        return data
+        const dataProducto = await response.json();
+        console.log(dataProducto); // Aquí puedes manejar la respuesta del backend
+        return dataProducto
       } catch (error) {
         console.error('Error:', error);
         return null
@@ -209,6 +207,41 @@ export async function getProductos() {
         console.error('Error:', error);
         return null
       }
+  }
+
+  export async function getProductoPorId(id) {
+    try {
+        const response = await fetch(`${API_URL}/productos/${id}`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+        const data = await response.json();
+        console.log(data); // Aquí puedes manejar la respuesta del backend
+        return data
+      } catch (error) {
+        console.error('Error:', error);
+        return null
+      }
+  }
+
+  export async function updateProducto(productoData, id, token) {
+    try {
+      const response = await fetch(`${API_URL}/modelos/${id}`, { // Asegúrate de que la URL sea correcta
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+        body: productoData,
+      });
+      const data = await response.json();
+      console.log(data); // Aquí puedes manejar la respuesta del backend
+      return data;
+    } catch (error) {
+      console.error('Error:', error);
+      return null;
+    }
   }
 
   export async function crearOferta(data) {

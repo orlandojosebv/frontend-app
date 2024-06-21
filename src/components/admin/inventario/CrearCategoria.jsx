@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TemplateAdmin from '../TemplateAdmin';
 import { crearCategoria } from '../../../services/InventarioService';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CrearCategoria = () => {
   const [nombre, setNombre] = useState('');
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
   const navigate = useNavigate();
 
   const handleGuardar = async () => {
@@ -15,12 +16,11 @@ const CrearCategoria = () => {
       return;
     }
     setError('');
-    setSuccess('');
-    
+
     try {
       const response = await crearCategoria({ nombre });
       if (response) {
-        setSuccess('Categoría guardada exitosamente');
+        toast.success('Registro de categoría exitoso');
         setNombre(''); // Limpiar el campo después de guardar
       } else {
         setError('Hubo un error al guardar la categoría');
@@ -51,7 +51,6 @@ const CrearCategoria = () => {
               className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
             />
             {error && <span className="text-red-500 text-sm">{error}</span>}
-            {success && <span className="text-green-500 text-sm">{success}</span>}
           </div>
           <div className="flex justify-center space-x-4">
             <button
@@ -69,6 +68,7 @@ const CrearCategoria = () => {
           </div>
         </div>
       </div>
+      <ToastContainer position="bottom-right" autoClose={5000} />
     </TemplateAdmin>
   );
 };

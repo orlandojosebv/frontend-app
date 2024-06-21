@@ -22,6 +22,7 @@ import CrearCategoria from "./components/admin/inventario/CrearCategoria.jsx";
 import EditarCategoria from "./components/admin/inventario/EditarCategoria.jsx";
 import VerCategorias from "./components/admin/inventario/VerCategorias.jsx";
 import CrearProducto from "./components/admin/inventario/CrearProducto.jsx";
+import EditarProducto from "./components/admin/inventario/EditarProducto.jsx";
 import CrearOferta from "./components/admin/ofertas/CrearOferta.jsx";
 import EditarOferta from "./components/admin/ofertas/EditarOferta.jsx";
 import CatalogoDeProductos from "./components/cliente/catalogo/CatalogoProductos.jsx";
@@ -81,6 +82,7 @@ function App() {
           <Route path="/EditarCategoria/:id" element={<EditarCategoria />} />
           <Route path="/VerCategorias" element={<VerCategorias />} />
           <Route path="/CrearProducto" element={<CrearProducto />} />
+          <Route path="/EditarProducto/:id" element={<EditarProducto />} />
           <Route path="/CrearOferta" element={<CrearOferta />} />
           <Route path="/EditarOferta" element={<EditarOferta />} />
           <Route path="/Productos/Categoria/" element={<ProductosPorCategoria />} />

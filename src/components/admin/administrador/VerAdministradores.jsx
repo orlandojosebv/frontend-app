@@ -1,38 +1,60 @@
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../../../assets/styles/VerAdministradores.css';
 import TemplateAdmin from '../TemplateAdmin';
-import { getAdmins, deleteUser} from "../../../services/UserService";
+import { getAdmins, deleteUser } from "../../../services/UserService";
 import useUser from "../../../hooks/useUser";
 import AccesoDenegado from '../AccesoDenegado';
-
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const VerAdministradores = () => {
-  const {user,token } = useUser();
+  const { user, token } = useUser();
   const [administradores, setAdministradores] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedAdmin, setSelectedAdmin] = useState(null);
 
-  const darDeBaja = async (correo) => {
-    const response = await deleteUser(correo, token);
+  const openModal = (admin) => {
+    setSelectedAdmin(admin);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedAdmin(null);
+    setIsOpen(false);
+  };
+
+  const darDeBaja = async () => {
+    if (!selectedAdmin) return;
+
+    const response = await deleteUser(selectedAdmin.correo, token);
     if (response) {
-      setAdministradores(administradores.filter(administrador => administrador.correo !== correo));
-      console.log('Usuario eliminado:', response);
+      setAdministradores(administradores.filter(administrador => administrador.correo !== selectedAdmin.correo));
+      closeModal();
+      toast.success('Usuario eliminado correctamente', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 5000,
+      });
     } else {
+      closeModal();
+      toast.error('Error al eliminar el usuario', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 5000,
+      });
       console.error('Error al eliminar el usuario');
     }
   };
 
-  useEffect(() => { 
+  useEffect(() => {
     if (!token) return;
- 
+
     getAdmins(token).then(data => {
-      // Filtrar los clientes con id_rol !== 0
       const clientesFiltrados = data.filter(cliente => cliente.id_rol !== 0);
       setAdministradores(clientesFiltrados);
     });
   }, [token]);
 
   if (user?.id_rol === 0) {
-    // retorna la pagina de no autorizado
-    return <AccesoDenegado></AccesoDenegado>
+    return <AccesoDenegado />;
   }
 
   return (
@@ -57,14 +79,39 @@ const VerAdministradores = () => {
                   <td>{admin.apellido}</td>
                   <td>{admin.correo}</td>
                   <td>{admin.telefono}</td>
-                  <td><button onClick={() => darDeBaja(admin.correo)}>Dar de baja</button></td>
+                  <td><button onClick={() => openModal(admin)}>Dar de baja</button></td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       </div>
-      </TemplateAdmin>
+
+      {isOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded-md shadow-md transition-transform transform hover:scale-105">
+            <h2 className="text-lg font-semibold mb-4">Confirmación</h2>
+            <p className="mb-4">¿Seguro que quieres eliminar al administrador {selectedAdmin?.nombre}?</p>
+            <div className="flex justify-end">
+              <button
+                onClick={darDeBaja}
+                className="bg-red-600 text-white px-4 py-2 rounded-md mr-2 hover:bg-red-700"
+              >
+                Eliminar
+              </button>
+              <button
+                onClick={closeModal}
+                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <ToastContainer position="bottom-right" />
+    </TemplateAdmin>
   );
 };
 
