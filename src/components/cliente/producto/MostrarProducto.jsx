@@ -3,32 +3,33 @@ import TemplateUser from "../TemplateUser";
 import ProductCarousel from "./ProductCarousel";
 import QuantityControl from "../../QuantityControl";
 import { CambiarFormato, Tranformada } from "../../../services/ComponenteProducto";
+import { useSearchParams } from "react-router-dom";
+import { getProduct } from "../../../services/ProductService";
+import { getModelo } from "../../../services/InventarioService";
 
-const sizes = ["15", "20", "25"];
-const materials = ["hilo", "algodón", "lana"];
-
-const PRODUCTO = {
-  id: 2,
-  id_modelo: 1,
-  tamanio: 50,
-  cantidadDisponible: 9,
-  precio: 500000,
-  Modelo: {
-    id: 1,
-    nombre: "aguacate",
-    id_categoria: 3,
-    categorium: {
-      id: 3,
-      nombre: "peluche"
-    }
-  },
-  descuento: 50
-}
 
 
 export default function MostrarProducto() {
   const [quantity, setQuantity] = useState(1);
-  const [producto, setProducto] = useState(0);
+  const [producto, setProducto] = useState(null);
+  const [searchParams] = useSearchParams();
+  const [sizes, setSizes] = useState([]);
+
+  useEffect(() => {
+    const id = searchParams.get("id");
+    console.log("id,", [...searchParams.entries()], searchParams.get("id"));
+    const productosCATALOGO = async () => {
+      try {
+        const x = await getProduct(id);
+        setProducto(x);
+        const modelo = await getModelo(x.Modelo.id);
+        setSizes(modelo.Productos.map(producto => producto.tamanio))
+      } catch (error) {
+        console.error("Error al obtener los productos:", error);
+      }
+    };
+    productosCATALOGO();
+  }, []);
 
   const increaseQuantity = () => {
     setQuantity(prevQuantity => prevQuantity + 1);
@@ -40,11 +41,6 @@ export default function MostrarProducto() {
     }
   };
 
-  useEffect(
-    () => {
-      setProducto(PRODUCTO);
-    }, []
-  )
 
   console.log(producto)
 
@@ -53,19 +49,19 @@ export default function MostrarProducto() {
 
   return (
     <TemplateUser>
-      {(producto != 0 && <>
+      {(producto != null && <>
         <div className="contenedor h-[500px] w-[90%] max-w-[1000px] my-20 mx-auto flex justify-center text-[#686868]">
           <div className="conteIzq h-[80%] w-full max-w-[350px] bg-gray-100">
-            <ProductCarousel />
+            <ProductCarousel fotos={producto.Modelo.Fotos} />
             <div className="pie-pag flex justify-end">
               <div className="i">Tamaño referencia:</div>
-              <div className="mx-1">{producto.tamanio}</div>
+              <div className="mx-1">{producto.Modelo.Fotos[0]?.tamanio}</div>
               <div className="">cm</div>
             </div>
           </div>
 
           <div className="conteDer flex flex-col items-start space-y-3 text-left ml-12">
-            <h3 className="flex categoria capitalize">{producto.Modelo.categorium.nombre}</h3>
+            <h3 className="flex categoria capitalize">{producto.Modelo.Categorium.nombre}</h3>
             <h2 className="text-2xl text-black font-bold capitalize">{producto.Modelo.nombre}</h2>
             <div className="stock bg-[#F5BE90] rounded inline-flex">
               <h2 className="cant py-1 pl-5 text-[#EB4F3E]">Disponible:</h2>
@@ -96,8 +92,8 @@ export default function MostrarProducto() {
             <div className="materiales capitalize">
               <div className="material">Material:</div>
               <ul className="list-disc pl-5 ml-10 space-y-2 mt-2">
-                {materials.map((material, index) => (
-                  <li key={index} className="info-material">{material}</li>
+                {producto.Modelo.Materials.map((material, index) => (
+                  <li key={index} className="info-material">{material.nombre}</li>
                 ))}
               </ul>
             </div>
@@ -112,15 +108,15 @@ export default function MostrarProducto() {
             </div>
 
             <div className="">Cantidad</div>
-            {/* <QuantityControl
-            quantity={quantity}
-            increaseQuantity={increaseQuantity}
-            decreaseQuantity={decreaseQuantity}
-          />
+            <QuantityControl
+              quantity={quantity}
+              increaseQuantity={increaseQuantity}
+              decreaseQuantity={decreaseQuantity}
+            />
 
-           <button className="  mt-3 bg-red-500 text-white py-2 rounded-md px-16">
-            Comprar producto
-          </button>  */}
+            <button className="  mt-3 bg-red-500 text-white py-2 rounded-md px-16">
+              Comprar producto
+            </button>
           </div>
         </div></>)}
     </TemplateUser>

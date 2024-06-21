@@ -8,15 +8,15 @@ export default function ProductosDeCategoria() {
     const [productosFiltrados, setProductosFiltrados] = useState([]);
 
     const [productos, setProductos] = useState([])
- 
-    useEffect( 
-        ()=>{ 
-            const productosCATALOGO = async ()=>{
+
+    useEffect(
+        () => {
+            const productosCATALOGO = async () => {
                 setProductos(await getProducts())
                 console.log(await getProducts())
             }
             productosCATALOGO()
-        },[]
+        }, []
     )
 
     useEffect(() => {
@@ -24,12 +24,13 @@ export default function ProductosDeCategoria() {
         const productosCategoria = productos.filter(producto => producto.Modelo.id_categoria === parseInt(id));
         setProductosFiltrados(productosCategoria);
     }, [id]);
-    
+
 
     return (
         <div className="w-[90%] h-auto mt-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-2">
             {productosFiltrados.map((product, index) => (
                 <ProductoCard
+                    productoId={product.id}
                     key={index}
                     image={product.fotos[0].url}
                     categoryName={product.Modelo.Categorium.nombre}
