@@ -124,36 +124,36 @@ export async function getModelos() {
   }
 }
 
-export async function getModeloPorId(id) {
-  try {
-    const response = await fetch(`${API_URL}/categorias/${id}`, { //Aquí iría la dirección del servidor donde se enviará la petición.
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    });
-    const data = await response.json();
-    console.log(data); // Aquí puedes manejar la respuesta del backend
-    return data
-  } catch (error) {
-    console.error('Error:', error);
-    return null
-  }
-}
-try {
-  const response = await fetch(`${API_URL}/modelos`, { //Aquí iría la dirección del servidor donde se enviará la petición.
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    }
-  });
-  const data = await response.json();
-  console.log(data); // Aquí puedes manejar la respuesta del backend
-  return data
-} catch (error) {
-  console.error('Error:', error);
-  return null
-}
+// export async function getModeloPorId(id) {
+//   try {
+//     const response = await fetch(`${API_URL}/categorias/${id}`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+//       method: 'GET',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       }
+//     });
+//     const data = await response.json();
+//     console.log(data); // Aquí puedes manejar la respuesta del backend
+//     return data
+//   } catch (error) {
+//     console.error('Error:', error);
+//     return null
+//   }
+// }
+// try {
+//   const response = await fetch(`${API_URL}/modelos`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+//     method: 'GET',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     }
+//   });
+//   const data = await response.json();
+//   console.log(data); // Aquí puedes manejar la respuesta del backend
+//   return data
+// } catch (error) {
+//   console.error('Error:', error);
+//   return null
+// }
 
 
 export async function getModelo(id) {

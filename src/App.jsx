@@ -36,6 +36,7 @@ import ProductoPorOferta from "./components/cliente/producto/ProductoPorOferta.j
 import CatalogoDeProductosCategoria from "./components/cliente/producto/ListarProductosPorCategoria.jsx";
 import CatalogoDeProductosOferta from "./components/cliente/catalogo/CatalogoDeProductosOferta.jsx";
 import OffersPage from "./components/cliente/OffersPage.jsx";
+import CarritoAside from "./components/cliente/carrito/CarritoAside.jsx";
 
 const productos = [
   {
@@ -60,6 +61,7 @@ function App() {
       <div className="app-container">
         <Routes>
           <Route path="/LoginRegistro" element={<LoginRegistro />} />
+          <Route path="/TEST" element={<CarritoAside></CarritoAside>} />
           <Route path="/OlvidoContrasena" element={<OlvidoContrasena />} />
           <Route path="/ReestablecerContrasena" element={<ReestablecerContrasena />} />
           <Route path="/ContrasenaReestablecida" element={<ContrasenaReestablecida />} />
