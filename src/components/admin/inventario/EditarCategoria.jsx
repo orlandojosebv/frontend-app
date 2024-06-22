@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import TemplateAdmin from '../TemplateAdmin';
-import { getCategoriaPorId } from '../../../services/InventarioService';
-import { updateCategoria } from '../../../services/InventarioService';
+import { getCategoriaPorId, updateCategoria } from '../../../services/InventarioService';
 import useUser from '../../../hooks/useUser';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditarCategoria = () => {
   const [nombre, setNombre] = useState('');
@@ -16,7 +17,7 @@ const EditarCategoria = () => {
     // Simular la carga de datos de la categoría
     const fetchCategoria = async () => {
       const categoria = await getCategoriaPorId(id);
-      if(categoria){
+      if (categoria) {
         setNombre(categoria.nombre);
       }
     };
@@ -30,16 +31,15 @@ const EditarCategoria = () => {
       return;
     }
 
-    const result = await updateCategoria({id, nombre},token)
-    if (result.success){
-      setNombre('');
-      navigate(-1);
-      console.log('Categoría actualizada:', nombre);
+    const result = await updateCategoria({ id, nombre }, token);
+    if (result && result.success) {
+      toast.success('Categoría actualizada exitosamente');
+      setTimeout(() => {
+        navigate(-1); // Navigate back after successful update
+      }, 1000); // Optional: Add delay to show the toast message
+    } else {
+      toast.error('Hubo un problema al actualizar la categoría');
     }
-
-  // Lógica para guardar la categoría actualizada
-   
-     // Regresar a la vista anterior (Ver Categorías)
   };
 
   const handleCancelar = () => {
@@ -79,6 +79,7 @@ const EditarCategoria = () => {
           </div>
         </div>
       </div>
+      <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar />
     </TemplateAdmin>
   );
 };

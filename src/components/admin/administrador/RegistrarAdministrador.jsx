@@ -3,6 +3,8 @@ import TemplateAdmin from '../TemplateAdmin';
 import useUser from '../../../hooks/useUser';
 import { registroAdmin } from '../../../services/UserService';
 import AccesoDenegado from '../AccesoDenegado';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RegistrarAdministrador = () => {
   const [email, setEmail] = useState('');
@@ -12,8 +14,7 @@ const RegistrarAdministrador = () => {
   const [idNumber, setIdNumber] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({ email: '', firstName: '', lastName: '', phone: '', idNumber: '', password: '' });
-  const {user, token} = useUser();
-
+  const { user, token } = useUser();
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -67,16 +68,22 @@ const RegistrarAdministrador = () => {
     setErrors(errors);
 
     if (formIsValid) {
-      if (!token) return
-      registroAdmin({
+      if (!token) return;
+      const response = await registroAdmin({
         correo: email,
         nombre: firstName,
         apellido: lastName,
-        telefono:phone,
-        cedula:idNumber,
-        contrasena:password,
-        id_rol:1
-      },token).then( data => (console.log(data)))
+        telefono: phone,
+        cedula: idNumber,
+        contrasena: password,
+        id_rol: 1
+      }, token);
+
+      if (response) {
+        toast.success('Administrador registrado exitosamente');
+      } else {
+        toast.error('Hubo un problema con el registro');
+      }
     }
   };
 
@@ -179,9 +186,10 @@ const RegistrarAdministrador = () => {
             {errors.password && <span className="text-red-500 text-sm">{errors.password}</span>}
           </div>
           <div className="flex justify-center">
-            <button type="submit" className="py-2 px-6 bg-black text-white rounded-md avck:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500">Registrar</button>
+            <button type="submit" className="py-2 px-6 bg-black text-white rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500">Registrar</button>
           </div>
         </form>
+        <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       </div>
     </TemplateAdmin>
   );
