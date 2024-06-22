@@ -86,6 +86,22 @@ export async function crearModelo(data) {
     return null
   }
 }
+export async function getModelo(id) {
+  try {
+    const response = await fetch(`${API_URL}/modelos/${id}`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    const data = await response.json();
+    console.log(data); // Aquí puedes manejar la respuesta del backend
+    return data
+  } catch (error) {
+    console.error('Error:', error);
+    return null
+  }
+}
 
 export async function updateModelo(formData, id, token) {
   try {
