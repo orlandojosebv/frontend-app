@@ -20,8 +20,7 @@ const CrearEditarOferta = () => {
   const validateForm = () => {
     let formErrors = {};
     let isValid = true;
-    
- 
+
     if (!descuento || descuento < 0 || descuento > 100 || !Number.isInteger(Number(descuento))) {
       formErrors.descuento = 'El descuento debe ser un número entero entre 0 y 100';
       isValid = false;
@@ -50,21 +49,23 @@ const CrearEditarOferta = () => {
       const oferta = {
         fechaInicio,
         fechaFin,
-        descuento,
+        descuento: Number(descuento), // Asegúrate de que el descuento sea un número
         descripcion,
       };
       const data = {
         oferta,
         id_productos: selectedProducts,
       };
-      console.log("Datos enviados al servidor:", data); // Para depuración
+
+      console.log("Datos antes de enviar al servidor:", data); // Para depuración
+
       try {
         const response = await crearOferta(data);
-  
+
         if (response && response.success) {
           toast.success("Oferta creada exitosamente");
           console.log('Oferta guardada:', response);
-          //navigate('/ruta-de-redireccionamiento');
+          //navigate('/ruta-de-redireccionamiento'); // Cambia esta ruta según sea necesario
         } else {
           toast.error("Error al crear la oferta");
           console.error('Error al guardar la oferta:', response.message);
@@ -75,16 +76,15 @@ const CrearEditarOferta = () => {
       }
     }
   };
-  
 
   const handleCancel = () => {
-    navigate(-1);  // Navega a la página anterior
+    navigate(-1);
   };
 
   return (
     <div className="max-w-lg mx-auto p-6 bg-gray-100">
       <form onSubmit={handleSave}>
-      <div className="mb-4">
+        <div className="mb-4">
           <label htmlFor="descripcion" className="block text-gray-700">Descripción de la Oferta</label>
           <div className="flex items-center">
             <input
