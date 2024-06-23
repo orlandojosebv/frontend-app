@@ -36,6 +36,7 @@ import ProductoPorOferta from "./components/cliente/producto/ProductoPorOferta.j
 import CatalogoDeProductosCategoria from "./components/cliente/producto/ListarProductosPorCategoria.jsx";
 import CatalogoDeProductosOferta from "./components/cliente/catalogo/CatalogoDeProductosOferta.jsx";
 import OffersPage from "./components/cliente/OffersPage.jsx";
+import VerOfertaFinalizada from "./components/admin/ofertas/VerOfertaFinalizada.jsx";
 
 const productos = [
   {
@@ -97,6 +98,7 @@ function App() {
           <Route path="/categoria/:id" element={<CatalogoDeProductosCategoria />} />
           <Route path="/CatalogoDeProductosOferta" element={<CatalogoDeProductosOferta />} />
           <Route path="/OffersPage" element={<OffersPage />} />
+          <Route path="/VerOfertaFinalizada" element={<VerOfertaFinalizada />} />
         </Routes>
       </div>
     </Router>

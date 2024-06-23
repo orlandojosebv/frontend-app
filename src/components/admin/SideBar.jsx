@@ -129,7 +129,7 @@ const Sidebar = () => {
         label="Ofertas"
         subItems={[
           { icon: crearOfertaIcon, label: "Crear Oferta", to: "/CrearOfertaProducto" },
-          { icon: verIcon, label: "Ver Ofertas", to: "/VerOfertas" },
+          { icon: verIcon, label: "Ver Ofertas", to: "/VerOfertaFinalizada" },
         ]}
       />
       {/* <SidebarItem
