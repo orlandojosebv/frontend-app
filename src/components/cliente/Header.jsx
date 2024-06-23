@@ -19,9 +19,9 @@ const Header = () => {
 
   return (
     <header className="h-fit w-full flex flex-col relative">
-      <div className='absolute right-0 top-0'>
+      {/* <div className='absolute right-0 top-0'>
         {view && <CarritoAside setView={setView}></CarritoAside>}
-      </div>
+      </div> */}
       <div className='flex items-center justify-center'>
         <div className="flex flex-row w-[80%] items-center justify-between">
           <a href="/"><img src={logo} alt="Logo" className="h-20 w-auto" /></a>
@@ -40,7 +40,9 @@ const Header = () => {
                 }
               </div>
             </div>
-            {/* <img src={cartIcon} alt="Carrito" className="h-8 w-auto" /> */}
+            <Link to="/LoginRegistro">
+              <img src={cartIcon} alt="Carrito" className="h-8 w-auto" />
+            </Link>
             <img src={logoutIcon} alt="Logout" className="h-8 w-auto cursor-pointer" onClick={handleLogout} />
           </div>
         </div>

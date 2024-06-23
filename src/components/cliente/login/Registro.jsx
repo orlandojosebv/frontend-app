@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import '../../../assets/styles/Registro.css';
 import { registro } from '../../../services/UserService';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Registro = () => {
   const [email, setEmail] = useState('');
@@ -10,8 +12,6 @@ const Registro = () => {
   const [idNumber, setIdNumber] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({ email: '', firstName: '', lastName: '', phone: '', idNumber: '', password: '' });
-
-  
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -65,19 +65,28 @@ const Registro = () => {
     setErrors(errors);
 
     if (formIsValid) {
-      registro({
-        correo: email,
-        nombre: firstName,
-        apellido: lastName,
-        telefono:phone,
-        cedula:idNumber,
-        contrasena:password
-      }).then( data => (console.log(data)))
+      try {
+        const data = await registro({
+          correo: email,
+          nombre: firstName,
+          apellido: lastName,
+          telefono: phone,
+          cedula: idNumber,
+          contrasena: password
+        });
+
+        if (data) {
+          toast.success("Te has registrado de manera exitosa!");
+        }
+      } catch (error) {
+        toast.error("Error al registrarse, por favor intente nuevamente.");
+      }
     }
   };
 
   return (
     <div className="register-container">
+      <ToastContainer position="bottom-right" />
       <h2>¡Bienvenido!</h2>
       <p className="intro-text">Completa tu información básica y regístrate.</p>
       <form onSubmit={handleSubmit}>

@@ -1,6 +1,6 @@
 import "./App.css";
 import LoginRegistro from "./components/cliente/login/LoginRegistro.jsx";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import OlvidoContrasena from './components/cliente/login/OlvidoContrasena.jsx';
 import ReestablecerContrasena from './components/cliente/login/ReestablecerContrasena.jsx';
 import ContrasenaReestablecida from './components/cliente/login/ContrasenaReestablecida.jsx';
@@ -39,6 +39,7 @@ import CatalogoDeProductosOferta from "./components/cliente/catalogo/CatalogoDeP
 import OffersPage from "./components/cliente/OffersPage.jsx";
 import CarritoAside from "./components/cliente/carrito/CarritoAside.jsx";
 import VerOfertaFinalizada from "./components/admin/ofertas/VerOfertaFinalizada.jsx";
+import useUser from "./hooks/useUser.jsx";
 
 const productos = [
   {
@@ -58,16 +59,17 @@ const productos = [
 ];
 
 function App() {
+  const { user } = useUser();
   return (
     <Router>
       <div className="app-container">
         <Routes>
-          <Route path="/LoginRegistro" element={<LoginRegistro />} />
+          <Route path="/LoginRegistro" element={user ? <Navigate to={"/"} /> : <LoginRegistro />} />
           <Route path="/TEST" element={<CarritoAside></CarritoAside>} />
           <Route path="/OlvidoContrasena" element={<OlvidoContrasena />} />
           <Route path="/ReestablecerContrasena" element={<ReestablecerContrasena />} />
           <Route path="/ContrasenaReestablecida" element={<ContrasenaReestablecida />} />
-          <Route path="/ComprarProducto" element={<ImagenProductoCompra />} />
+          <Route path="/ComprarProducto" element={<ImagenProductoCompra productos={productos} />} />
           <Route path="/VerificarCorreoComprar" element={<VerificarCorreo />} />
           <Route path="/ComprarProductoRegistro" element={<ComprarProductoRegistro />} />
           <Route path="/ComprarProductoUbicacion" element={<ComprarProductoUbicacion />} />
@@ -103,6 +105,7 @@ function App() {
           <Route path="/CatalogoDeProductosOferta" element={<CatalogoDeProductosOferta />} />
           <Route path="/OffersPage" element={<OffersPage />} />
           <Route path="/VerOfertaFinalizada" element={<VerOfertaFinalizada />} />
+          <Route path="/CarritoAside" element={<CarritoAside />} />
         </Routes>
       </div>
     </Router>

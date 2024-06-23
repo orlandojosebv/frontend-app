@@ -3,9 +3,12 @@ import TemplateUser from "../TemplateUser";
 import ProductCarousel from "./ProductCarousel";
 import QuantityControl from "../../QuantityControl";
 import { CambiarFormato, Tranformada } from "../../../services/ComponenteProducto";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { getProduct } from "../../../services/ProductService";
 import { getModelo } from "../../../services/InventarioService";
+import useUser from "../../../hooks/useUser";
+import { useNavigate } from "react-router-dom";
+import { addCarrito } from "../../../services/CarritoService";
 
 
 
@@ -14,6 +17,30 @@ export default function MostrarProducto() {
   const [producto, setProducto] = useState(null);
   const [searchParams] = useSearchParams();
   const [sizes, setSizes] = useState([]);
+  const { user } = useUser();
+  const navigate = useNavigate();
+
+  const addCarritoHandle = () => {
+    if (!user) navigate("/LoginRegistro");
+
+    (async () => {
+      try {
+        const data = {
+          id_usuario: user.correo,
+          id_producto: producto.id,
+          cantidad: quantity
+        };
+        const resultado = await addCarrito(data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+
+    })();
+  };
+  const comprarProducto = () => {
+    if (!user) navigate("/LoginRegistro")
+  };
+
 
   useEffect(() => {
     const id = searchParams.get("id");
@@ -23,6 +50,7 @@ export default function MostrarProducto() {
         const x = await getProduct(id);
         setProducto(x);
         const modelo = await getModelo(x.Modelo.id);
+        console.log(modelo)
         setSizes(modelo.Productos.map(producto => producto.tamanio))
       } catch (error) {
         console.error("Error al obtener los productos:", error);
@@ -32,7 +60,9 @@ export default function MostrarProducto() {
   }, []);
 
   const increaseQuantity = () => {
-    setQuantity(prevQuantity => prevQuantity + 1);
+    if (quantity < producto.cantidadDisponible) {
+      setQuantity(prevQuantity => prevQuantity + 1);
+    }
   };
 
   const decreaseQuantity = () => {
@@ -109,16 +139,19 @@ export default function MostrarProducto() {
 
             <div className="">Cantidad</div>
             <QuantityControl
+              addCarrito={addCarritoHandle}
               quantity={quantity}
               increaseQuantity={increaseQuantity}
               decreaseQuantity={decreaseQuantity}
             />
 
-            <button className="  mt-3 bg-red-500 text-white py-2 rounded-md px-16">
+            <button onClick={comprarProducto}
+              className="mt-3 bg-red-500 text-white py-2 rounded-md px-16">
               Comprar producto
             </button>
           </div>
-        </div></>)}
-    </TemplateUser>
+        </div></>)
+      }
+    </TemplateUser >
   );
 }
