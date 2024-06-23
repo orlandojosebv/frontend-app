@@ -4,18 +4,18 @@ import { useEffect, useState } from "react";
 
 const ITEMS_PER_PAGE = 12;
 
-function Paginacion(){
+function Paginacion() {
 
     const [productos, setProductos] = useState([])
 
-    useEffect( 
-        ()=>{
-            const productosCATALOGO = async ()=>{
+    useEffect(
+        () => {
+            const productosCATALOGO = async () => {
                 setProductos(await getProducts())
                 console.log(await getProducts())
             }
             productosCATALOGO()
-        },[]
+        }, []
     )
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -23,16 +23,17 @@ function Paginacion(){
     const totalPages = Math.ceil(productos.length / ITEMS_PER_PAGE);
 
     const handleClick = (page) => {
-        setCurrentPage(page);  
+        setCurrentPage(page);
     };
 
     const currentItems = productos.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
-    return(
-       <div className="w-full flex flex-col justify-center items-center">
+    return (
+        <div className="w-full flex flex-col justify-center items-center">
             <div className="w-[90%] h-auto mt-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-2">
                 {currentItems.map((product, index) => (
                     <ProductoCard
+                        productoId={product.id}
                         key={index}
                         image={product.fotos[0].url}
                         categoryName={product.Modelo.Categorium.nombre}
@@ -53,7 +54,7 @@ function Paginacion(){
                     </button>
                 ))}
             </div>
-        </div> 
+        </div>
     );
 }
 

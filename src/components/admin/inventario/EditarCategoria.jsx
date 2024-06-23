@@ -1,33 +1,45 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import TemplateAdmin from '../TemplateAdmin';
+import { getCategoriaPorId, updateCategoria } from '../../../services/InventarioService';
+import useUser from '../../../hooks/useUser';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditarCategoria = () => {
   const [nombre, setNombre] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const { id } = useParams();
+  const { token } = useUser(); // Usa tu hook de usuario para obtener el token
 
   useEffect(() => {
     // Simular la carga de datos de la categoría
     const fetchCategoria = async () => {
-      // Reemplaza con la lógica real de carga de datos
-      const data = { id, nombre: 'Categoría de ejemplo' }; // Simulación de datos
-      setNombre(data.nombre);
+      const categoria = await getCategoriaPorId(id);
+      if (categoria) {
+        setNombre(categoria.nombre);
+      }
     };
 
     fetchCategoria();
   }, [id]);
 
-  const handleGuardar = () => {
+  const handleGuardar = async () => {
     if (!nombre) {
       setError('El nombre es obligatorio');
       return;
     }
-    setError('');
-    // Lógica para guardar la categoría actualizada
-    console.log('Categoría actualizada:', nombre);
-    navigate(-1); // Regresar a la vista anterior (Ver Categorías)
+
+    const result = await updateCategoria({ id, nombre }, token);
+    if (result && result.success) {
+      toast.success('Categoría actualizada exitosamente');
+      setTimeout(() => {
+        navigate(-1); // Navigate back after successful update
+      }, 1000); // Optional: Add delay to show the toast message
+    } else {
+      toast.error('Hubo un problema al actualizar la categoría');
+    }
   };
 
   const handleCancelar = () => {
@@ -67,6 +79,7 @@ const EditarCategoria = () => {
           </div>
         </div>
       </div>
+      <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar />
     </TemplateAdmin>
   );
 };

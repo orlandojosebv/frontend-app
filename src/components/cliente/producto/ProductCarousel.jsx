@@ -5,23 +5,19 @@ import snupyLlavero from "/img/productos/Snupy llavero.png";
 import spidermanLlavero from "/img/productos/Spiderman llavero.png";
 import spiderman from "/img/productos/Spiderman.png";
 
-const ProductCarousel = () => (
+const ProductCarousel = ({ fotos }) => (
     <Carousel
         leftControl={
-            <button className="p-2 rounded-full">
-                <span className="text-5xl font-bold text-black">‹</span>
-            </button>
+            <span className="text-5xl font-bold text-black">‹</span>
         }
         rightControl={
-            <button className="p-2 rounded-full">
-                <span className="text-5xl font-bold text-black">›</span>
-            </button>
+            <span className="text-5xl font-bold text-black">›</span>
         }
     >
-        {[naturo, snupy, snupyLlavero, spiderman, spidermanLlavero].map((src, index) => (
+        {fotos.map((foto, index) => (
             <img
                 key={index}
-                src={src}
+                src={foto.url}
                 alt={`imagen ${index}`}
                 className="object-cover w-1/2"
             />

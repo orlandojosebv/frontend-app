@@ -1,12 +1,20 @@
 import editar from "/img/iconos/editar.png";
 import eliminar from "/img/iconos/eliminar.png";
+import { deleteProducto } from '../../../services/InventarioService';
+import { Link } from "react-router-dom";
 
-export default function ProductoComp({ imagen, nombre, referencia, cantidad, tamano, categoria, material, precio, onDelete }) {
-  const handleDelete = () => {
-    if (onDelete) {
-      onDelete();
+const ProductoComp = ({ id, imagen, nombre, referencia, cantidad, tamano, categoria, material, precio, token, onDelete }) => {
+  const handleDelete = async () => {
+    if (!token) {
+      console.error('Token de autorización no disponible');
+      return;
+    }
+
+    const response = await deleteProducto(id, token);
+    if (response) {
+      onDelete(id);
     } else {
-      console.error('onDelete no está definido');
+      console.error('Error al eliminar el producto');
     }
   };
 
@@ -22,7 +30,7 @@ export default function ProductoComp({ imagen, nombre, referencia, cantidad, tam
             <tr className="h-fit p-0 align-middle">
               <td className="h-fit p-0 w-[20%]">
                 <label className="text-sm" htmlFor="">Nombre:</label>
-              </td> 
+              </td>
               <td className="h-fit p-0">
                 <label className="font-normal text-sm" htmlFor="">{nombre}</label>
               </td>
@@ -38,7 +46,7 @@ export default function ProductoComp({ imagen, nombre, referencia, cantidad, tam
                 <label className="text-sm" htmlFor="">Tamaño:</label>
               </td>
               <td className="h-fit p-0 w-[30%]">
-                <label className="font-normal text-sm " htmlFor="">{tamano} cm</label>
+                <label className="font-normal text-sm" htmlFor="">{tamano} cm</label>
               </td>
             </tr>
             <tr>
@@ -74,11 +82,15 @@ export default function ProductoComp({ imagen, nombre, referencia, cantidad, tam
           </table>
         </div>
         <div className="flex flex-col items-center h-[100%] justify-around">
-          <img src={editar} alt="Editar" className="h-10 cursor-pointer" />
+          <Link to={`/EditarProducto/${id}`}>
+            <img src={editar} alt="Editar" className="h-10 cursor-pointer" />
+          </Link>
           <img src={eliminar} alt="Eliminar" className="h-10 cursor-pointer" onClick={handleDelete} />
         </div>
       </div>
       <hr className="w-[80%]" />
     </div>
   );
-}
+};
+
+export default ProductoComp;

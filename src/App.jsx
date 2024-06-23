@@ -22,6 +22,7 @@ import CrearCategoria from "./components/admin/inventario/CrearCategoria.jsx";
 import EditarCategoria from "./components/admin/inventario/EditarCategoria.jsx";
 import VerCategorias from "./components/admin/inventario/VerCategorias.jsx";
 import CrearProducto from "./components/admin/inventario/CrearProducto.jsx";
+import EditarProducto from "./components/admin/inventario/EditarProducto.jsx";
 import CrearOferta from "./components/admin/ofertas/CrearOferta.jsx";
 import EditarOferta from "./components/admin/ofertas/EditarOferta.jsx";
 import CatalogoDeProductos from "./components/cliente/catalogo/CatalogoProductos.jsx";
@@ -36,6 +37,7 @@ import ProductoPorOferta from "./components/cliente/producto/ProductoPorOferta.j
 import CatalogoDeProductosCategoria from "./components/cliente/producto/ListarProductosPorCategoria.jsx";
 import CatalogoDeProductosOferta from "./components/cliente/catalogo/CatalogoDeProductosOferta.jsx";
 import OffersPage from "./components/cliente/OffersPage.jsx";
+import CarritoAside from "./components/cliente/carrito/CarritoAside.jsx";
 import VerOfertaFinalizada from "./components/admin/ofertas/VerOfertaFinalizada.jsx";
 
 const productos = [
@@ -61,15 +63,16 @@ function App() {
       <div className="app-container">
         <Routes>
           <Route path="/LoginRegistro" element={<LoginRegistro />} />
+          <Route path="/TEST" element={<CarritoAside></CarritoAside>} />
           <Route path="/OlvidoContrasena" element={<OlvidoContrasena />} />
           <Route path="/ReestablecerContrasena" element={<ReestablecerContrasena />} />
           <Route path="/ContrasenaReestablecida" element={<ContrasenaReestablecida />} />
-          <Route path="/ComprarProducto" element={<ImagenProductoCompra productos={productos} />} />
+          <Route path="/ComprarProducto" element={<ImagenProductoCompra />} />
           <Route path="/VerificarCorreoComprar" element={<VerificarCorreo />} />
           <Route path="/ComprarProductoRegistro" element={<ComprarProductoRegistro />} />
-          <Route path="/ComprarProductoUbicacion" element={<ComprarProductoUbicacion productos={productos} />} />
+          <Route path="/ComprarProductoUbicacion" element={<ComprarProductoUbicacion />} />
           <Route path="/PagoExitoso" element={<PagoExitoso />} />
-          <Route path="/ComprarProductoUsuarioRegistrado" element={<ComprarProductoUsuarioRegistrado productos={productos} />} />
+          <Route path="/ComprarProductoUsuarioRegistrado" element={<ComprarProductoUsuarioRegistrado />} />
           <Route path="/VerAdministradores" element={<VerAdministradores />} />
           <Route path="/VerClientes" element={<VerClientes />} />
           <Route path="/" element={<Inicio />} />
@@ -79,9 +82,10 @@ function App() {
           <Route path="/MostrarProducto" element={<MostrarProducto />} />
           <Route path="/RegistrarAdministrador" element={<RegistrarAdministrador />} />
           <Route path="/CrearCategoria" element={<CrearCategoria />} />
-          <Route path="/EditarCategoria" element={<EditarCategoria />} />
+          <Route path="/EditarCategoria/:id" element={<EditarCategoria />} />
           <Route path="/VerCategorias" element={<VerCategorias />} />
           <Route path="/CrearProducto" element={<CrearProducto />} />
+          <Route path="/EditarProducto/:id" element={<EditarProducto />} />
           <Route path="/CrearOferta" element={<CrearOferta />} />
           <Route path="/EditarOferta" element={<EditarOferta />} />
           <Route path="/Productos/Categoria/" element={<ProductosPorCategoria />} />
@@ -89,7 +93,7 @@ function App() {
           <Route path="/VerOfertas" element={<VerOfertas />} />
           <Route path="/CatalogoDeProductos" element={<CatalogoDeProductos />} />
           <Route path="/CrearModelo" element={<CrearModelo />} />
-          <Route path="/EditarModelo" element={<EditarModelo />} />
+          <Route path="/EditarModelo/:id" element={<EditarModelo />} />
           <Route path="/CrearOfertaProducto" element={<CrearOfertaProducto />} />
           <Route path="/VerProductos" element={<PaginacionAdmin />} />
           <Route path="/VerModelos" element={<PaginacionMAdmin />} />
