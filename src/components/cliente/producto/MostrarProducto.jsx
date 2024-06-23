@@ -3,7 +3,7 @@ import TemplateUser from "../TemplateUser";
 import ProductCarousel from "./ProductCarousel";
 import QuantityControl from "../../QuantityControl";
 import { CambiarFormato, Tranformada } from "../../../services/ComponenteProducto";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { getProduct } from "../../../services/ProductService";
 import { getModelo } from "../../../services/InventarioService";
 
@@ -32,7 +32,9 @@ export default function MostrarProducto() {
   }, []);
 
   const increaseQuantity = () => {
-    setQuantity(prevQuantity => prevQuantity + 1);
+    if (quantity < producto.cantidadDisponible) {
+      setQuantity(prevQuantity => prevQuantity + 1);
+    }
   };
 
   const decreaseQuantity = () => {
@@ -114,9 +116,9 @@ export default function MostrarProducto() {
               decreaseQuantity={decreaseQuantity}
             />
 
-            <button className="  mt-3 bg-red-500 text-white py-2 rounded-md px-16">
+            <Link to="/LoginRegistro" className="mt-3 bg-red-500 text-white py-2 rounded-md px-16">
               Comprar producto
-            </button>
+            </Link>
           </div>
         </div></>)}
     </TemplateUser>

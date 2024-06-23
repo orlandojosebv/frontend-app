@@ -66,7 +66,7 @@ function App() {
           <Route path="/OlvidoContrasena" element={<OlvidoContrasena />} />
           <Route path="/ReestablecerContrasena" element={<ReestablecerContrasena />} />
           <Route path="/ContrasenaReestablecida" element={<ContrasenaReestablecida />} />
-          <Route path="/ComprarProducto" element={<ImagenProductoCompra />} />
+          <Route path="/ComprarProducto" element={<ImagenProductoCompra productos={productos} />} />
           <Route path="/VerificarCorreoComprar" element={<VerificarCorreo />} />
           <Route path="/ComprarProductoRegistro" element={<ComprarProductoRegistro />} />
           <Route path="/ComprarProductoUbicacion" element={<ComprarProductoUbicacion />} />
@@ -101,6 +101,7 @@ function App() {
           <Route path="/categoria/:id" element={<CatalogoDeProductosCategoria />} />
           <Route path="/CatalogoDeProductosOferta" element={<CatalogoDeProductosOferta />} />
           <Route path="/OffersPage" element={<OffersPage />} />
+          <Route path="/CarritoAside" element={<CarritoAside />} />
         </Routes>
       </div>
     </Router>
