@@ -262,26 +262,29 @@ export async function updateProducto(productoData, id, token) {
 
 export async function crearOferta(data) {
   try {
-    const response = await fetch(`${API_URL}/ofertas/`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+    console.log("Enviando datos al servidor:", data);
+    const response = await fetch(`${API_URL}/ofertas/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     });
+
     const dataRegistro = await response.json();
-    console.log(dataRegistro); // Aquí puedes manejar la respuesta del backend
-    return dataRegistro
+    console.log("Respuesta del servidor:", dataRegistro);
+    return dataRegistro;
   } catch (error) {
     console.error('Error:', error);
-    return null
+    return null;
   }
 }
+
 
 export async function getOfertas() {
   try {
     const response = await fetch(`${API_URL}/ofertas/`, { //Aquí iría la dirección del servidor donde se enviará la petición.
-      method: 'GET',
+      method: 'GET', 
       headers: {
         'Content-Type': 'application/json',
       }

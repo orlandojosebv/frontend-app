@@ -35,7 +35,7 @@ const VerModelosAdmin = () => {
 
   const currentItems = modelos.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
-  return (
+  return ( 
     <TemplateAdmin>
       <div className="w-full flex flex-col justify-center items-center">
         <div className="w-full mx-auto flex items-center justify-center flex-col">

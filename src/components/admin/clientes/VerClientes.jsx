@@ -7,7 +7,7 @@ import AccesoDenegado from '../AccesoDenegado';
 import { useSearchParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+ 
 const VerClientes = () => {
   const { user, token } = useUser();
   const [clientes, setClientes] = useState([]);

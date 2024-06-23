@@ -132,25 +132,13 @@ const Sidebar = () => {
           { icon: verIcon, label: "Ver Ofertas", to: "/VerOfertaFinalizada" },
         ]}
       />
-      {/* <SidebarItem
-        icon={estadisticaLogisticaIcon}
-        label="Estadísticas"
-        subItems={[
-          {
-            icon: verIcon,
-            label: "Ver estadísticas",
-            to: "/VerEstadisticas",
-          },
-        ]}
-      />
       <SidebarItem
         icon={estadisticaLogisticaIcon}
         label="Logística"
         subItems={[
           { icon: entregasIcon, label: "Entregas", to: "/Entregas" },
-          { icon: devolucionIcon, label: "Devoluciones", to: "/Devoluciones" },
         ]}
-      /> */}
+      />
     </div>
   );
 };

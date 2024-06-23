@@ -84,7 +84,7 @@ const CrearEditarProducto = ({ type, id = -1 }) => {
         precio,
         cantidadDisponible,
       };
-
+ 
       if (type === 1) {
         const response = await crearProducto(producto);
 

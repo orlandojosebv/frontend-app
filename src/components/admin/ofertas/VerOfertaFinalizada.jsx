@@ -3,22 +3,38 @@ import viewIcon from '../../../../public/img/iconos/visualizar.png';  // Asegúr
 import editIcon from '../../../../public/img/iconos/editar.png';  // Asegúrate de que este archivo exista
 import deleteIcon from '../../../../public/img/iconos/eliminar.png';  // Asegúrate de que este archivo exista
 import TemplateAdmin from '../TemplateAdmin';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { deleteOferta, getOfertas } from '../../../services/InventarioService';
+import useUser from '../../../hooks/useUser';
 
 const VerOfertaFinalizada = () => {
-  const [ofertas, setOfertas] = useState([
-    { id: 1, descripcion: 'Oferta 1', porcentaje: 20, fechaInicio: '2023-01-01', fechaFin: '2023-12-31' },
-    { id: 2, descripcion: 'Oferta 2', porcentaje: 15, fechaInicio: '2023-02-01', fechaFin: '2023-11-30' },
-    { id: 3, descripcion: 'Oferta 3', porcentaje: 10, fechaInicio: '2023-03-01', fechaFin: '2023-10-31' },
-    { id: 4, descripcion: 'Oferta 4', porcentaje: 25, fechaInicio: '2023-04-01', fechaFin: '2023-09-30' },
-    { id: 5, descripcion: 'Oferta 5', porcentaje: 30, fechaInicio: '2023-05-01', fechaFin: '2023-08-31' },
-  ]);
 
-  const handleDelete = (id) => {
-    setOfertas(ofertas.filter(oferta => oferta.id !== id));
-  };
-
+  const [ofertas, setOfertas] = useState([]);
+  const { user, token } = useUser();  // Asegúrate de obtener el token
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getOfertas().then(data => {
+        if (Array.isArray(data)) {
+          setOfertas(data);
+        } else {
+            console.error('Data is not an array', data);
+            setOfertas([]);
+        }
+    }).catch(error => {
+        console.error('Error fetching productos:', error);
+        setOfertas([]);
+    });
+  }, []);
+
+  const handleDelete = async (id) => {
+    const response = await deleteOferta(id);
+    if (response) {
+      setOfertas(ofertas.filter(oferta => oferta.id !== id));
+    } else {
+        console.error('Error al eliminar la oferta');
+    }
+  };
 
   return (
     <TemplateAdmin>
@@ -44,14 +60,14 @@ const VerOfertaFinalizada = () => {
                 <tr key={oferta.id} className="hover:bg-gray-100">
                   <td className="px-4 py-2 border">{oferta.id}</td>
                   <td className="px-4 py-2 border">{oferta.descripcion}</td>
-                  <td className="px-2 py-2 border text-center">{oferta.porcentaje}%</td> {/* Ajuste del ancho de la columna */}
+                  <td className="px-2 py-2 border text-center">{oferta.descuento}%</td> {/* Ajuste del ancho de la columna */}
                   <td className="px-4 py-2 border">{oferta.fechaInicio}</td>
                   <td className="px-4 py-2 border">{oferta.fechaFin}</td>
                   <td className="px-4 py-2 border text-center">
                     <Link to="/EditarOferta">
                         <img src={viewIcon} alt="View" className="h-6 w-6 mx-auto cursor-pointer" />
                     </Link>
-                  </td>
+                  </td> 
                   <td className="px-4 py-2 border text-center">
                     <Link to="/EditarOferta">
                       <img src={editIcon} alt="Edit" className="h-6 w-6 mx-auto cursor-pointer" />

@@ -13,7 +13,7 @@ function PaginacionAdmin() {
     const [currentPage, setCurrentPage] = useState(1);
     const { user, token } = useUser();  // Asegúrate de obtener el token
     const navigate = useNavigate();
-
+ 
     useEffect(() => {
         getProductos().then(data => {
             if (Array.isArray(data)) {

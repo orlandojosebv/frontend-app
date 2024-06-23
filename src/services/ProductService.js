@@ -23,7 +23,7 @@ export async function getProductosCategoria(id) {
             method: 'GET',
             headers: {
                 'Content-Type': 'aplication/json'
-            }
+            } 
         });
         const data = await result.data;
         return data

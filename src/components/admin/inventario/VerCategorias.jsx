@@ -19,14 +19,14 @@ const VerCategorias = () => {
       if (data) {
         setCategorias(data);
       }
-    });
+    }); 
   }, []);
 
   const handleDelete = async () => {
     if (!token || !categoriaToDelete) {
       console.error('Token de autorización no disponible o categoría no seleccionada');
       return;
-    }
+    } 
 
     const response = await deleteCategoria(categoriaToDelete.id, token);
     if (response) {
