@@ -1,9 +1,8 @@
 import TemplateAdmin from '../TemplateAdmin';
-import ProductoComp from './ProductoComp';  // Asegúrate de que la ruta es correcta
+import ProductoComp from './ProductoComp';
 import { useState, useEffect } from 'react';
 import { getProductos, deleteProducto } from '../../../services/InventarioService';
 import useUser from "../../../hooks/useUser";
-import { useNavigate } from 'react-router-dom';
 import AccesoDenegado from '../AccesoDenegado';
 
 const ITEMS_PER_PAGE = 6;
@@ -12,8 +11,7 @@ function PaginacionAdmin() {
     const [productos, setProductos] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const { user, token } = useUser();  // Asegúrate de obtener el token
-    const navigate = useNavigate();
-
+    
     useEffect(() => {
         getProductos().then(data => {
             if (Array.isArray(data)) {
@@ -43,10 +41,6 @@ function PaginacionAdmin() {
         }
     };
 
-    const handleEdit = (id) => {
-        navigate(`/EditarProducto/${id}`);
-    };
-
     const currentItems = productos.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
     if (user?.id_rol === 0) {
@@ -61,7 +55,6 @@ function PaginacionAdmin() {
                     {currentItems.map((product) => (
                         <ProductoComp 
                             key={product.id} // Usar una referencia única
-                            id={product.id}
                             imagen={product.fotos && product.fotos[0] ? product.fotos[0].url : ""}
                             nombre={product.Modelo.nombre}
                             referencia={product.id}

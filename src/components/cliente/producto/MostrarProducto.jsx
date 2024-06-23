@@ -5,7 +5,7 @@ import QuantityControl from "../../QuantityControl";
 import { CambiarFormato, Tranformada } from "../../../services/ComponenteProducto";
 import { useSearchParams } from "react-router-dom";
 import { getProduct } from "../../../services/ProductService";
-import { getModelo } from "../../../services/InventarioService";
+import { getModelos } from "../../../services/InventarioService";
 
 
 
@@ -22,7 +22,7 @@ export default function MostrarProducto() {
       try {
         const x = await getProduct(id);
         setProducto(x);
-        const modelo = await getModelo(x.Modelo.id);
+        const modelo = await getModelos(x.Modelo.id);
         setSizes(modelo.Productos.map(producto => producto.tamanio))
       } catch (error) {
         console.error("Error al obtener los productos:", error);
