@@ -4,9 +4,12 @@ import cartIcon from '../../../public/img/iconos/carrito-icon.png';  // Ruta cor
 import logoutIcon from '../../../public/img/iconos/salidaHeader.png';  // Ruta correcta
 import { Link, useNavigate } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
+import CarritoAside from './carrito/CarritoAside';
+import { useState } from 'react';
 
 const Header = () => {
   const { user, logout } = useUser();
+  const [view, setView] = useState(true);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -15,7 +18,10 @@ const Header = () => {
   };
 
   return (
-    <header className="h-fit w-full flex flex-col">
+    <header className="h-fit w-full flex flex-col relative">
+      {/* <div className='absolute right-0 top-0'>
+        {view && <CarritoAside setView={setView}></CarritoAside>}
+      </div> */}
       <div className='flex items-center justify-center'>
         <div className="flex flex-row w-[80%] items-center justify-between">
           <a href="/"><img src={logo} alt="Logo" className="h-20 w-auto" /></a>
@@ -25,21 +31,23 @@ const Header = () => {
               <div className="flex flex-col justify-center">
                 {
                   user
-                  ? <>
-                    <p className="text-sm sm:text-base md:text-lg lg:text-xl">{user.nombre}</p>
-                  </>
-                  : <>
-                    <Link to="/LoginRegistro" className="text-xs sm:text-sm md:text-base lg:text-lg">Hola, inicia sesión</Link>
-                  </>
+                    ? <>
+                      <p className="text-sm sm:text-base md:text-lg lg:text-xl">{user.nombre}</p>
+                    </>
+                    : <>
+                      <Link to="/LoginRegistro" className="text-xs sm:text-sm md:text-base lg:text-lg">Hola, inicia sesión</Link>
+                    </>
                 }
               </div>
             </div>
-            {/* <img src={cartIcon} alt="Carrito" className="h-8 w-auto" /> */}
+            <Link to="/CarritoAside">
+              <img src={cartIcon} alt="Carrito" className="h-8 w-auto" />
+            </Link>
             <img src={logoutIcon} alt="Logout" className="h-8 w-auto cursor-pointer" onClick={handleLogout} />
           </div>
         </div>
-      </div>  
-      <hr className="border-t-2 border-gray-300 w-full mt-2"/>
+      </div>
+      <hr className="border-t-2 border-gray-300 w-full mt-2" />
       <nav className="flex w-full items-center justify-center">
         <ul className='flex flex-row w-[75%] gap-20'>
           <li><a href="/CatalogoDeProductos">Catálogo</a></li>

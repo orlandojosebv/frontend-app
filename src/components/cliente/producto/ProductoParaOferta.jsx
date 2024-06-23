@@ -14,7 +14,7 @@ export default function ProductoParaOferta({imagen, nombre, referencia, cantidad
                         <label className="font-normal text-sm"  htmlFor="">{nombre}</label>
                     </td>
                 </tr>
-                <tr>
+                <tr> 
                     <td className="h-fit p-0 w-[20%]">
                         <label  className="text-sm" htmlFor="">#Referencia:</label>
                     </td>

@@ -37,6 +37,8 @@ import ProductoPorOferta from "./components/cliente/producto/ProductoPorOferta.j
 import CatalogoDeProductosCategoria from "./components/cliente/producto/ListarProductosPorCategoria.jsx";
 import CatalogoDeProductosOferta from "./components/cliente/catalogo/CatalogoDeProductosOferta.jsx";
 import OffersPage from "./components/cliente/OffersPage.jsx";
+import CarritoAside from "./components/cliente/carrito/CarritoAside.jsx";
+import VerOfertaFinalizada from "./components/admin/ofertas/VerOfertaFinalizada.jsx";
 
 const productos = [
   {
@@ -61,15 +63,16 @@ function App() {
       <div className="app-container">
         <Routes>
           <Route path="/LoginRegistro" element={<LoginRegistro />} />
+          <Route path="/TEST" element={<CarritoAside></CarritoAside>} />
           <Route path="/OlvidoContrasena" element={<OlvidoContrasena />} />
           <Route path="/ReestablecerContrasena" element={<ReestablecerContrasena />} />
           <Route path="/ContrasenaReestablecida" element={<ContrasenaReestablecida />} />
           <Route path="/ComprarProducto" element={<ImagenProductoCompra productos={productos} />} />
           <Route path="/VerificarCorreoComprar" element={<VerificarCorreo />} />
           <Route path="/ComprarProductoRegistro" element={<ComprarProductoRegistro />} />
-          <Route path="/ComprarProductoUbicacion" element={<ComprarProductoUbicacion productos={productos} />} />
+          <Route path="/ComprarProductoUbicacion" element={<ComprarProductoUbicacion />} />
           <Route path="/PagoExitoso" element={<PagoExitoso />} />
-          <Route path="/ComprarProductoUsuarioRegistrado" element={<ComprarProductoUsuarioRegistrado productos={productos} />} />
+          <Route path="/ComprarProductoUsuarioRegistrado" element={<ComprarProductoUsuarioRegistrado />} />
           <Route path="/VerAdministradores" element={<VerAdministradores />} />
           <Route path="/VerClientes" element={<VerClientes />} />
           <Route path="/" element={<Inicio />} />
@@ -99,6 +102,8 @@ function App() {
           <Route path="/categoria/:id" element={<CatalogoDeProductosCategoria />} />
           <Route path="/CatalogoDeProductosOferta" element={<CatalogoDeProductosOferta />} />
           <Route path="/OffersPage" element={<OffersPage />} />
+          <Route path="/VerOfertaFinalizada" element={<VerOfertaFinalizada />} />
+          <Route path="/CarritoAside" element={<CarritoAside />} />
         </Routes>
       </div>
     </Router>

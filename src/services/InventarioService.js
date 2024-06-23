@@ -73,18 +73,34 @@ export async function updateCategoria(categoriaData, token) {
 
 
 export async function crearModelo(data) {
-    try {
-        const response = await fetch(`${API_URL}/modelos/`, { //Aquí iría la dirección del servidor donde se enviará la petición.
-          method: 'POST',
-          body:data,
-        });
-        const dataModelo = await response.json();
-        console.log(dataModelo); // Aquí puedes manejar la respuesta del backend
-        return dataModelo
-      } catch (error) {
-        console.error('Error:', error);
-        return null
+  try {
+    const response = await fetch(`${API_URL}/modelos/`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+      method: 'POST',
+      body: data,
+    });
+    const dataModelo = await response.json();
+    console.log(dataModelo); // Aquí puedes manejar la respuesta del backend
+    return dataModelo
+  } catch (error) {
+    console.error('Error:', error);
+    return null
+  }
+}
+export async function getModelo(id) {
+  try {
+    const response = await fetch(`${API_URL}/modelos/${id}`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
       }
+    });
+    const data = await response.json();
+    console.log(data); // Aquí puedes manejar la respuesta del backend
+    return data
+  } catch (error) {
+    console.error('Error:', error);
+    return null
+  }
 }
 
 export async function updateModelo(formData, id, token) {
@@ -122,22 +138,22 @@ export async function getModelos() {
   }
 }
 
-  export async function getModeloPorId(id) {
-    try {
-        const response = await fetch(`${API_URL}/modelos/${id}`, { //Aquí iría la dirección del servidor donde se enviará la petición.
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        });
-        const data = await response.json();
-        console.log(data); // Aquí puedes manejar la respuesta del backend
-        return data
-      } catch (error) {
-        console.error('Error:', error);
-        return null
+export async function getModeloPorId(id) {
+  try {
+    const response = await fetch(`${API_URL}/modelos/${id}`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
       }
+    });
+    const data = await response.json();
+    console.log(data); // Aquí puedes manejar la respuesta del backend
+    return data
+  } catch (error) {
+    console.error('Error:', error);
+    return null
   }
+}
 
 export async function getMaterial() {
   try {
@@ -174,75 +190,75 @@ export async function addMaterial(data) {
   }
 }
 
-  export async function crearProducto(data) {
-    try {
-        const response = await fetch(`${API_URL}/productos/`, { //Aquí iría la dirección del servidor donde se enviará la petición.
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        });
-        const dataProducto = await response.json();
-        console.log(dataProducto); // Aquí puedes manejar la respuesta del backend
-        return dataProducto
-      } catch (error) {
-        console.error('Error:', error);
-        return null
-      }
+export async function crearProducto(data) {
+  try {
+    const response = await fetch(`${API_URL}/productos/`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    const dataProducto = await response.json();
+    console.log(dataProducto); // Aquí puedes manejar la respuesta del backend
+    return dataProducto
+  } catch (error) {
+    console.error('Error:', error);
+    return null
+  }
 }
 
 export async function getProductos() {
-    try {
-        const response = await fetch(`${API_URL}/productos/`, { //Aquí iría la dirección del servidor donde se enviará la petición.
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        });
-        const data = await response.json();
-        console.log(data); // Aquí puedes manejar la respuesta del backend
-        return data
-      } catch (error) {
-        console.error('Error:', error);
-        return null
+  try {
+    const response = await fetch(`${API_URL}/productos/`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
       }
+    });
+    const data = await response.json();
+    console.log(data); // Aquí puedes manejar la respuesta del backend
+    return data
+  } catch (error) {
+    console.error('Error:', error);
+    return null
   }
+}
 
-  export async function getProductoPorId(id) {
-    try {
-        const response = await fetch(`${API_URL}/productos/${id}`, { //Aquí iría la dirección del servidor donde se enviará la petición.
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        });
-        const data = await response.json();
-        console.log(data); // Aquí puedes manejar la respuesta del backend
-        return data
-      } catch (error) {
-        console.error('Error:', error);
-        return null
+export async function getProductoPorId(id) {
+  try {
+    const response = await fetch(`${API_URL}/productos/${id}`, { //Aquí iría la dirección del servidor donde se enviará la petición.
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
       }
+    });
+    const data = await response.json();
+    console.log(data); // Aquí puedes manejar la respuesta del backend
+    return data
+  } catch (error) {
+    console.error('Error:', error);
+    return null
   }
+}
 
-  export async function updateProducto(productoData, id, token) {
-    try {
-      const response = await fetch(`${API_URL}/modelos/${id}`, { // Asegúrate de que la URL sea correcta
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${token}`
-        },
-        body: productoData,
-      });
-      const data = await response.json();
-      console.log(data); // Aquí puedes manejar la respuesta del backend
-      return data;
-    } catch (error) {
-      console.error('Error:', error);
-      return null;
-    }
+export async function updateProducto(productoData, id, token) {
+  try {
+    const response = await fetch(`${API_URL}/modelos/${id}`, { // Asegúrate de que la URL sea correcta
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      body: productoData,
+    });
+    const data = await response.json();
+    console.log(data); // Aquí puedes manejar la respuesta del backend
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+    return null;
   }
+}
 
 export async function crearOferta(data) {
   try {
