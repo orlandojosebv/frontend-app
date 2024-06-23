@@ -13,13 +13,14 @@ const Login = () => {
   const { setToken, setLoading, setUser } = useUser()
 
   const validateEmail = (email) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/g;
     return re.test(String(email).toLowerCase());
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     let formIsValid = true;
+    console.log(email, password);
     let errors = { email: '', password: '' };
 
     if (!email) {

@@ -40,7 +40,7 @@ const Header = () => {
                 }
               </div>
             </div>
-            <Link to="/CarritoAside">
+            <Link to="/LoginRegistro">
               <img src={cartIcon} alt="Carrito" className="h-8 w-auto" />
             </Link>
             <img src={logoutIcon} alt="Logout" className="h-8 w-auto cursor-pointer" onClick={handleLogout} />
