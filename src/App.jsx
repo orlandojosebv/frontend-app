@@ -38,6 +38,7 @@ import CatalogoDeProductosCategoria from "./components/cliente/producto/ListarPr
 import CatalogoDeProductosOferta from "./components/cliente/catalogo/CatalogoDeProductosOferta.jsx";
 import OffersPage from "./components/cliente/OffersPage.jsx";
 import CarritoAside from "./components/cliente/carrito/CarritoAside.jsx";
+import VerOfertaFinalizada from "./components/admin/ofertas/VerOfertaFinalizada.jsx";
 
 const productos = [
   {
@@ -101,6 +102,7 @@ function App() {
           <Route path="/categoria/:id" element={<CatalogoDeProductosCategoria />} />
           <Route path="/CatalogoDeProductosOferta" element={<CatalogoDeProductosOferta />} />
           <Route path="/OffersPage" element={<OffersPage />} />
+          <Route path="/VerOfertaFinalizada" element={<VerOfertaFinalizada />} />
           <Route path="/CarritoAside" element={<CarritoAside />} />
         </Routes>
       </div>

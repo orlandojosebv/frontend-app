@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import TemplateAdmin from '../TemplateAdmin';
-import ProductoParaOferta from '../../cliente/producto/ProductoPorOferta';
+import ProductoParaOferta from '../../cliente/producto/ProductoParaOferta';
 
 import { getProductos } from '../../../services/InventarioService';
 
 const CrearOfertaProducto = () => {
   const [productos, setProductos] = useState([]);
 console.log(productos)
-  useEffect(() => {
+  useEffect(() => { 
     getProductos().then(data => {
       if (data) {
         setProductos(data);
@@ -21,7 +21,7 @@ console.log(productos)
   }, []);
 
   return (
-    <TemplateAdmin>
+    <TemplateAdmin>   
       <div className="w-full mx-auto flex items-center justify-center flex-col">
         <h2 className="w-[80%] items-start justify-start">Crear Oferta</h2>
         <span className='mb-10'>¿A qué productos desea aplicarles una oferta?</span>
