@@ -42,7 +42,6 @@ const ProductoComp = ({ id, imagen, nombre, referencia, cantidad, tamano, catego
         </div>
         <div className="w-[70%]">
           <table className="mb-0">
-          
               <tr className="h-fit p-0 align-middle">
                 <td className="h-fit p-0 w-[20%]">
                   <label className="text-sm" htmlFor="">Nombre:</label>

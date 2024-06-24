@@ -30,16 +30,10 @@ const VerAdministradores = () => {
     if (response) {
       setAdministradores(administradores.filter(administrador => administrador.correo !== selectedAdmin.correo));
       closeModal();
-      toast.success('Usuario eliminado correctamente', {
-        position: toast.POSITION.BOTTOM_RIGHT,
-        autoClose: 5000,
-      });
+      toast.success('Usuario eliminado correctamente');
     } else {
       closeModal();
-      toast.error('Error al eliminar el usuario', {
-        position: toast.POSITION.BOTTOM_RIGHT,
-        autoClose: 5000,
-      });
+      toast.error('Error al eliminar el usuario');
       console.error('Error al eliminar el usuario');
     }
   };
@@ -110,7 +104,7 @@ const VerAdministradores = () => {
         </div>
       )}
 
-      <ToastContainer position="bottom-right" />
+      <ToastContainer position="bottom-right" autoClose={5000} />
     </TemplateAdmin>
   );
 };

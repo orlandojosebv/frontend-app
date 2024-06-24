@@ -19,22 +19,21 @@ const VerCategorias = () => {
       if (data) {
         setCategorias(data);
       }
-    }); 
+    });
   }, []);
 
   const handleDelete = async () => {
     if (!token || !categoriaToDelete) {
       console.error('Token de autorización no disponible o categoría no seleccionada');
       return;
-    } 
+    }
 
     const response = await deleteCategoria(categoriaToDelete.id, token);
-    if (response) {
+    if (response && response.success) {
       setCategorias(categorias.filter(categoria => categoria.id !== categoriaToDelete.id));
       toast.success('Categoría eliminada correctamente');
     } else {
-      console.error('Error al eliminar la categoría');
-      toast.error('Error al eliminar la categoría');
+      toast.error(response.message || 'Error al eliminar la categoría');
     }
     setShowConfirmPopup(false);
   };

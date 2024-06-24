@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getMaterial, getCategoria, addMaterial, crearModelo, updateModelo, getModeloPorId } from '../../../services/InventarioService';
+import { getMaterial, getCategoria, addMaterial, crearModelo, updateModelo, getModeloPorId, deleteImagen } from '../../../services/InventarioService';
 import useUser from '../../../hooks/useUser'; 
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,6 +18,8 @@ const CrearEditarModelo = ({type, id = -1}) => {
   const [categorias, setCategorias] = useState([]);
   const [newMaterial, setNewMaterial] = useState({ nombre: '', grosor: '' });
   const [showNewMaterialFields, setShowNewMaterialFields] = useState(false);
+  const [showDeletePopup, setShowDeletePopup] = useState(false);
+  const [imageToDelete, setImageToDelete] = useState(null);
   const navigate = useNavigate();
   const { token } = useUser();
   const { id: paramId } = useParams();
@@ -39,7 +41,7 @@ const CrearEditarModelo = ({type, id = -1}) => {
           setCategoria(modelo.id_categoria);
           setTamano(modelo.Fotos[0].tamanio);
           setMaterials(modelo.Materials);
-          setImages('');
+          setImages(modelo.Fotos.map(foto => ({ id: foto.id, url: foto.url }))); // Cargar URLs de imágenes
         }
       };
       fetchModelo();
@@ -96,14 +98,19 @@ const CrearEditarModelo = ({type, id = -1}) => {
         formData.append(`materiales[${index}]`, item.material);
       });
       imagenes.forEach((image) => {
-        formData.append('imagenes', image);
+        if (image instanceof File) {
+          formData.append('imagenes', image);
+        }
+        
+        for (const [key, value] of formData.entries()) {
+          console.log(key, value);
+        }
       });
 
       if (type === 1) {
         const response = await crearModelo(formData);
         if (response && response.success) {
           toast.success('Modelo creado exitosamente');
-          console.log('Modelo creado:', response);
         } else {
           toast.error('Error al crear el modelo');
           console.error('Error al crear el modelo', response);
@@ -112,7 +119,6 @@ const CrearEditarModelo = ({type, id = -1}) => {
         const response = await updateModelo(formData, paramId, token);
         if (response && response.success) {
           toast.success('Modelo editado exitosamente');
-          console.log('Modelo editado:', response);
         } else {
           toast.error('Error al editar el modelo');
           console.error('Error al editar el modelo', response);
@@ -120,6 +126,8 @@ const CrearEditarModelo = ({type, id = -1}) => {
       }
     }
   };
+
+  
 
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
@@ -156,6 +164,36 @@ const CrearEditarModelo = ({type, id = -1}) => {
     setShowNewMaterialFields(false);
   };
 
+  const handleShowDeletePopup = (index) => {
+    setImageToDelete(index);
+    setShowDeletePopup(true);
+  };
+
+  const handleDeleteImage = async () => {
+    if (imageToDelete !== null && imagenes[imageToDelete]) {
+      const image = imagenes[imageToDelete];
+      if (image.id) {
+        console.log(image.id);
+        const response = await deleteImagen(image.id);
+        if (response && response.success) {
+          toast.success('Imagen eliminada correctamente');
+          setImages((prevImages) => prevImages.filter((_, i) => i !== imageToDelete));
+        } else {
+          toast.error('Error al eliminar la imagen');
+          console.log(image.id);
+        }
+      } else {
+        setImages((prevImages) => prevImages.filter((_, i) => i !== imageToDelete));
+      }
+    }
+    setShowDeletePopup(false);
+    setImageToDelete(null);
+  };
+
+  const handleClosePopup = () => {
+    setShowDeletePopup(false);
+    setImageToDelete(null);
+  };
 
   return (
     <>
@@ -309,7 +347,16 @@ const CrearEditarModelo = ({type, id = -1}) => {
               {imagenes.length > 0 && (
                 <ul>
                   {imagenes.map((image, index) => (
-                    <li key={index} className="text-gray-700">{image.name}</li>
+                    <li key={index} className="flex items-center justify-between text-gray-700 mb-2">
+                      {image instanceof File ? image.name : <img src={image.url} alt={`Imagen ${index + 1}`} className="h-20" />}
+                      <button 
+                        type="button"
+                        onClick={() => handleShowDeletePopup(index)}
+                        className="ml-4 px-2 py-1 bg-red-600 text-white rounded-md"
+                      >
+                        Eliminar
+                      </button>
+                    </li>
                   ))}
                 </ul>
               )}
@@ -332,11 +379,33 @@ const CrearEditarModelo = ({type, id = -1}) => {
           </div>
         </form>
       </div>
+
+      {showDeletePopup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded-md shadow-md transition-transform transform hover:scale-105">
+            <h2 className="text-lg font-semibold mb-4">Confirmación</h2>
+            <p className="mb-4">¿Seguro que quieres eliminar esta imagen?</p>
+            <div className="flex justify-end">
+              <button
+                onClick={handleDeleteImage}
+                className="bg-red-600 text-white px-4 py-2 rounded-md mr-2 hover:bg-red-700"
+              >
+                Eliminar
+              </button>
+              <button
+                onClick={handleClosePopup}
+                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar />
     </>
   );
-
-  
 };
-export default CrearEditarModelo;
 
+export default CrearEditarModelo;

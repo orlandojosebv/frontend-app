@@ -84,7 +84,7 @@ const CrearEditarProducto = ({ type, id = -1 }) => {
         precio,
         cantidadDisponible,
       };
- 
+
       if (type === 1) {
         const response = await crearProducto(producto);
 
@@ -98,9 +98,10 @@ const CrearEditarProducto = ({ type, id = -1 }) => {
         }
       } else {
         const response = await updateProducto(producto, paramId, token);
+        console.log(producto,"Esto fue lo que se digitó.")
         if (response.success) {
           toast.success("Producto editado exitosamente");
-          console.log("Producto editado:", response);
+          //console.log("Producto editado:", response);
           //navigate('/ruta-de-redireccionamiento'); // Reemplaza con la ruta a la que quieres redirigir después de guardar
         } else {
           toast.error("Error al editar el producto");

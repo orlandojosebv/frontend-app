@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import '../../../assets/styles/Login.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { login as loginService } from "../../../services/UserService"
-import useUser from "../../../hooks/useUser"
+import { login as loginService } from "../../../services/UserService";
+import useUser from "../../../hooks/useUser";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -10,7 +12,7 @@ const Login = () => {
   const [errors, setErrors] = useState({ email: '', password: '' });
 
   let navigate = useNavigate();
-  const { setToken, setLoading, setUser } = useUser()
+  const { setToken, setLoading, setUser } = useUser();
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/g;
@@ -42,25 +44,27 @@ const Login = () => {
     setErrors(errors);
 
     if (formIsValid) {
-      setLoading(true)
+      setLoading(true);
       loginService(email, password).then(data => {
-        console.log(data)
+        console.log(data);
 
         if (data.token) {
-          setToken(data.token)
-          setUser(data.data)
+          setToken(data.token);
+          setUser(data.data);
 
           if (data.data?.id_rol === 0) {
-            navigate("/")//Ruta direccionar.
+            navigate("/"); //Ruta direccionar.
           } else {
-            navigate("/VerClientes")//Ruta direccionar.
+            navigate("/VerClientes"); //Ruta direccionar.
           }
+        } else {
+          toast.error('Correo o contraseña incorrectos');
         }
       }).finally(() => {
-        setLoading(false)
-      })
+        setLoading(false);
+      });
     }
-  }; //Con esto se supone que se haría la petición POST para el backend.
+  };
 
   return (
     <div className="login-container">
@@ -96,6 +100,7 @@ const Login = () => {
         <button type="submit">Iniciar Sesión</button>
         <Link to="/OlvidoContrasena" className="OlvidoContrasena">¿Olvidaste tu contraseña?</Link>
       </form>
+      <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar />
     </div>
   );
 }

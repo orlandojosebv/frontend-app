@@ -69,7 +69,8 @@ const RegistrarAdministrador = () => {
 
     if (formIsValid) {
       if (!token) return;
-      const response = await registroAdmin({
+
+      const adminData = {
         correo: email,
         nombre: firstName,
         apellido: lastName,
@@ -77,19 +78,23 @@ const RegistrarAdministrador = () => {
         cedula: idNumber,
         contrasena: password,
         id_rol: 1
-      }, token);
+      };
 
-      if (response) {
+      console.log('Datos a enviar:', adminData); // Verifica los datos antes de enviarlos
+
+      const response = await registroAdmin(adminData, token);
+
+      if (response && response.success) {
         toast.success('Administrador registrado exitosamente');
       } else {
         toast.error('Hubo un problema con el registro');
+        console.error('Error en la respuesta:', response);
       }
     }
   };
 
   if (user?.id_rol === 0) {
-    // retorna la pagina de no autorizado
-    return <AccesoDenegado></AccesoDenegado>
+    return <AccesoDenegado />;
   }
 
   return (

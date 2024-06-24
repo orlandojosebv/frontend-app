@@ -19,11 +19,12 @@ const CrearCategoria = () => {
 
     try {
       const response = await crearCategoria({ nombre });
-      if (response) {
+      console.log(response.success);
+      if (response.success) {
         toast.success('Registro de categoría exitoso');
-        setNombre(''); // Limpiar el campo después de guardar
       } else {
-        setError('Hubo un error al guardar la categoría');
+        console.log(response.success)
+        toast.error('Esta categoria ya está creada');
       }
     } catch (error) {
       setError('Hubo un error al guardar la categoría');

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { getProductos, deleteProducto } from '../../../services/InventarioService';
 import useUser from "../../../hooks/useUser";
 import AccesoDenegado from '../AccesoDenegado';
+import { useNavigate } from 'react-router-dom';
 
 const ITEMS_PER_PAGE = 6;
 
@@ -12,7 +13,7 @@ function PaginacionAdmin() {
     const [currentPage, setCurrentPage] = useState(1);
     const { user, token } = useUser();  // Asegúrate de obtener el token
     const navigate = useNavigate();
- 
+
     useEffect(() => {
         getProductos().then(data => {
             if (Array.isArray(data)) {
@@ -55,7 +56,8 @@ function PaginacionAdmin() {
                     <h2 className="w-[80%] items-start justify-start">Listado de productos</h2>
                     {currentItems.map((product) => (
                         <ProductoComp 
-                            key={product.id} // Usar una referencia única
+                            key={product.id}
+                            id={product.id} // Asegúrate de pasar el id aquí
                             imagen={product.fotos && product.fotos[0] ? product.fotos[0].url : ""}
                             nombre={product.Modelo.nombre}
                             referencia={product.id}

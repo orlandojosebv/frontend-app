@@ -21,7 +21,7 @@ export default function ModeloComp({ id, imagen, nombre, referencia, tamano, cat
         onDelete(id);
         toast.success("Producto eliminado satisfactoriamente");
       } else {
-        toast.error("Error al eliminar el producto");
+        toast.error("Error al eliminar el producto, este modelo tiene productos asociados.");
       }
     } catch (error) {
       toast.error("Error al eliminar el producto");
@@ -34,7 +34,7 @@ export default function ModeloComp({ id, imagen, nombre, referencia, tamano, cat
 
   return (
     <div className="flex flex-col h-full w-full items-center">
-      <ToastContainer />
+      <ToastContainer position='bottom-right'/>
       <hr className="w-[80%]" />
       <div className="flex flex-row items-center justify-between w-[80%] mb-4 mt-4 h-[140px]">
         <div className="h-36 w-32 flex items-center justify-center bg-[#F4F4F4]">
