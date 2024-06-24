@@ -1,35 +1,42 @@
 import { useState } from 'react';
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import '../../../assets/styles/ReestablecerContrasena.css';
 import TemplateUser from '../TemplateUser';
 import { ResetPassword } from '../../../services/UserService';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ReestablecerContrasena = () => {
   const [contrasena, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [message, setMessage] = useState('');
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const token = searchParams.get("token")
+  const [searchParams] = useSearchParams();
+  const token = searchParams.get("token");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (contrasena !== confirmPassword) {
-      setMessage('Las contraseñas no coinciden');
+
+    if (contrasena.length < 6 || contrasena.length > 20) {
+      toast.error('La contraseña debe tener entre 6 y 20 caracteres');
       return;
     }
+
+    if (contrasena !== confirmPassword) {
+      toast.error('Las contraseñas no coinciden');
+      return;
+    }
+
     try {
-      const response = await ResetPassword(contrasena,token);
+      const response = await ResetPassword(contrasena, token);
 
       if (response) {
-        setMessage('Contraseña restablecida exitosamente');
-        navigate('/LoginRegistro');
+        navigate('/LoginRegistro', { state: { message: 'Contraseña restablecida exitosamente' } });
       } else {
-        setMessage('Error al restablecer la contraseña. Por favor, inténtalo nuevamente.');
+        toast.error('Error al restablecer la contraseña. Por favor, inténtalo nuevamente.');
       }
     } catch (error) {
       console.error('Error:', error);
-      setMessage('Error al restablecer la contraseña. Por favor, inténtalo nuevamente.');
+      toast.error('Error al restablecer la contraseña. Por favor, inténtalo nuevamente.');
     }
   };
 
@@ -60,7 +67,7 @@ const ReestablecerContrasena = () => {
           </div>
           <button type="submit">Cambiar Contraseña</button>
         </form>
-        {message && <p className="text-red-500">{message}</p>}
+        <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar />
       </div>
     </TemplateUser>
   );

@@ -2,24 +2,31 @@ import { useState } from 'react';
 import '../../../assets/styles/OlvidoContrasena.css';
 import TemplateUser from '../TemplateUser';
 import { ForgotPassword } from '../../../services/UserService';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const OlvidoContrasena = () => {
   const [correo, setCorreo] = useState('');
-  const [message, setMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const response = await ForgotPassword({ correo });
-      if (response.success == true) {
-        setMessage('Correo electrónico enviado exitosamente. Por favor, revisa tu correo para restablecer tu contraseña.');
+      if (response.succes) {
+        toast.success('Correo electrónico enviado exitosamente. Por favor, revisa tu correo para restablecer tu contraseña.', {
+          className: 'bg-green-500 text-white',
+        });
       } else {
-        setMessage('Correo electrónico enviado exitosamente. Por favor, revisa tu correo para restablecer tu contraseña.');
+        toast.warn('Hubo un problema al enviar el correo electrónico. Por favor, intenta nuevamente.', {
+          className: 'bg-yellow-500 text-black',
+        });
       }
     } catch (error) {
       console.error('Error:', error);
-      setMessage('Hubo un problema al enviar el correo electrónico. Por favor, intenta nuevamente.');
+      toast.warn('Hubo un problema al enviar el correo electrónico. Por favor, intenta nuevamente.', {
+        className: 'bg-yellow-500 text-black',
+      });
     }
   };
 
@@ -42,8 +49,8 @@ const OlvidoContrasena = () => {
           </div>
           <button type="submit">Enviar</button>
         </form>
-        {message && <p className="message">{message}</p>}
       </div>
+      <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar />
     </TemplateUser>
   );
 };
