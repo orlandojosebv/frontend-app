@@ -29,7 +29,7 @@ const products = [
         price: 70.000,
         ofert: 20
     },
-    {
+    { 
         id: 4,
         image: [conejo],
         priceOff: 20.000,

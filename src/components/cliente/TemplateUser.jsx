@@ -1,20 +1,16 @@
-import { useState } from "react";
+
 import Footer from "./Footer";
 import Header from "./Header";
 
 const TemplateUser = ({ children }) => {
-
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <div className="flex flex-col h-full">
-        <div className=" flex-1">
-          
-          {children}
-        </div>
-      </div>
+      <main className="flex-1">
+        {children}
+      </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

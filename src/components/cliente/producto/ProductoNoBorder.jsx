@@ -12,6 +12,6 @@ export default function ProductoNoBorder({ image, priceOff, productName, price, 
                 </div>
                 <div className="text-m font-bold text-[#1E9500]">{ofert}% off</div>
             </div> 
-        </div>
+        </div> 
     </>
 }

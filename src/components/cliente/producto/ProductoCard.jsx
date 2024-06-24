@@ -9,7 +9,7 @@ export default function ProductoCard({ image, categoryName, productName, price, 
                 </div>
                 <hr />
                 <div className="text-left h-[40%] p-2 justify-between">
-                    <div>
+                    <div> 
                         <div className="text-xs">{categoryName}</div>
                         <div className="text-lg font-bold">{productName}</div>
                     </div>

@@ -10,7 +10,7 @@ export default function CatalogoDeProductos(){
             <div className="w-[80%] flex flex-row">
                 <div className="flex flex-grow">
                     <Categorias />
-                </div>
+                </div> 
                 <div className="w-[85%] flex items-center justify-center">
                     <Paginacion />
                 </div>

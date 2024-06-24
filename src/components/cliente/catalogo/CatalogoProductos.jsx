@@ -13,7 +13,7 @@ export default function CatalogoDeProductos(){
                 </div>
                 <div className="w-[85%] flex items-center justify-center">
                     <Paginacion />
-                </div>
+                </div> 
             </div> 
         </div> 
     </TemplateUser>

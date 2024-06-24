@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const ITEMS_PER_PAGE = 12;
 
 function Paginacion() {
-
+ 
     const [productos, setProductos] = useState([])
 
     useEffect(
