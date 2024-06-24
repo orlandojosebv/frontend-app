@@ -33,7 +33,7 @@ const VerOfertaFinalizada = () => {
       setOfertas(ofertas.filter(oferta => oferta.id !== id));
     } else {
         console.error('Error al eliminar la oferta');
-    }
+    } 
   };
 
   return (

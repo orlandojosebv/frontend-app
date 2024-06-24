@@ -5,23 +5,23 @@ import { getProducts } from "../../../services/ProductService";
 
 export default function ProductosDeCategoria() {
     const { id } = useParams();
-  const [productos, setProductos] = useState([]);
-  const [productosFiltrados, setProductosFiltrados] = useState([]);
+    const [productos, setProductos] = useState([]);
+    const [productosFiltrados, setProductosFiltrados] = useState([]);
 
-  useEffect(() => {
-    const productosCATALOGO = async () => {
-      const productosData = await getProducts();
-      setProductos(productosData);
-    };
-    productosCATALOGO();
-  }, []);
+    useEffect(() => {
+        const productosCATALOGO = async () => {
+        const productosData = await getProducts();
+        setProductos(productosData);
+        };
+        productosCATALOGO();
+    }, []);
 
-  useEffect(() => {
-    const productosCategoria = productos.filter(
-      producto => producto.Modelo.id_categoria === parseInt(id)
-    );
-    setProductosFiltrados(productosCategoria);
-  }, [id, productos]);
+    useEffect(() => {
+        const productosCategoria = productos.filter(
+        producto => producto.Modelo.id_categoria === parseInt(id)
+        );
+        setProductosFiltrados(productosCategoria);
+    }, [id, productos]);
 
     return (
         <div className="w-[90%] h-auto mt-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-2">
