@@ -36,9 +36,6 @@ const Login = () => {
     if (!password) {
       formIsValid = false;
       errors.password = 'La contraseña es obligatoria';
-    } else if (password.length < 6 || password.length > 20) {
-      formIsValid = false;
-      errors.password = 'La contraseña debe tener entre 6 y 20 caracteres';
     }
 
     setErrors(errors);
@@ -51,6 +48,7 @@ const Login = () => {
         if (data.token) {
           setToken(data.token);
           setUser(data.data);
+          toast.success('Inicio de sesión exitoso');
 
           if (data.data?.id_rol === 0) {
             navigate("/"); //Ruta direccionar.
@@ -92,8 +90,6 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            minLength={6}
-            maxLength={20}
           />
           {errors.password && <span className="error">{errors.password}</span>}
         </div>
