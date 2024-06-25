@@ -115,7 +115,9 @@ const VerOfertaFinalizada = () => {
             </tbody>
           </table>
         </div>
-        <button className="mt-6 px-4 py-2 bg-black text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-black">Mostrar oferta por producto</button>
+        <Link to={`/ofertas/productos`}>
+          <button className="mt-6 px-4 py-2 bg-black text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-black">Mostrar oferta por producto</button>
+        </Link>
       </div>
 
       {showConfirmPopup && (

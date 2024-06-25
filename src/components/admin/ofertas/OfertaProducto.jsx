@@ -1,9 +1,8 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Tranformada } from '../../../services/ComponenteProducto';
 
 // eslint-disable-next-line react/prop-types
-const ProductoOferta = ({ imagen, nombre, referencia, precio, oferta}) => {
+const OfertaProducto = ({ imagen, nombre, referencia, precio}) => {
 
   return ( 
     <div className="flex flex-col h-full w-full items-center">
@@ -33,18 +32,10 @@ const ProductoOferta = ({ imagen, nombre, referencia, precio, oferta}) => {
               </tr>
               <tr>
                 <td className="h-fit p-0 w-[20%]">
-                  <label className="text-sm" htmlFor="">Precio:</label>
+                  <label className="text-sm" htmlFor="">Descuento:</label>
                 </td>
                 <td className="h-fit p-0">
-                  <label className="font-normal text-sm" htmlFor="">{precio}</label>
-                </td>
-              </tr>
-              <tr>
-                <td className="h-fit p-0 w-[20%]">
-                  <label className="text-sm" htmlFor="">Precio ofertado:</label>
-                </td>
-                <td className="h-fit p-0">
-                  <label className="font-normal text-sm" htmlFor="">{Tranformada(precio, oferta)}</label>
+                  <label className="font-normal text-sm" htmlFor="">{precio}%</label>
                 </td>
               </tr>
           </table>
@@ -55,4 +46,4 @@ const ProductoOferta = ({ imagen, nombre, referencia, precio, oferta}) => {
   );
 };
 
-export default ProductoOferta;
+export default OfertaProducto;

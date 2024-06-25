@@ -1,26 +1,18 @@
 import TemplateAdmin from "../TemplateAdmin";
-import ProductoOferta from "./ProductoOferta";
-import { useSearchParams } from "react-router-dom";
-import { getProductosPorOferta } from "../../../services/InventarioService";
+import { getProductosOfertados } from "../../../services/InventarioService";
 import { useEffect, useState } from "react";
+import OfertaProducto from "./OfertaProducto";
 
 const ITEMS_PER_PAGE = 6;
 
-export default function VerProductosPorOferta() {
-  const [searchParams] = useSearchParams();
+export default function VerOfertaPorProducto() {
   const [productos, setProductos] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const ofertaId = searchParams.get("id");
-  const descuento = searchParams.get("off");
   
   useEffect(() => {
     const fetchProductos = async () => {
-      // Verifica que ofertaId esté definido antes de continuar
-      if (!ofertaId) {
-        return; // Evita hacer la solicitud si ofertaId es undefined
-      }
       try {
-        const productosData = await getProductosPorOferta(ofertaId);
+        const productosData = await getProductosOfertados();
         console.log("WAIT", productosData);
         setProductos(productosData || []);
         console.log(productosData);
@@ -38,8 +30,6 @@ export default function VerProductosPorOferta() {
   const totalPages = Math.ceil(productos.length / ITEMS_PER_PAGE);
   const currentItems = productos.slice((currentPage - 1) * ITEMS_PER_PAGE,currentPage * ITEMS_PER_PAGE);
 
-
-
   const handleClick = (page) => {
     setCurrentPage(page);
   };
@@ -48,16 +38,15 @@ export default function VerProductosPorOferta() {
     <TemplateAdmin>
       <div className="w-full flex flex-col justify-center items-center">
         <div className="w-full mx-auto flex items-center justify-center flex-col">
-          <h2 className="w-[80%] items-start justify-start">Listado de productos por oferta</h2>
+          <h2 className="w-[80%] items-start justify-start">Listado de ofertas por producto</h2>
           {currentItems.map((product) => (
-            <ProductoOferta
+            <OfertaProducto
               key={product.id}
               id={product.id} // Asegúrate de pasar el id aquí
-              imagen={product.Modelo.Fotos && product.Modelo.Fotos[0] ? product.Modelo.Fotos[0].url : ""}
+              imagen={product.fotos && product.fotos[0] ? product.fotos[0].url : ""}
               nombre={product.Modelo.nombre}
               referencia={product.id}
-              oferta={descuento}
-              precio={product.precio}
+              precio={product.descuento}
             />
           ))}
         </div>

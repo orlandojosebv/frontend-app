@@ -25,7 +25,7 @@ export default function PPP() {
 
     return <>
         <div className="flex items-center justify-center h-auto w-full">
-            <div className="w-[90%] h-auto mt-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-2">
+            <div className="w-[100%] h-auto mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-2">
                 {productosLimitados.map((product, index) => (
                     <ProductosOfertadosBorder
                         productoId={product.id}
