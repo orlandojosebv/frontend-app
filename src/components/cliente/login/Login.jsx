@@ -3,7 +3,7 @@ import '../../../assets/styles/Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { login as loginService } from "../../../services/UserService";
 import useUser from "../../../hooks/useUser";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
@@ -44,19 +44,17 @@ const Login = () => {
       setLoading(true);
       loginService(email, password).then(data => {
         console.log(data);
-
         if (data.token) {
           setToken(data.token);
           setUser(data.data);
           toast.success('Inicio de sesión exitoso');
-
           if (data.data?.id_rol === 0) {
             navigate("/"); //Ruta direccionar.
           } else {
             navigate("/VerClientes"); //Ruta direccionar.
           }
         } else {
-          toast.error('Correo o contraseña incorrectos');
+          toast.error(data.message);
         }
       }).finally(() => {
         setLoading(false);
@@ -96,7 +94,6 @@ const Login = () => {
         <button type="submit">Iniciar Sesión</button>
         <Link to="/OlvidoContrasena" className="OlvidoContrasena">¿Olvidaste tu contraseña?</Link>
       </form>
-      <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar />
     </div>
   );
 }
