@@ -6,10 +6,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
 import CarritoAside from './carrito/CarritoAside';
 import { useState } from 'react';
+import { Button } from 'flowbite-react';
 
 const Header = () => {
   const { user, logout } = useUser();
-  const [view, setView] = useState(true);
+  const [view, setView] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -19,9 +20,9 @@ const Header = () => {
 
   return (
     <header className="h-fit w-full flex flex-col relative">
-      {/* <div className='absolute right-0 top-0'>
-        {view && <CarritoAside setView={setView}></CarritoAside>}
-      </div> */}
+      <div className='absolute right-0 top-0'>
+        {view && <CarritoAside user={user} view={view} setView={setView}></CarritoAside>}
+      </div>
       <div className='flex items-center justify-center'>
         <div className="flex flex-row w-[80%] items-center justify-between">
           <a href="/"><img src={logo} alt="Logo" className="h-20 w-auto" /></a>
@@ -40,9 +41,9 @@ const Header = () => {
                 }
               </div>
             </div>
-            <Link to="/LoginRegistro">
+            <Button onClick={() => setView(true)}>
               <img src={cartIcon} alt="Carrito" className="h-8 w-auto" />
-            </Link>
+            </Button>
             <img src={logoutIcon} alt="Logout" className="h-8 w-auto cursor-pointer" onClick={handleLogout} />
           </div>
         </div>

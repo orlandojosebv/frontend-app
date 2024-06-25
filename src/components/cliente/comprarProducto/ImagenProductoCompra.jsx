@@ -13,7 +13,7 @@ const ImagenProductoCompra = ({ productos }) => {
       <p>{productos.length} producto(s)</p>
       {productos.map((producto, index) => (
         <div key={index} className="producto-container">
-          <div className="producto-imagen" style={{ backgroundImage: `url(/img/productos/${producto.imagen})` }}></div>
+          <div className="producto-imagen" style={{ backgroundImage: `url(${producto.imagen})` }}></div>
           <div className="producto-info">
             <p>{producto.nombre}</p>
             <p>Cantidad: {producto.cantidad}</p>

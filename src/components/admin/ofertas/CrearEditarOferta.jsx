@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { crearOferta } from '../../../services/InventarioService';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CrearEditarOferta = () => {
   const [descuento, setDescuento] = useState('');
@@ -21,8 +22,8 @@ const CrearEditarOferta = () => {
     let formErrors = {};
     let isValid = true;
 
-    if (!descuento || descuento < 0 || descuento > 100 || !Number.isInteger(Number(descuento))) {
-      formErrors.descuento = 'El descuento debe ser un número entero entre 0 y 100';
+    if (!descuento || descuento <= 0 || descuento > 100 || !Number.isInteger(Number(descuento))) {
+      formErrors.descuento = 'El descuento debe ser un número entero entre 1 y 100';
       isValid = false;
     }
     if (!fechaInicio) {
@@ -32,9 +33,12 @@ const CrearEditarOferta = () => {
     if (!fechaFin) {
       formErrors.fechaFin = 'La fecha de fin es obligatoria';
       isValid = false;
+    } else if (new Date(fechaFin) <= new Date(fechaInicio)) {
+      formErrors.fechaFin = 'La fecha de fin debe ser posterior a la fecha de inicio';
+      isValid = false;
     }
     if (!descripcion) {
-      formErrors.descripcion = 'La descripcion de la oferta es obligatoria';
+      formErrors.descripcion = 'La descripción de la oferta es obligatoria';
       isValid = false;
     }
 
@@ -49,7 +53,7 @@ const CrearEditarOferta = () => {
       const oferta = {
         fechaInicio,
         fechaFin,
-        descuento: Number(descuento), // Asegúrate de que el descuento sea un número
+        descuento: Number(descuento),
         descripcion,
       };
       const data = {
@@ -57,7 +61,7 @@ const CrearEditarOferta = () => {
         id_productos: selectedProducts,
       };
 
-      console.log("Datos antes de enviar al servidor:", data); // Para depuración
+      console.log("Datos antes de enviar al servidor:", data);
 
       try {
         const response = await crearOferta(data);
@@ -65,7 +69,6 @@ const CrearEditarOferta = () => {
         if (response && response.success) {
           toast.success("Oferta creada exitosamente");
           console.log('Oferta guardada:', response);
-          //navigate('/ruta-de-redireccionamiento'); // Cambia esta ruta según sea necesario
         } else {
           toast.error("Error al crear la oferta");
           console.error('Error al guardar la oferta:', response.message);
@@ -149,6 +152,7 @@ const CrearEditarOferta = () => {
           </button>
         </div>
       </form>
+      <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar />
     </div>
   );
 };

@@ -319,7 +319,46 @@ export async function getOfertas() {
     console.error("Error:", error);
     return null;
   }
-} 
+}
+
+export async function getOfertaPorId(id) {
+  try {
+    const response = await fetch(`${API_URL}/ofertas/${id}`, {
+      //Aquí iría la dirección del servidor donde se enviará la petición.
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    console.log(data); // Aquí puedes manejar la respuesta del backend
+    return data;
+  } catch (error) {
+    console.error("Error:", error);
+    return null;
+  }
+}
+
+export async function updateOferta(ofertaData, token) {
+  try {
+    const response = await fetch(`${API_URL}/ofertas/${ofertaData.id}`, {
+      // Aquí va la URL para eliminar un usuario
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(ofertaData),
+    });
+    const data = await response.json();
+    console.log(data); // Aquí puedes manejar la respuesta del backend
+    return data;
+  } catch (error) {
+    console.error("Error:", error);
+    return null;
+  }
+}
+
 
 export async function getProductosPorOferta(ofertaId) {
   try {
@@ -365,7 +404,6 @@ export async function deleteCategoria(id_categoria, token) {
 export async function deleteOferta(id_oferta, token) {
   try {
     const response = await fetch(`${API_URL}/ofertas/${id_oferta}`, {
-      // Aquí va la URL para eliminar un usuario
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
