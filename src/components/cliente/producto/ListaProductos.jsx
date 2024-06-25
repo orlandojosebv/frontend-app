@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../../../services/ProductService";
 import ProductoCard from "./ProductoCard";
-import { Link } from "react-router-dom";
-import MostrarProducto from "./MostrarProducto";
 
 export default function ListaProductos() {
     const [productos, setProductos] = useState([]);
@@ -32,6 +30,7 @@ export default function ListaProductos() {
                         key={index}
                         image={product.fotos[0].url}
                         categoryName={product.Modelo.Categorium.nombre}
+                        ofert={product.descuento}
                         productName={product.Modelo.nombre}
                         price={product.precio}
                     />

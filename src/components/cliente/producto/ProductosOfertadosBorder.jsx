@@ -1,4 +1,7 @@
-export default function ProductosOfertadosBorder({ image, priceOff, productName, price, ofert  }){
+import { CambiarFormato, Tranformada } from "../../../services/ComponenteProducto";
+
+// eslint-disable-next-line react/prop-types
+export default function ProductosOfertadosBorder({ image, productName, price, ofert  }){
     return<>
     <div className="cursor-pointer bg-white flex flex-col rounded-[5px] justify-self-center border h-auto w-[200px]">
             <div className="flex items-center justify-center h-[60%]">
@@ -9,7 +12,7 @@ export default function ProductosOfertadosBorder({ image, priceOff, productName,
                 <div className="text-lg font-bold">{productName}</div>
                 <div>
                     <div className="text-xs line-through">${price}</div>
-                    <div className="text-m font-bold text-[#F5855B]">${priceOff}</div>
+                    <div className="text-m font-bold text-[#F5855B]">${CambiarFormato(Tranformada(price, ofert))}</div>
                 </div>
                 <div className="text-m font-bold text-[#1E9500]">{ofert}% off</div>
             </div> 

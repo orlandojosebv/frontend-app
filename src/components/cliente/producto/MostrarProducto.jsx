@@ -3,7 +3,7 @@ import TemplateUser from "../TemplateUser";
 import ProductCarousel from "./ProductCarousel";
 import QuantityControl from "../../QuantityControl";
 import { CambiarFormato, Tranformada } from "../../../services/ComponenteProducto";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { getProduct } from "../../../services/ProductService";
 import { getModelo } from "../../../services/InventarioService";
 import useUser from "../../../hooks/useUser";
@@ -31,7 +31,7 @@ export default function MostrarProducto() {
           if ((producto.modelo.Productos[z]).tamanio == tamanio) {
             y = (producto.modelo.Productos[z]).id;
           }
-        };
+        }
         const data = {
           id_usuario: user.correo,
           id_producto: y,

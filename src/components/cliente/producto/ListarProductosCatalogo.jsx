@@ -28,7 +28,7 @@ function Paginacion() {
 
     const currentItems = productos.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
-    return (
+    return ( 
         <div className="w-full flex flex-col justify-center items-center">
             <div className="w-[90%] h-auto mt-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-2">
                 {currentItems.map((product, index) => (
@@ -38,6 +38,7 @@ function Paginacion() {
                         image={product.fotos[0].url}
                         categoryName={product.Modelo.Categorium.nombre}
                         productName={product.Modelo.nombre}
+                        ofert={product.descuento}
                         price={product.precio}
                     />
                 ))}
