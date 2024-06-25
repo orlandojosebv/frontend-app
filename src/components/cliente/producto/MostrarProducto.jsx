@@ -3,7 +3,7 @@ import TemplateUser from "../TemplateUser";
 import ProductCarousel from "./ProductCarousel";
 import QuantityControl from "../../QuantityControl";
 import { CambiarFormato, Tranformada } from "../../../services/ComponenteProducto";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { getProduct } from "../../../services/ProductService";
 import { getModelo } from "../../../services/InventarioService";
 import useUser from "../../../hooks/useUser";
@@ -31,7 +31,7 @@ export default function MostrarProducto() {
           if ((producto.modelo.Productos[z]).tamanio == tamanio) {
             y = (producto.modelo.Productos[z]).id;
           }
-        }
+        };
         const data = {
           id_usuario: user.correo,
           id_producto: y,
@@ -65,6 +65,7 @@ export default function MostrarProducto() {
       try {
         const x = await getProduct(id);
         const modelo = await getModelo(x.Modelo.id);
+        setQuantity(Math.min(x.cantidadDisponible, 1))
         setProducto({ ...x, modelo });
         setSizes(modelo.Productos.map(producto => producto.tamanio))
         setTamanio(modelo.Productos[0].tamanio);
@@ -109,7 +110,7 @@ export default function MostrarProducto() {
             <div className="stock bg-[#F5BE90] rounded inline-flex">
               <h2 className="cant py-1 pl-5 text-[#EB4F3E]">Disponible:</h2>
               <h2 className="ml-2 py-1 pr-5 font-bold text-black">{producto.cantidadDisponible} unidades</h2>
-            </div> 
+            </div>
 
             <>
 

@@ -29,7 +29,7 @@ const ComprarProductoUbicacion = () => {
               nombre: prod.Modelo.nombre,
               cantidad: el.Carrito.cantidad,
               tamano: el.tamanio,
-              precio: el.precio,
+              precio: el.descuento ? el.precioUnitarioConDescuento : el.precioUnitario,
             };
           })
         );
@@ -58,14 +58,14 @@ const ComprarProductoUbicacion = () => {
       departamento: departamento,
       direccion: direccion
     };
-    (async ()=>{
+    (async () => {
       try {
         const response = await crearFactura(peticion);
-        if(response){
+        if (response) {
           window.location.replace(response.linkDePago)
         }
       } catch (error) {
-        toast.error("Error: "+error)
+        toast.error("Error: " + error)
       }
 
     })();
