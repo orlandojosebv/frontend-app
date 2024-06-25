@@ -113,7 +113,7 @@ const CrearEditarModelo = ({type, id = -1}) => {
         if (response && response.success) {
           toast.success('Modelo creado exitosamente');
         } else {
-          toast.error('Error al crear el modelo');
+          toast.error('Error al crear el modelo. Ya existe un modelo con el mismo nombre.');
           console.error('Error al crear el modelo', response);
         }
       } else {
@@ -121,7 +121,7 @@ const CrearEditarModelo = ({type, id = -1}) => {
         if (response && response.success) {
           toast.success('Modelo editado exitosamente');
         } else {
-          toast.error('Error al editar el modelo');
+          toast.error('Error al editar el modelo. Ya existe un modelo con el mismo nombre.');
           console.error('Error al editar el modelo', response);
         }
       }
