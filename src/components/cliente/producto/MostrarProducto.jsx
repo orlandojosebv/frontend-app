@@ -9,12 +9,13 @@ import { getModelo } from "../../../services/InventarioService";
 import useUser from "../../../hooks/useUser";
 import { useNavigate } from "react-router-dom";
 import { addCarrito } from "../../../services/CarritoService";
-
+import { toast } from 'react-toastify';
 
 
 export default function MostrarProducto() {
   const [quantity, setQuantity] = useState(1);
   const [producto, setProducto] = useState(null);
+  const [tamanio, setTamanio] = useState(null);
   const [searchParams] = useSearchParams();
   const [sizes, setSizes] = useState([]);
   const { user } = useUser();
@@ -25,14 +26,29 @@ export default function MostrarProducto() {
 
     (async () => {
       try {
+        let y;
+        for (const z in producto.modelo.Productos) {
+          if ((producto.modelo.Productos[z]).tamanio == tamanio) {
+            y = (producto.modelo.Productos[z]).id;
+          }
+        };
         const data = {
           id_usuario: user.correo,
-          id_producto: producto.id,
+          id_producto: y,
           cantidad: quantity
         };
         const resultado = await addCarrito(data);
+        if (resultado.success) {
+          toast.success("El producto se añadio al carrito");
+          // const temp = { 'id'}
+          if (localStorage.getItem('carrito') == null) {
+            // let carrito = { 'id': };
+
+          }
+        }
+
       } catch (error) {
-        console.error("Error:", error);
+        toast.error("Error al añadir a carrito")
       }
 
     })();
@@ -48,10 +64,10 @@ export default function MostrarProducto() {
     const productosCATALOGO = async () => {
       try {
         const x = await getProduct(id);
-        setProducto(x);
         const modelo = await getModelo(x.Modelo.id);
-        console.log(modelo)
+        setProducto({ ...x, modelo });
         setSizes(modelo.Productos.map(producto => producto.tamanio))
+        setTamanio(modelo.Productos[0].tamanio);
       } catch (error) {
         console.error("Error al obtener los productos:", error);
       }
@@ -70,9 +86,6 @@ export default function MostrarProducto() {
       setQuantity(prevQuantity => prevQuantity - 1);
     }
   };
-
-
-  console.log(producto)
 
 
 
@@ -129,9 +142,11 @@ export default function MostrarProducto() {
             </div>
             <div className="flex items-center h-6">
               <div>Tamaño:</div>
-              <select className="mx-2 py-0 pr-4 h-6">
+              <select className="mx-2 py-0 pr-4 h-6" onChange={(e) => { setTamanio(e.target.value); }} >
                 {sizes.map((size, index) => (
-                  <option key={index} value={size}>{size}</option>
+                  <option key={index} value={size}>{size}
+
+                  </option>
                 ))}
               </select>
               <div className="cm">cm</div>
