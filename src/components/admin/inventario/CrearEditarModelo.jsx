@@ -76,6 +76,7 @@ const CrearEditarModelo = ({type, id = -1}) => {
     });
     if (imagenes.length === 0) {
       formErrors.imagenes = 'Debe subir al menos una imagen';
+      toast.error('Tienes que tener al menos una imagen del modelo');
       isValid = false;
     } else if (imagenes.length > 5) {
       formErrors.imagenes = 'No puede subir más de 5 imágenes';
@@ -101,11 +102,11 @@ const CrearEditarModelo = ({type, id = -1}) => {
         if (image instanceof File) {
           formData.append('imagenes', image);
         }
-        
-        for (const [key, value] of formData.entries()) {
-          console.log(key, value);
-        }
       });
+
+      for (const [key, value] of formData.entries()) {
+        console.log(key, value);
+      }
 
       if (type === 1) {
         const response = await crearModelo(formData);
@@ -127,10 +128,23 @@ const CrearEditarModelo = ({type, id = -1}) => {
     }
   };
 
-  
-
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
+
+    // Validar tipo de archivo
+    for (let file of files) {
+      if (!file.type.startsWith('image/')) {
+        toast.error('Solo se pueden subir archivos de imagen');
+        return;
+      }
+    }
+
+    // Validar cantidad máxima de archivos
+    if (imagenes.length + files.length > 5) {
+      toast.error('Solo se pueden montar 5 imágenes');
+      return;
+    }
+
     setImages((prevImages) => [...prevImages, ...files].slice(0, 5));
   };
 
@@ -173,14 +187,12 @@ const CrearEditarModelo = ({type, id = -1}) => {
     if (imageToDelete !== null && imagenes[imageToDelete]) {
       const image = imagenes[imageToDelete];
       if (image.id) {
-        console.log(image.id);
         const response = await deleteImagen(image.id);
         if (response && response.success) {
           toast.success('Imagen eliminada correctamente');
           setImages((prevImages) => prevImages.filter((_, i) => i !== imageToDelete));
         } else {
           toast.error('Error al eliminar la imagen');
-          console.log(image.id);
         }
       } else {
         setImages((prevImages) => prevImages.filter((_, i) => i !== imageToDelete));
@@ -251,7 +263,7 @@ const CrearEditarModelo = ({type, id = -1}) => {
                 >
                   <option value="">Seleccione un material</option>
                   {allMaterials.map(mat => (
-                    <option selected={mat.nombre == item.nombre} key={mat.id} value={mat.nombre}>{mat.nombre}</option>
+                    <option selected={mat.nombre === item.material} key={mat.id} value={mat.nombre}>{mat.nombre}</option>
                   ))}
                 </select>
                 {errors[`material${index}`] && <span className="text-red-500 text-sm">{errors[`material${index}`]}</span>}
