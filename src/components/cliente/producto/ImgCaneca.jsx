@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getProducts } from "../../../services/ProductService"; // Ajusta la importación según tu estructura
 
+// eslint-disable-next-line react/prop-types
 export default function ImgCaneca({ categoryName, id }) {
     const [productosFiltrados, setProductosFiltrados] = useState([]);
     const [productos, setProductos] = useState([]);
