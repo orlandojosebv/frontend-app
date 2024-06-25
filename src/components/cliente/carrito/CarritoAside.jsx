@@ -45,7 +45,7 @@ export default function CarritoAside({ setView, view, user }) {
       }
       data.data.forEach((producto) => {
         cant += producto.Carrito.cantidad;
-        tot += producto.Carrito.cantidad * producto.precio;
+        tot += producto.precioTotal;
       });
       setCantidad(cant);
       setTotal(tot);
@@ -146,13 +146,13 @@ function ProductElement({ producto, handleEliminarProducto }) {
         </div>
         <div className="flex space-x-">
           <div>Precio Unitario:</div>
-          <div>${CambiarFormato(producto.precio)}</div>
+          <div>${CambiarFormato(producto.descuento ? producto.precioUnitarioConDescuento : producto.precioUnitario)}</div>
         </div>
         <div className="flex justify-between">
           Cantidad:
           <div className="flex mr-12">{producto.Carrito.cantidad}</div>
           <div className="flex justify-end">
-            ${CambiarFormato(producto.precio * producto.Carrito.cantidad)}
+            ${CambiarFormato(producto.precioTotal)}
           </div>
         </div>
         <div
