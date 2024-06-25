@@ -3,7 +3,7 @@ import LoginRegistro from "./components/cliente/login/LoginRegistro.jsx";
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import OlvidoContrasena from './components/cliente/login/OlvidoContrasena.jsx';
 import ReestablecerContrasena from './components/cliente/login/ReestablecerContrasena.jsx';
-import ContrasenaReestablecida from './components/cliente/login/ContrasenaReestablecida.jsx';
+import ConfirmarRegistro from './components/cliente/login/ConfirmarRegistro.jsx';
 import ImagenProductoCompra from './components/cliente/comprarProducto/ImagenProductoCompra.jsx';
 import VerificarCorreo from './components/cliente/comprarProducto/VerificarCorreoComprar.jsx';
 import ComprarProductoRegistro from './components/cliente/comprarProducto/ComprarProductoRegistro.jsx';
@@ -70,7 +70,7 @@ function App() {
           <Route path="/TEST" element={<CarritoAside></CarritoAside>} />
           <Route path="/OlvidoContrasena" element={<OlvidoContrasena />} />
           <Route path="/ReestablecerContrasena" element={<ReestablecerContrasena />} />
-          <Route path="/ContrasenaReestablecida" element={<ContrasenaReestablecida />} />
+          <Route path="/ConfirmarRegistro" element={<ConfirmarRegistro />} />
           <Route path="/ComprarProducto" element={<ImagenProductoCompra productos={productos} />} />
           <Route path="/VerificarCorreoComprar" element={<VerificarCorreo />} />
           <Route path="/ComprarProductoRegistro" element={<ComprarProductoRegistro />} />
