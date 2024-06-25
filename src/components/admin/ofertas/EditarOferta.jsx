@@ -10,6 +10,7 @@ const EditarOferta = () => {
   const [fechaInicio, setFechaInicio] = useState('');
   const [fechaFin, setFechaFin] = useState('');
   const [descripcion, setDescripcion] = useState('');
+  const [descuento, setDescuento] = useState('');
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   const { id } = useParams();
@@ -22,6 +23,7 @@ const EditarOferta = () => {
         setFechaInicio(oferta.fechaInicio.split('T')[0]); // Formato "yyyy-MM-dd"
         setFechaFin(oferta.fechaFin.split('T')[0]); // Formato "yyyy-MM-dd"
         setDescripcion(oferta.descripcion);
+        setDescuento(oferta.descuento); // Cargar el descuento
       }
     };
 
@@ -45,13 +47,18 @@ const EditarOferta = () => {
       isValid = false;
     }
 
+    if (!descuento || descuento < 0 || descuento > 100 || !Number.isInteger(Number(descuento))) {
+      formErrors.descuento = 'El descuento debe ser un número entero entre 0 y 100';
+      isValid = false;
+    }
+
     setErrors(formErrors);
     return isValid;
   };
 
   const handleGuardar = async () => {
     if (validateForm()) {
-      const result = await updateOferta({ id, fechaFin, descripcion }, token);
+      const result = await updateOferta({ id, fechaFin, descripcion, descuento }, token);
       if (result && result.success) {
         toast.success('Oferta actualizada correctamente');
         setTimeout(() => {
@@ -82,6 +89,17 @@ const EditarOferta = () => {
               className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
             />
             {errors.descripcion && <span className="text-red-500 text-sm">{errors.descripcion}</span>}
+          </div>
+          <div className="mb-4">
+            <label htmlFor="descuento" className="block text-gray-700">Descuento (%)</label>
+            <input
+              type="number"
+              id="descuento"
+              value={descuento}
+              onChange={(e) => setDescuento(e.target.value)}
+              className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-indigo-200"
+            />
+            {errors.descuento && <span className="text-red-500 text-sm">{errors.descuento}</span>}
           </div>
           <div className="mb-4">
             <label htmlFor="fechaInicio" className="block text-gray-700">Fecha de Inicio</label>

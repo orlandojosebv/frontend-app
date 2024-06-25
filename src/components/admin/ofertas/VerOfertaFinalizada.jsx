@@ -5,6 +5,9 @@ import deleteIcon from '../../../../public/img/iconos/eliminar.png';  // Asegúr
 import TemplateAdmin from '../TemplateAdmin';
 import { useEffect, useState } from 'react';
 import { deleteOferta, getOfertas } from '../../../services/InventarioService';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import useUser from '../../../hooks/useUser';
 
 function formatDate(isoDate) {
   const date = new Date(isoDate);
@@ -17,6 +20,9 @@ function formatDate(isoDate) {
 
 const VerOfertaFinalizada = () => {
   const [ofertas, setOfertas] = useState([]);
+  const [showConfirmPopup, setShowConfirmPopup] = useState(false);
+  const [ofertaToDelete, setOfertaToDelete] = useState(null);
+  const { token } = useUser();
 
   useEffect(() => {
     getOfertas().then(data => {
