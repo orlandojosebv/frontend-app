@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../../../services/ProductService";
 import ProductoCard from "./ProductoCard";
+import { Link } from "react-router-dom";
+import MostrarProducto from "./MostrarProducto";
 
 export default function ListaProductos() {
     const [productos, setProductos] = useState([]);
@@ -9,7 +11,7 @@ export default function ListaProductos() {
         const productosCATALOGO = async () => {
             try {
                 const x = await getProducts();
-                setProductos(x);
+                setProductos(x.filter(el => el.cantidadDisponible > 0));
                 console.log(x);
             } catch (error) {
                 console.error("Error al obtener los productos:", error);
@@ -30,7 +32,6 @@ export default function ListaProductos() {
                         key={index}
                         image={product.fotos[0].url}
                         categoryName={product.Modelo.Categorium.nombre}
-                        ofert={product.descuento}
                         productName={product.Modelo.nombre}
                         price={product.precio}
                     />
