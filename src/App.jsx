@@ -89,7 +89,7 @@ function App() {
           <Route path="/CrearProducto" element={<CrearProducto />} />
           <Route path="/EditarProducto/:id" element={<EditarProducto />} />
           <Route path="/CrearOferta" element={<CrearOferta />} />
-          <Route path="/EditarOferta" element={<EditarOferta />} />
+          <Route path="/EditarOferta/:id" element={<EditarOferta />} />
           <Route path="/Productos/Categoria/" element={<ProductosPorCategoria />} />
           <Route path="/ListadoDeCategorias" element={<ProductosPorCategoria></ProductosPorCategoria>} />
           <Route path="/VerOfertas" element={<VerOfertas />} />
