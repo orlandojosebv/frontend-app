@@ -381,7 +381,6 @@ export async function getProductosPorOferta(ofertaId) {
   }
 }
 
-
 export async function deleteCategoria(id_categoria, token) {
   try {
     const response = await fetch(`${API_URL}/categorias/${id_categoria}`, {
