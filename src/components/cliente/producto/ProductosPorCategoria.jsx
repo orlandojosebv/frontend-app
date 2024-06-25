@@ -32,6 +32,7 @@ export default function ProductosDeCategoria() {
                     image={product.fotos[0].url}
                     categoryName={product.Modelo.Categorium.nombre}
                     productName={product.Modelo.nombre}
+                    ofert={product.descuento}
                     price={product.precio}
                 />
             ))}
