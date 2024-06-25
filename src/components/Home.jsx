@@ -14,7 +14,7 @@ const products = [
   { id: 4, image: 'https://via.placeholder.com/150', category: 'Accesorios', name: 'Producto 4', price: 'S/.90.00' },
   // Añade más productos según sea necesario
 ];
-
+ 
 const Home = () => {
   return (
     <div className="home-container">

@@ -96,7 +96,7 @@ export default function MostrarProducto() {
             <div className="stock bg-[#F5BE90] rounded inline-flex">
               <h2 className="cant py-1 pl-5 text-[#EB4F3E]">Disponible:</h2>
               <h2 className="ml-2 py-1 pr-5 font-bold text-black">{producto.cantidadDisponible} unidades</h2>
-            </div>
+            </div> 
 
             <>
 

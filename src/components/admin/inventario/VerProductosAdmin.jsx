@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { getProductos, deleteProducto } from '../../../services/InventarioService';
 import useUser from "../../../hooks/useUser";
 import AccesoDenegado from '../AccesoDenegado';
-import { useNavigate } from 'react-router-dom';
 
 const ITEMS_PER_PAGE = 6;
 
@@ -12,7 +11,6 @@ function PaginacionAdmin() {
     const [productos, setProductos] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const { user, token } = useUser();  // Asegúrate de obtener el token
-    const navigate = useNavigate();
 
     useEffect(() => {
         getProductos().then(data => {
@@ -32,7 +30,7 @@ function PaginacionAdmin() {
 
     const handleClick = (page) => {
         setCurrentPage(page);
-    };
+    }; 
 
     const handleDelete = async (id) => {
         const response = await deleteProducto(id);

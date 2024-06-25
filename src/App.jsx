@@ -40,6 +40,7 @@ import OffersPage from "./components/cliente/OffersPage.jsx";
 import CarritoAside from "./components/cliente/carrito/CarritoAside.jsx";
 import VerOfertaFinalizada from "./components/admin/ofertas/VerOfertaFinalizada.jsx";
 import useUser from "./hooks/useUser.jsx";
+import VerProductosPorOferta from "./components/admin/ofertas/VerProductosPorOferta.jsx";
 
 const productos = [
   {
@@ -106,6 +107,7 @@ function App() {
           <Route path="/OffersPage" element={<OffersPage />} />
           <Route path="/VerOfertaFinalizada" element={<VerOfertaFinalizada />} />
           <Route path="/CarritoAside" element={<CarritoAside />} />
+          <Route path="/productos/oferta" element={<VerProductosPorOferta />} />
         </Routes>
       </div>
     </Router>

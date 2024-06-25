@@ -319,7 +319,29 @@ export async function getOfertas() {
     console.error("Error:", error);
     return null;
   }
+} 
+
+export async function getProductosPorOferta(ofertaId) {
+  try {
+    console.log("oferta")
+    const response = await fetch(`${API_URL}/ofertas/${ofertaId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    // if (!response.ok) {
+    //   throw new Error(`Error al obtener la oferta con id ${ofertaId}`);
+    // }
+    const oferta = await response.json();
+    return oferta.Productos;
+  } catch (error) {
+    console.error('Error:', error);
+    return []; // Retorna un array vacío en caso de error
+  }
 }
+
 
 export async function deleteCategoria(id_categoria, token) {
   try {
@@ -356,6 +378,22 @@ export async function deleteOferta(id_oferta, token) {
   } catch (error) {
     console.error("Error:", error);
     return null;
+  }
+}
+
+export async function getProductosOfertados(){
+  try{
+    const response = await fetch(`${API_URL}/productos/ofertas`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const productos = await response.json();
+    return productos;
+  } catch (error) {
+    console.error('Error:', error);
+    return []; // Retorna un array vacío en caso de error
   }
 }
 

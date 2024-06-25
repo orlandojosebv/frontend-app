@@ -32,7 +32,7 @@ const Header = () => {
                 {
                   user
                     ? <>
-                      <p className="text-sm sm:text-base md:text-lg lg:text-xl">{user.nombre}</p>
+                      <p className="text-sm sm:text-base md:text-lg lg:text-xl w-40">{user.nombre}</p>
                     </>
                     : <>
                       <Link to="/LoginRegistro" className="text-xs sm:text-sm md:text-base lg:text-lg">Hola, inicia sesión</Link>
