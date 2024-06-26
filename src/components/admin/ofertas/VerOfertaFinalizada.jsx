@@ -11,7 +11,7 @@ import useUser from '../../../hooks/useUser';
 
 function formatDate(isoDate) {
   const date = new Date(isoDate);
-  const day = date.getDate();
+  const day = date.getDate() + 1;
   const month = date.getMonth() + 1; // Los meses empiezan desde 0
   const year = date.getFullYear();
 
@@ -69,7 +69,6 @@ const VerOfertaFinalizada = () => {
     <TemplateAdmin>
       <div className="flex flex-col items-center mx-2 md:mx-10">
         <h2 className="text-2xl font-bold mb-4">Ver Ofertas</h2>
-        <p className="text-gray-600 mb-6 text-center">Selecciona una oferta y mira qué productos están en ella.</p>
         <div className="overflow-x-auto w-full">
           <table className="table-auto bg-white shadow-md rounded-lg w-full">
             <thead>

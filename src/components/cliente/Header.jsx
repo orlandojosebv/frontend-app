@@ -33,7 +33,7 @@ const Header = () => {
                 {
                   user
                     ? <>
-                      <p className="text-sm sm:text-base md:text-lg lg:text-xl w-40">{user.nombre}</p>
+                      <p className="text-sm flex flex-row sm:text-base md:text-lg lg:text-xl w-32">{user.nombre} {user.apellido}</p>
                     </>
                     : <>
                       <Link to="/LoginRegistro" className="text-xs sm:text-sm md:text-base lg:text-lg">Hola, inicia sesión</Link>
@@ -42,7 +42,7 @@ const Header = () => {
               </div>
             </div>
             <Button onClick={() => setView(true)}>
-              <img src={cartIcon} alt="Carrito" className="h-8 w-auto" />
+              <img src={cartIcon} alt="Carrito" className="h-6 w-auto" />
             </Button>
             <img src={logoutIcon} alt="Logout" className="h-8 w-auto cursor-pointer" onClick={handleLogout} />
           </div>
