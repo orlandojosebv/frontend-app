@@ -1,16 +1,16 @@
 import TemplateAdmin from '../TemplateAdmin';
 import ProductoComp from './ProductoComp';
 import { useState, useEffect } from 'react';
-import { getProductos, deleteProducto } from '../../../services/InventarioService';
+import { getProductos } from '../../../services/InventarioService';
 import useUser from "../../../hooks/useUser";
 import AccesoDenegado from '../AccesoDenegado';
 
 const ITEMS_PER_PAGE = 6;
 
-function PaginacionAdmin() {
+function VerProductosAdmin() {
     const [productos, setProductos] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const { user, token } = useUser();  // Asegúrate de obtener el token
+    const { user } = useUser();  // No necesitamos el token aquí
 
     useEffect(() => {
         getProductos().then(data => {
@@ -30,15 +30,10 @@ function PaginacionAdmin() {
 
     const handleClick = (page) => {
         setCurrentPage(page);
-    }; 
+    };
 
-    const handleDelete = async (id) => {
-        const response = await deleteProducto(id);
-        if (response) {
-            setProductos(productos.filter(product => product.id !== id));
-        } else {
-            console.error('Error al eliminar el producto');
-        }
+    const handleDelete = (id) => {
+        setProductos(productos.filter(product => product.id !== id));
     };
 
     const currentItems = productos.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
@@ -55,7 +50,7 @@ function PaginacionAdmin() {
                     {currentItems.map((product) => (
                         <ProductoComp 
                             key={product.id}
-                            id={product.id} // Asegúrate de pasar el id aquí
+                            id={product.id}
                             imagen={product.fotos && product.fotos[0] ? product.fotos[0].url : ""}
                             nombre={product.Modelo.nombre}
                             referencia={product.id}
@@ -64,8 +59,7 @@ function PaginacionAdmin() {
                             categoria={product.Modelo.Categorium.nombre}
                             material={product.Modelo.Materials[0].nombre}
                             precio={product.precio}
-                            token={token}
-                            onDelete={() => handleDelete(product.id)}
+                            onDelete={handleDelete}
                         />
                     ))}
                 </div>
@@ -74,7 +68,7 @@ function PaginacionAdmin() {
                         <button
                             key={index}
                             onClick={() => handleClick(index + 1)}
-                            className={`mx-1 px-3 py-1 border rounded-1 ${currentPage === index + 1 ? ' bg-[#F5855B] text-white' : 'bg-[#F5BE90]'}`}
+                            className={`mx-1 px-3 py-1 border rounded-1 ${currentPage === index + 1 ? 'bg-[#F5855B] text-white' : 'bg-[#F5BE90]'}`}
                         >
                             {index + 1}
                         </button>
@@ -85,4 +79,4 @@ function PaginacionAdmin() {
     );
 }
 
-export default PaginacionAdmin;
+export default VerProductosAdmin;

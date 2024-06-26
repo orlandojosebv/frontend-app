@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../../../assets/styles/Registro.css';
 import { registro } from '../../../services/UserService';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Registro = () => {
@@ -75,8 +75,10 @@ const Registro = () => {
           contrasena: password
         });
 
-        if (data) {
-          toast.success("Te has registrado de manera exitosa!");
+        if (data.success) {
+          toast.success("Te has registrado de manera exitosa! Revisa tu correo para confirmar tu registro.");
+        } else {
+          toast.error(data.message);
         }
       } catch (error) {
         toast.error("Error al registrarse, por favor intente nuevamente.");
@@ -86,7 +88,6 @@ const Registro = () => {
 
   return (
     <div className="register-container">
-      <ToastContainer position="bottom-right" />
       <h2>¡Bienvenido!</h2>
       <p className="intro-text">Completa tu información básica y regístrate.</p>
       <form onSubmit={handleSubmit}>

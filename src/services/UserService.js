@@ -147,3 +147,20 @@ export async function deleteUser(correo,token) {
     return null;
   }
 }
+
+export async function confirmarRegistro(token) {
+  try {
+    const response = await fetch(`${API_URL}/usuarios/confirmar/${token}`, { // Aquí iría la dirección del servidor donde se enviará la petición.
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    console.log(data); // Aquí puedes manejar la respuesta del backend
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+    return null;
+  }
+}
