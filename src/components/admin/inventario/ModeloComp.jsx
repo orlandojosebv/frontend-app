@@ -1,40 +1,43 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import editar from "/img/iconos/editar.png";
 import eliminar from "/img/iconos/eliminar.png";
 import { deleteModelo } from '../../../services/InventarioService';
 import { Link } from "react-router-dom";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { Alert, AlertTitle, Snackbar } from '@mui/material';
 
-export default function ModeloComp({ id, imagen, nombre, referencia, tamano, categoria, material, token, onDelete }) {
+export default function ModeloComp({ id, imagen, nombre, referencia, tamano, categoria, material, onDelete }) {
   const [showPopup, setShowPopup] = useState(false);
+  const [alert, setAlert] = useState({ open: false, severity: "", title: "", message: "" });
 
   const handleDelete = async () => {
-    if (!token) {
-      toast.error('Token de autorización no disponible');
-      return;
-    }
-
     try {
-      const response = await deleteModelo(id, token);
+      const response = await deleteModelo(id);
+      console.log(response); // Verificar la estructura de la respuesta
+
       if (response.success) {
         onDelete(id);
-        toast.success("Producto eliminado satisfactoriamente");
+        setAlert({ open: true, severity: "success", title: "Success", message: "Modelo eliminado satisfactoriamente" });
       } else {
-        toast.error("Error al eliminar el producto, este modelo tiene productos asociados.");
+        setAlert({ open: true, severity: "error", title: "Error", message: "Error al eliminar el modelo, este modelo tiene productos asociados." });
       }
     } catch (error) {
-      toast.error("Error al eliminar el producto");
+      setAlert({ open: true, severity: "error", title: "Error", message: "Error al eliminar el modelo" });
     }
     setShowPopup(false);
   };
 
   const handleShowPopup = () => setShowPopup(true);
   const handleClosePopup = () => setShowPopup(false);
+  const handleCloseAlert = () => setAlert({ ...alert, open: false });
 
   return (
     <div className="flex flex-col h-full w-full items-center">
-      <ToastContainer position='bottom-right'/>
+      <Snackbar open={alert.open} autoHideDuration={6000} onClose={handleCloseAlert}>
+        <Alert onClose={handleCloseAlert} severity={alert.severity} sx={{ width: '100%' }}>
+          <AlertTitle>{alert.title}</AlertTitle>
+          {alert.message}
+        </Alert>
+      </Snackbar>
       <hr className="w-[80%]" />
       <div className="flex flex-row items-center justify-between w-[80%] mb-4 mt-4 h-[140px]">
         <div className="h-36 w-32 flex items-center justify-center bg-[#F4F4F4]">
@@ -93,7 +96,7 @@ export default function ModeloComp({ id, imagen, nombre, referencia, tamano, cat
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded-md shadow-md transition-transform transform hover:scale-105">
             <h2 className="text-lg font-semibold mb-4">Confirmación</h2>
-            <p className="mb-4">¿Seguro que quieres eliminar el producto {nombre}?</p>
+            <p className="mb-4">¿Seguro que quieres eliminar el modelo {nombre}?</p>
             <div className="flex justify-end">
               <button
                 onClick={handleDelete}

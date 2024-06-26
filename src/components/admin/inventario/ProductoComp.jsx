@@ -6,18 +6,13 @@ import { Link } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const ProductoComp = ({ id, imagen, nombre, referencia, cantidad, tamano, categoria, material, precio, token, onDelete }) => {
+const ProductoComp = ({ id, imagen, nombre, referencia, cantidad, tamano, categoria, material, precio, onDelete }) => {
   const [showPopup, setShowPopup] = useState(false);
 
   const handleDelete = async () => {
-    if (!token) {
-      toast.error('Token de autorización no disponible');
-      return;
-    }
-
     try {
-      const response = await deleteProducto(id, token);
-      if (response) {
+      const response = await deleteProducto(id);
+      if (response.success) {
         onDelete(id);
         toast.success("Producto eliminado satisfactoriamente");
       } else {

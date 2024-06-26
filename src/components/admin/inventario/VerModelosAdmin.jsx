@@ -51,7 +51,7 @@ const VerModelosAdmin = () => {
               categoria={modelo.Categorium.nombre}
               material={modelo.Materials[0].nombre}
               token={token}
-              onDelete={handleDelete}  // Asegúrate de pasar la función handleDelete
+              onDelete={handleDelete}
             />
           ))}
         </div>
