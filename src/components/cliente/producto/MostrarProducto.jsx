@@ -161,10 +161,10 @@ export default function MostrarProducto() {
               decreaseQuantity={decreaseQuantity}
             />
 
-            <button onClick={comprarProducto}
+            {/* <button onClick={comprarProducto}
               className="mt-3 bg-red-500 text-white py-2 rounded-md px-16">
               Comprar producto
-            </button>
+            </button> */}
           </div>
         </div></>)
       }
